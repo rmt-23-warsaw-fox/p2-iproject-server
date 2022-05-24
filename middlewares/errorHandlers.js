@@ -9,6 +9,10 @@ const errorHandlers = (err, req, res, next) => {
       code = 400;
       msg = "Email has been registered";
       break;
+    case "ACCOMODATION_ALREADY_EXIST":
+      code = 400;
+      msg = "Accomodation already exist in your wishlist";
+      break;
     case "JsonWebTokenError":
       code = 401;
       msg = "Invalid token";
