@@ -10,6 +10,7 @@ const isLogin = require("../middlewares/authn");
 // const { VirtualAcc } = x;
 // const vaSpecificOptions = {};
 // const va = new VirtualAcc(vaSpecificOptions);
+xendit.use(isLogin);
 xendit.post("/create", async function (req, res, next) {
   try {
     const { bank_code, totalPrice } = req.body;
