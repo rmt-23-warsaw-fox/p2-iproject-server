@@ -10,7 +10,6 @@ const isLogin = require("../middlewares/authn");
 // const { VirtualAcc } = x;
 // const vaSpecificOptions = {};
 // const va = new VirtualAcc(vaSpecificOptions);
-xendit.use(isLogin);
 xendit.post("/create", async function (req, res, next) {
   try {
     const { bank_code, totalPrice } = req.body;
@@ -32,9 +31,7 @@ xendit.post("/create", async function (req, res, next) {
         is_single_use: true,
       },
     });
-    res.status(200).json({
-      data: response.data,
-    });
+    res.status(200).json(response.data);
 
     // const fixedAcc = await va.createFixedVA({
     //   externalID: `VA-fixed-${Date.now()}`,
