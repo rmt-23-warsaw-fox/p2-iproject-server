@@ -1,0 +1,26 @@
+[
+  {
+      "username": "iqbal",
+      "email": "iqbalgen021@gmail.com",
+      "password": "1234567",
+      "phoneNumber": "+62123456789"
+  },
+  {
+      "username": "budi",
+      "email": "budi@yahoo.com",
+      "password": "1234567",
+      "phoneNumber": "+620987654"
+  },
+  {
+      "username": "anton",
+      "email": "anton@gmail.com",
+      "password": "1234567",
+      "phoneNumber": "+627686858123"
+  },
+  {
+    "username": "john",
+    "email": "john@gmail.com",
+    "password": "1234567",
+    "phoneNumber": "+62753234245"
+}
+]
