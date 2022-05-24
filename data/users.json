@@ -1,26 +1,26 @@
 [
   {
-      "username": "iqbal",
+      "name": "iqbal",
       "email": "iqbalgen021@gmail.com",
-      "password": "1234567",
-      "phoneNumber": "+62123456789"
+      "password": "12345",
+      "phoneNumber": "01234589"
   },
   {
-      "username": "budi",
+      "name": "budi",
       "email": "budi@yahoo.com",
-      "password": "1234567",
-      "phoneNumber": "+620987654"
+      "password": "12345",
+      "phoneNumber": "00987654"
   },
   {
-      "username": "anton",
+      "name": "anton",
       "email": "anton@gmail.com",
-      "password": "1234567",
-      "phoneNumber": "+627686858123"
+      "password": "12345",
+      "phoneNumber": "07686858123"
   },
   {
-    "username": "john",
+    "name": "john",
     "email": "john@gmail.com",
-    "password": "1234567",
-    "phoneNumber": "+62753234245"
+    "password": "12345",
+    "phoneNumber": "0753234245"
 }
 ]

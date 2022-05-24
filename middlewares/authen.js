@@ -3,12 +3,9 @@ const {User} = require('../models/index')
 
 const authentication = async(req, res, next) => {
   try {
-    console.log(67);
     const {access_token} = req.headers
-    console.log(req.headers);
     const payload = readPayLoad(access_token)
     const findUser = await User.findByPk(+payload.id)
-    console.log(findUser);
     if (!findUser) {
       throw new Error(401)
     }
