@@ -17,6 +17,10 @@ const errorHandlers = (err, req, res, next) => {
       code = 401;
       msg = "Error user not found or password not matched";
       break;
+    case "ACCOMODATION_NOT_FOUND":
+      code = 404;
+      msg = "Accomodation not found";
+      break;
     default:
       code = 500;
       msg = "Internal Server Error";

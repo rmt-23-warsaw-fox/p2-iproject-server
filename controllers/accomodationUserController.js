@@ -21,7 +21,7 @@ class AccomodationUserController {
   }
   static async fetchAccomodationByCity(req, res, next) {
     try {
-      const { city } = req.body;
+      const { city } = req.params;
       const accomodations = await Accomodation.findAll({
         where: {
           city : city
@@ -37,6 +37,26 @@ class AccomodationUserController {
       res.status(200).json(accomodations);
     } catch (err) {
       next(err);
+    }
+  }
+
+  static async fetchAccomodationById(req, res, next) {
+    try {
+      const { id } = req.params;
+      const accomodation = await Accomodation.findByPk(+id, {
+        include: {
+          model: Type,
+          attributes: ['name'],
+        }
+      });
+
+      if(!accomodation) {
+        throw { name: "ACCOMODATION_NOT_FOUND" }
+      }
+
+      res.status(200).json({accomodation})
+    } catch (err) {
+      next(err)
     }
   }
 }
