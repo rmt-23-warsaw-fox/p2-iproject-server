@@ -7,7 +7,7 @@ const errorHandlers = (err, req, res, next) => {
             break;
         case 'SequelizeUniqueConstraintError':
             code = 400;
-            msg = 'Email must be unique';
+            msg = 'Email has been registered';
             break;
         case 'JsonWebTokenError':
             code = 401;
