@@ -1,7 +1,7 @@
 const ValorantAPI = require("unofficial-valorant-api")
 
 class ValoController {
-  async getMatches(req,res,next){
+  static async getMatches(req,res,next){
     try {
       const {puuid} = req.extra
     } catch (err) {
