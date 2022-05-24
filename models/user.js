@@ -12,11 +12,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isNull: {
+          notNull: {
             args: true,
             msg: "Email is required",
           },
-          isEmpty: {
+          notEmpty: {
             args: true,
             msg: "Email is required",
           },
@@ -30,11 +30,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isNull: {
+          notNull: {
             args: true,
             msg: "Password is required",
           },
-          isEmpty: {
+          notEmpty: {
             args: true,
             msg: "Password is required",
           },
@@ -49,11 +49,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isNull: {
+          notNull: {
             args: true,
             msg: "Firstname is required",
           },
-          isEmpty: {
+          notEmpty: {
             args: true,
             msg: "Firstname is required",
           },
@@ -63,11 +63,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isNull: {
+          notNull: {
             args: true,
             msg: "Lastname is required",
           },
-          isEmpty: {
+          notEmpty: {
             args: true,
             msg: "Lastname is required",
           },
@@ -77,11 +77,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isNull: {
+          notNull: {
             args: true,
             msg: "Phone number is required",
           },
-          isEmpty: {
+          notEmpty: {
             args: true,
             msg: "Phone number is required",
           },
@@ -91,11 +91,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isNull: {
+          notNull: {
             args: true,
             msg: "Address is required",
           },
-          isEmpty: {
+          notEmpty: {
             args: true,
             msg: "Address is required",
           },
