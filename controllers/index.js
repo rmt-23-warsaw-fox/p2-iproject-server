@@ -4,6 +4,7 @@ const { User } = require("../models")
 const { Op } = require("sequelize")
 const { hashCompare } = require("../helpers/bcrypts")
 const { createToken } = require("../helpers/jsonwebtoken")
+
 class Controller {
     static async register(req, res, next){
         try {
@@ -28,7 +29,7 @@ class Controller {
             const { userName, email, password } = req.body
             const user = await User.findOne({
                 where:{
-                    [Op.or]:[{userName}, {email}]
+                    [Op.or]:[{userName:userName}, {email:email}]
                 }
             })
             if(!user){

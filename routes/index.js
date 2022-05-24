@@ -1,8 +1,8 @@
 "use strict"
 
 const express = require("express")
-const Controller = require("../controllers")
 const router = express.Router()
+const Controller = require("../controllers")
 const errorHandlres = require("../middlewares/errorHandlers")
 
 router.post("/register", Controller.register)
