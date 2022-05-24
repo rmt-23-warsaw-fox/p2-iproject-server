@@ -10,5 +10,23 @@
   "devDependencies": {
     "nodemon": "^2.0.16",
     "sequelize-cli": "^6.4.1"
-  }
+  },
+  "name": "p2-iproject-server-rmt23",
+  "description": "Individual Project - Server",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RFlubis/p2-iproject-server-rmt23.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RFlubis/p2-iproject-server-rmt23/issues"
+  },
+  "homepage": "https://github.com/RFlubis/p2-iproject-server-rmt23#readme"
 }
