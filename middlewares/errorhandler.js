@@ -6,15 +6,15 @@ const errorHandler = (err, req, res, next)=>{
   
   if(err.name === 'SequelizeValidationError'){
     code = 400
-    message = err.error.map(el=>el.message)[0]
+    message = err.errors.map(el=>el.message)[0]
   }
   if(err.name === 'SequelizeUniqueConstraintError'){
     code = 400
-    message = err.error.map(el=>el.message)[0]
+    message = err.errors.map(el=>el.message)[0]
   }
   if(err.name === 'SequelizeConstraintError'){
     code = 400
-    message = err.error.map(el=>el.message)[0]
+    message = err.errors.map(el=>el.message)[0]
   }
   if(err.message === "ign_required"){
     code = 400
@@ -28,12 +28,9 @@ const errorHandler = (err, req, res, next)=>{
     code = 400
     message = "Invalid IGN or Tagline"
   }
-  
+
   res.status(code).json({
-    statusCode:code,
-    error:{
-      message: message,
-    }
+   message : message
   })
 
 }
