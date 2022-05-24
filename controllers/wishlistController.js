@@ -44,6 +44,25 @@ class WishlistController {
             next(err)
         }
     }
+
+    static async deleteWishlist(req, res, next) {
+        try {
+            const { id } = req.params;
+            const deletedWishlist = await Wishlist.destroy({
+                where: { id }
+            })
+
+            if (!deletedWishlist) {
+                throw { name: "WISHLIST_NOT_FOUND" }
+            }
+
+            res.status(200).json({
+                message: "Successfully deleted from wishlist"
+            })
+        } catch (err) {
+            next(err)
+        }
+    }
 }
 
 module.exports = WishlistController

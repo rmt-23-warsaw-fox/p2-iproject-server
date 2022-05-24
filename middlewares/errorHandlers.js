@@ -25,6 +25,10 @@ const errorHandlers = (err, req, res, next) => {
       code = 404;
       msg = "Accomodation not found";
       break;
+      case "WISHLIST_NOT_FOUND":
+        code = 404;
+        msg = "Wishlist not found";
+        break;
     default:
       code = 500;
       msg = "Internal Server Error";
