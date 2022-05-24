@@ -10,11 +10,19 @@ module.exports = {
       },
       userId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users', // 'fathers' refers to table name
+          key: 'id', // 'id' refers to column name in fathers table
+       }
       },
       PackageId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Packages', // 'fathers' refers to table name
+          key: 'id', // 'id' refers to column name in fathers table
+       }
       },
       createdAt: {
         allowNull: false,

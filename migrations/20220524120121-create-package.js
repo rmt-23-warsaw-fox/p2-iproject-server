@@ -26,7 +26,11 @@ module.exports = {
       },
       MajorId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Majors', // 'fathers' refers to table name
+          key: 'id', // 'id' refers to column name in fathers table
+       }
       },
       createdAt: {
         allowNull: false,
