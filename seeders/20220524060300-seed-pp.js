@@ -15,6 +15,7 @@ module.exports = {
     const pp = require("../data/pp.json").map((el) => {
       el.createdAt = new Date();
       el.updatedAt = new Date();
+      return el;
     });
     await queryInterface.bulkInsert("Profile_Pictures", pp, {});
   },

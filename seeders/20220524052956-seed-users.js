@@ -15,6 +15,7 @@ module.exports = {
      el.password = hashPassword(el.password);
      el.createdAt = new Date();
      el.updatedAt = new Date();
+     return el;
    });
    await queryInterface.bulkInsert('Users', users, {});
   },
