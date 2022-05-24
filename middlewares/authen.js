@@ -1,4 +1,4 @@
-const { readPayLoad } = require('../helpers/jwt')
+const { readPayLoad } = require('../helpers')
 const {User} = require('../models/index')
 
 const authentication = async(req, res, next) => {

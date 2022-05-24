@@ -57,10 +57,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         notNull: {
-          msg: 'name is required'
+          msg: 'imageUrl is required'
         },
         notEmpty: {
-          msg: 'name is required'
+          msg: 'imageUrl is required'
         }
       }
     },
@@ -69,10 +69,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       validate: {
         notNull: {
-          msg: 'name is required'
+          msg: 'major is required'
         },
         notEmpty: {
-          msg: 'name is required'
+          msg: 'major is required'
         }
       }
     }
