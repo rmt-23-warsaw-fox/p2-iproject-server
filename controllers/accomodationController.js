@@ -50,6 +50,8 @@ class AccomodationController {
       next(err);
     }
   }
+
+  
 }
 
 module.exports = AccomodationController;
