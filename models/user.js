@@ -31,6 +31,10 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: { args: true, msg: 'Please enter a password' },
         },
       },
+      isPremium: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
     {
       sequelize,
