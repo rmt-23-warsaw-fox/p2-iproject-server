@@ -11,19 +11,39 @@ class UserController {
         throw { name: "EMAIL_OR_PASSWORD_NOT_FOUND" };
       }
 
-      const isTruePassword = comparePassword(password, customer.password);
+      const isTruePassword = comparePassword(password, user.password);
 
       if (!isTruePassword) {
         throw { name: "EMAIL_OR_PASSWORD_NOT_FOUND" };
       }
 
       const token = signToken({
-        id: customer.id,
-        email: customer.email,
+        id: user.id,
+        email: user.email,
       });
 
       res.status(200).json({
         access_token: token,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  static async register(req, res, next) {
+    try {
+      const { email, password, firstName, lastName, phoneNumber, address } = req.body;
+      const user = await User.create({
+        email,
+        password,
+        firstName,
+        lastName,
+        phoneNumber,
+        address
+      });
+
+      res.status(201).json({
+        message: "You have successfully registered",
       });
     } catch (err) {
       next(err);
