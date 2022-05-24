@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Type extends Model {
   
     static associate(models) {
-      Type.belongsTo(models.User);
+      Type.belongsTo(models.Admin);
       Type.hasMany(models.Accomodation)
     }
   }

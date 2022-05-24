@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     
     static associate(models) {
       Wishlist.belongsTo(models.Accomodation)
-      Wishlist.belongsTo(models.UserId)
+      Wishlist.belongsTo(models.User)
     }
   }
   Wishlist.init({

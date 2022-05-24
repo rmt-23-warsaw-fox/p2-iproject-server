@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     
     static associate(models) {
       Accomodation.belongsTo(models.Type);
-      Accomodation.belongsTo(models.User)
+      Accomodation.belongsTo(models.Admin)
+      Accomodation.belongsToMany(models.User, { through: "Wishlists" })
     }
   }
   Accomodation.init({
