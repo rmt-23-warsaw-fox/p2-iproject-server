@@ -49,6 +49,11 @@ const errorHandler = (err, req, res, next)=>{
     message = err.message
   }
 
+  if(err.message === "user_not_found"){
+    code = 401
+    message = "Invalid Token"
+  }
+  
   res.status(code).json({
    message : message
   })
