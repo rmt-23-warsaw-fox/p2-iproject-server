@@ -15,6 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Food.init({
     ApiId: DataTypes.INTEGER,
+    ApiName: DataTypes.STRING,
+    ApiThumb: DataTypes.STRING,
     price: DataTypes.INTEGER
   }, {
     sequelize,

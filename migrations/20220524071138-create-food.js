@@ -12,6 +12,14 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      ApiName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      ApiThumb: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       price: {
         type: Sequelize.INTEGER,
         allowNull: false,
