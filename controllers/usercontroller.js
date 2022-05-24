@@ -1,5 +1,6 @@
 const {User} = require('../models')
 const ValorantAPI = require("unofficial-valorant-api")
+const { checkpw, createToken } = require('../helpers')
 
 class UserController {
   static async register(req,res,next) {
@@ -36,9 +37,44 @@ class UserController {
 
   static async login(req,res,next) {
     try {
- 
-    } catch (err) {
+      const {username,password} = req.body
+
+      if(!username) {
+        throw new Error("Please input your Username")
+      }
       
+      if(!password) {
+        throw new Error("Please input your Password")
+      }
+      
+      const user = await User.findOne({
+        where : {
+          username : username
+        }
+      })
+
+      if(!user){
+        throw new Error("Invalid username/password")
+      }
+
+      const isValidPassword = checkpw(password,user.password)
+
+      if(!isValidPassword) {
+        throw new Error("Invalid username/password")
+      }
+
+      const payload = {
+        id : user.id,
+        puuid : user.puuid
+      }
+
+      const token = createToken(payload)
+
+      res.status(200).json({
+        access_token : token
+      })
+    } catch (err) {
+      next(err)
     }
   }
 
