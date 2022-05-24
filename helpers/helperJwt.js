@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const secretWord = process.env.SECRET;
+const secretWord = 'BlackDragonFatalis';
 function tokenMakerFromPayload(payload) {
   return jwt.sign(payload, secretWord, {
     //? pastikan untuk membuat waktu kadaluarsa
