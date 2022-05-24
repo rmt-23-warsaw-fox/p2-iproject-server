@@ -20,10 +20,10 @@ module.exports = {
       imageUrl: {
         type: Sequelize.STRING
       },
-      UserId: {
+      AdminId: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Users",
+          model: "Admins",
           key: "id"
         },
         onDelete: 'cascade',

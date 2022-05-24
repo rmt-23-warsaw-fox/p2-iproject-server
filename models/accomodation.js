@@ -16,11 +16,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull:false,
       validate: {
-        isNull: {
+        notNull: {
           args: true,
           msg: "Name is required"
         },
-        isEmpty: {
+        notEmpty: {
           args: true,
           msg: "Name is required"
         }
@@ -30,11 +30,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull:false,
       validate: {
-        isNull: {
+        notNull: {
           args: true,
           msg: "Facility is required"
         },
-        isEmpty: {
+        notEmpty: {
           args: true,
           msg: "Facility is required"
         }
@@ -44,11 +44,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        isNull: {
+        notNull: {
           args: true,
           msg: "Room Capacity is required"
         },
-        isEmpty: {
+        notEmpty: {
           args: true,
           msg: "Room Capacity is required"
         }
@@ -58,17 +58,17 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isNull: {
+        notNull: {
           args: true,
           msg: "Image Url is required"
         },
-        isEmpty: {
+        notEmpty: {
           args: true,
           msg: "Image Url is required"
         }
       }
     },
-    UserId: {
+    AdminId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -76,11 +76,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isNull: {
+        notNull: {
           args: true,
           msg: "Location is required"
         },
-        isEmpty: {
+        notEmpty: {
           args: true,
           msg: "Location is required"
         }
@@ -90,11 +90,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        isNull: {
+        notNull: {
           args: true,
           msg: "Price is required"
         },
-        isEmpty: {
+        notEmpty: {
           args: true,
           msg: "Price is required"
         }
