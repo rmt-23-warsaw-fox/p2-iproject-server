@@ -10,11 +10,9 @@ const isLogin = require("../middlewares/authn");
 // const { VirtualAcc } = x;
 // const vaSpecificOptions = {};
 // const va = new VirtualAcc(vaSpecificOptions);
-xendit.use(isLogin);
 xendit.post("/create", async function (req, res, next) {
   try {
-    const { bank_code, totalPrice } = req.body;
-    const { Username } = req.dataUser;
+    const { bank_code, totalPrice, name } = req.body;
     const response = await axios({
       method: "post",
       url: "https://api.xendit.co/callback_virtual_accounts",
@@ -26,7 +24,7 @@ xendit.post("/create", async function (req, res, next) {
       data: {
         external_id: `VA-fixed-${Date.now()}`,
         bank_code,
-        name: Username,
+        name,
         suggested_amount: totalPrice,
         expected_amount: totalPrice,
         is_single_use: true,
