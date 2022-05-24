@@ -9,16 +9,7 @@ let snap = new midtransClient.Snap({
 class ControllerPayment {
   static async transaction(req, res, next) {
     try {
-      //   const { id, email } = req.loginfo;
-
-      //   await User.update(
-      //     { isPremium: true },
-      //     {
-      //       where: {
-      //         id: id,
-      //       },
-      //     }
-      //   );
+      const { id, email } = req.loginfo;
 
       const transactionCode = `TRX${Math.floor(Math.random() * 1000000)}`;
 
@@ -30,6 +21,18 @@ class ControllerPayment {
       };
 
       const transaction = await snap.createTransaction(parameter);
+      if (!transaction) {
+        throw { name: 'TRANSACTION_FAILED' };
+      }
+
+      await User.update(
+        { isPremium: true },
+        {
+          where: {
+            id: id,
+          },
+        }
+      );
 
       let transactionToken = transaction.token;
       console.log('transactionToken:', transactionToken);
