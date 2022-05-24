@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   class Admin extends Model {
     
     static associate(models) {
-      Admin.hasMany(models.Type);
+      Admin.hasMany(models.Accomodation);
     }
   }
   Admin.init({
