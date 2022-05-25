@@ -1,6 +1,6 @@
 const { checkPassword } = require("../helpers/bcrypt");
 const { encode } = require("../helpers/jwt");
-const { Product, User, Order, Category } = require("../models");
+const { User } = require("../models");
 
 class userController {
   static async register(req, res, next) {
