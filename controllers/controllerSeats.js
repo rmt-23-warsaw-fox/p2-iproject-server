@@ -1,6 +1,6 @@
 "use strict";
 
-const { UserSeat, SeatRow } = require("../models/index");
+const { UserSeat, SeatRow, Movie } = require("../models/index");
 
 class Controller {
   static async checkSeats(req, res, next) {
@@ -31,7 +31,12 @@ class Controller {
   static async bookedSeats(req, res, next) {
     try {
       const UserId = req.currentUser.id;
-      const booked = UserSeat.findAll({ where: { UserId }, include: User });
+      //   console.log(UserId);
+      const booked = await UserSeat.findAll({
+        where: { UserId },
+        // include: { model: Movie },
+      });
+      //   console.log(booked);
       res.status(200).json({
         statuscode: 200,
         booked,
@@ -44,11 +49,11 @@ class Controller {
   static async booking(req, res, next) {
     //booking
     try {
-      const { seatNumber } = req.body;
+      const { seatNumber, MovieTitle } = req.body;
       const UserId = req.currentUser.id;
-      const { MovieId } = req.params;
+      //   const { MovieId } = req.params;
       const checkSeats = await UserSeat.findOne({
-        where: { MovieId, seatNumber },
+        where: { MovieTitle, seatNumber },
       });
       if (checkSeats) {
         throw new Error("Seats is unavailable");
@@ -56,7 +61,8 @@ class Controller {
       const booking = await UserSeat.create({
         seatNumber,
         UserId,
-        MovieId,
+        // MovieId,
+        MovieTitle,
       });
       //   console.log(booking);
       res.status(201).json({
