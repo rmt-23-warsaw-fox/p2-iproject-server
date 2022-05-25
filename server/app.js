@@ -4,6 +4,7 @@ const app = express()
 const {User} = require('./models/index')
 const {compareHash} = require('./helpers/bcrypt')
 const {createToken, decodeToken} = require('./helpers/jwt')
+const axios = require("axios");
 
 const port = 3000
 
