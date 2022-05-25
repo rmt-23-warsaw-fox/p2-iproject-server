@@ -24,10 +24,6 @@ module.exports = {
           key: "id",
         },
       },
-      address: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       status: {
         type: Sequelize.STRING,
         allowNull: false,

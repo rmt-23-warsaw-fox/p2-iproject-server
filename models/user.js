@@ -69,6 +69,13 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
+      address: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          msg: "Address is required",
+        },
+      },
     },
     {
       sequelize,

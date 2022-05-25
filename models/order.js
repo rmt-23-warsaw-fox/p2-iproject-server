@@ -23,13 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      address: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          msg: "Address is required",
-        },
-      },
+
       status: {
         type: DataTypes.STRING,
         allowNull: false,
