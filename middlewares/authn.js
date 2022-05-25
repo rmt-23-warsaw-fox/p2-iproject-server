@@ -1,6 +1,6 @@
 "use strict"
 
-const { readToken } = require("../helpers/validator")
+const { readToken } = require("../helpers/validators")
 const { User } = require("../models/index")
 
 const authN = async (req, res, next) => {
