@@ -51,6 +51,14 @@ const errorHandler = (err,req,res,next) => {
             })
             break;
 
+        case 'P_NOT_FOUND':
+        case 'D_NOT_FOUND':
+            res.status(401).json({
+                statusCode: err.statusCode,
+                message: `Invalid username/password`
+            })
+            break;
+
         default:
             console.log(err)
             res.status(500).json(err)
