@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Buy, {
         foreignKey: 'UserId'
       })
+      this.belongsToMany(models.Package, {
+        through: models.Buy,
+        foreignKey: 'PackageId'
+      })
     }
   }
   User.init({
