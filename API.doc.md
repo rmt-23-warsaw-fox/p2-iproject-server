@@ -4,9 +4,12 @@ List of Available Endpoints In Route:
 
 - `POST /login`
 - `POST /register`
+- `GET /`
+- `GET /categories`
+- `GET /favoritesNews`
 
  Authentication
-- `GET /`
+
 <br />
 <br />
 
@@ -79,6 +82,69 @@ OR
 
 ```
 
+## 3. GET /
+
+### Response
+_200 - OK_
+```json
+ data: [
+        {
+            "link": string,
+            "title": string,
+            "pubDate": string,
+            "description": string,
+            "thumbnail": string
+        },
+    ]
+```
+
+
+## 4. GET /categories
+
+### Response
+_200 - OK_
+```json
+ [
+    {
+        "id": integer,
+        "name": string,
+        "path": string,
+        "createdAt": string,
+        "updatedAt": string
+    }
+ ]
+```
+
+## 5. GET /favoritesNews
+
+### Request
+- Headers
+
+```json
+{
+  "access_token" : string
+}
+```
+
+### Response
+_200 - OK_
+```json
+[
+    {
+        "id": integer,
+        "UserId": integer,
+        "LinkId": string,
+        "createdAt":string,
+        "updatedAt": string
+    }
+]
+```
+_404 - Not Found_
+```json
+{
+    "message" : "Your List Empty"
+}
+```
 
 
 ### Global Error

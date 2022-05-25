@@ -12,8 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       this.hasMany(models.Comment)
-      this.hasMany(models.FavoriteNews)
-      this.hasMany(models.UnFavoriteNews)
+      this.hasMany(models.FavoriteNews, {foreignKey: 'LinkId'})
     }
   }
   NewsAPI.init({

@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.hasMany(models.Comment)
       this.hasMany(models.FavoriteNews)
-      this.hasMany(models.UnFavoriteNews)
     }
   }
   User.init({

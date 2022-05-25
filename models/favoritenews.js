@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       this.belongsTo(models.User)
-      this.belongsTo(models.NewsAPI)
+      this.belongsTo(models.NewsAPI, {foreignKey: 'LinkId'})
     }
   }
   FavoriteNews.init({

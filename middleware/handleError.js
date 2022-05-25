@@ -16,6 +16,16 @@ function errorHandle (err, req, res, next) {
         code = 401,
         message = "User Not Found"
     }
+    //ERROR 403 Forbidden
+    if(err.name === "Product has been Choice"){
+        code = 403,
+        message = "Product has been Choice"
+    }
+    //ERROR 404 Not Found
+    if(err.name === "Your List Empty"){
+        code = 404,
+        message = "Your List Empty"
+    }
     //ERROR 400 BAD REQUEST
     if(err.name === "SequelizeValidationError"){
         code = 400

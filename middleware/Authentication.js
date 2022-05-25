@@ -15,7 +15,7 @@ async function Authentication(req, res, next) {
         if(check===null) {
             throw({name : "Unauthorized"})
         }
-        req.Tammbahan ={
+        req.Tambahan ={
             id : check.id,
             email : check.email,
             username : check.username
