@@ -16,6 +16,9 @@ const errorHandler = (err, req, res, next) => {
   } else if (err.message === '404') {
     code = 404
     msg = 'error not found'
+  } else if (err.message == 800) {
+    code = 400
+    msg = 'already added to the list'
   }
 
   if (err.errors) {

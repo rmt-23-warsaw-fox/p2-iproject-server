@@ -8,8 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
-        allowNull: false,
+      UserId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Users', // 'fathers' refers to table name
@@ -17,7 +16,6 @@ module.exports = {
        }
       },
       PackageId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Packages', // 'fathers' refers to table name

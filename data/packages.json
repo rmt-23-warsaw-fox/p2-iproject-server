@@ -54,5 +54,19 @@
     "price": 20000,
     "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWuW_OWaXxqKYJtvEei4CsC7giZzq379Yz_A&usqp=CAU",
     "MajorId": 3
+  },
+  {
+    "name": "Bahasa Arab Kelas 11",
+    "totalVideo": 7,
+    "price": 30000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxU6meMgoLEB2WiYl0CSLiUvXOjpT4nhbP5Q&usqp=CAU",
+    "MajorId": 3
+  },
+  {
+    "name": "Bahasa Inggris Kelas 11",
+    "totalVideo": 8,
+    "price": 35000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWuW_OWaXxqKYJtvEei4CsC7giZzq379Yz_A&usqp=CAU",
+    "MajorId": 3
   }
 ]
