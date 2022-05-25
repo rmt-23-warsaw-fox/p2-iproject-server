@@ -94,6 +94,9 @@ class PackageController {
           include: [Package]
         }]
       })
+
+      // if()
+
       res.status(200).json({
         data: findUser
       })
