@@ -7,7 +7,6 @@ class DotaController {
     try {
       const id = req.userData.dotaId
       const heroesId = []
-      const heroes = []
       const { data } = await axios({
         method: "get",
         url: `https://api.opendota.com/api/players/${id}/recentMatches`,
@@ -16,14 +15,44 @@ class DotaController {
 
       for (let i = 0; i < heroesId.length; i++) {
         const hero = await Hero.findOne({ where: { id: heroesId[i] } })
-        heroes.push(hero)
-        console.log(hero.localized_name, hero.id, data[i].hero_id)
+        data[i].hero = hero
       }
-      // console.log(heroes, "<<<<<<<")
-      // console.log(heroesId)
+
       res.status(200).json({
         statusCode: 200,
-        heroes,
+        data,
+      })
+    } catch (err) {
+      next(err)
+    }
+  }
+
+  static async getTeams(req, res, next) {
+    try {
+      const { data } = await axios({
+        method: "get",
+        url: "https://api.opendota.com/api/teams",
+      })
+      res.status(200).json({
+        statusCode: 200,
+        data,
+      })
+    } catch (err) {
+      next(err)
+    }
+  }
+
+  static async getTeam(req, res, next) {
+    try {
+      const { teamId } = req.params
+      const { data } = await axios({
+        method: "get",
+        url: `https://api.opendota.com/api/teams/${teamId}`,
+      })
+      if (!data) throw new Error("not found")
+      res.status(200).json({
+        statusCode: 200,
+        data,
       })
     } catch (err) {
       next(err)

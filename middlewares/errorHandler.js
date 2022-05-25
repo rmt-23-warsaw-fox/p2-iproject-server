@@ -21,6 +21,9 @@ const errorHandler = async (err, req, res, next) => {
   } else if (err.message === "invalid") {
     code = 401
     msg = "Invalid email/password"
+  } else if (err.message === "not found") {
+    code = 404
+    msg = "Team not Found"
   }
   res.status(code).json({
     statusCode: code,
