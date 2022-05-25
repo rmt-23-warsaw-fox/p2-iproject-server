@@ -35,6 +35,23 @@ class Controller {
         }
     }
 
+    static async register(req, res, next) {
+        try {
+            const {email, password, username} = req.body
+            const data = await User.create({
+                email,
+                password,
+                username
+            })
+            res.status(201).json({
+                message: "Successfully registered",
+                username: data.username
+            })
+        } catch (error) {
+            next(error)
+        }
+    }
+
     static async HomeNews(req, res, next) {
         try {
             const { page = 0 } = req.query

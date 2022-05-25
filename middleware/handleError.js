@@ -1,13 +1,19 @@
 "use strict";
 function errorHandle (err, req, res, next) {
-    console.log(err);
+    console.log(err.errors);
     let code = 500;
     let message = "Internal Server Error"
+    //ERROR 401 UNAUTHORIZED
     if(err.name === "Invalid username/Password"){
-        code = 400
+        code = 401
         message = "Invalid Username/Password"
     }
-
+    
+    //ERROR 400 BAD REQUEST
+    if(err.name === "SequelizeValidationError"){
+        code = 400
+        message = err.errors.map(el=> el.message).join(", ")
+    }
     res.status(code).json({
         message
     })

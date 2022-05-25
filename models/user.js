@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const {createHash} = require("../helper/hashPass")
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -31,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Email is required'
         },
         isEmail: {
-          msg: 'Email is Invalid'
+          msg: "Invalid email format"
         }
       }
     },
@@ -40,10 +41,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull : false,
       validate :{
         notNull :{
-          msg : "Email is required"
+          msg : "Username is required"
         },
         notEmpty: {
-          msg: 'Email is required'
+          msg: 'Username is required'
         },
       }
     },
@@ -60,6 +61,11 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   }, {
+    hooks: {
+      beforeCreate: (user, options) => {
+        user.password = createHash(user.password)
+      }
+    },
     sequelize,
     modelName: 'User',
   });
