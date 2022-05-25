@@ -11,11 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.Comment)
+      this.hasMany(models.FavoriteNews)
+      this.hasMany(models.UnFavoriteNews)
     }
   }
   User.init({
     email: {
       type : DataTypes.STRING,
+      allowNull : false,
       unique : {
         msg : "Email already exists"
       },
@@ -29,6 +33,18 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: {
           msg: 'Email is Invalid'
         }
+      }
+    },
+    username: {
+      type : DataTypes.STRING,
+      allowNull : false,
+      validate :{
+        notNull :{
+          msg : "Email is required"
+        },
+        notEmpty: {
+          msg: 'Email is required'
+        },
       }
     },
     password: {

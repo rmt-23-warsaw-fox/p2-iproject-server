@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.Comment)
+      this.hasMany(models.FavoriteNews)
+      this.hasMany(models.UnFavoriteNews)
     }
   }
   NewsAPI.init({
