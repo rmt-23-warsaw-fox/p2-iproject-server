@@ -17,6 +17,11 @@ const errorHandlers = (err, req, res, next) => {
     message = err.message;
   }
 
+  if (err.message === "Authentication failed, please relogin") {
+    code = 401;
+    message = err.message;
+  }
+
   if (err.name === "JsonWebTokenError") {
     code = 401;
     message = "Invalid token";

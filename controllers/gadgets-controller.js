@@ -7,7 +7,7 @@ class Controller {
       const { brands } = req.params;
 
       const result = await apiGadgets.get(`/brands/${brands}`);
-      let gadgets = result.data.data.phones.slice(0, 4);
+      let gadgets = result.data.data.phones.slice(0, 8);
       for (let i = 0; i < gadgets.length; i++) {
         let temp = gadgets[i].detail.split("/");
         gadgets[i].detail = temp[temp.length - 1];
@@ -25,6 +25,7 @@ class Controller {
 
       const result = await apiGadgets.get(`/${detail}`);
       let gadget = result.data.data;
+      gadget.price = Math.floor(Math.random() * 70) * 100 + 5000;
 
       res.status(200).json(gadget);
     } catch (error) {
