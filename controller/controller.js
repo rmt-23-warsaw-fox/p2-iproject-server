@@ -55,42 +55,41 @@ class Controller {
     static async HomeNews(req, res, next) {
         try {
             const { page = 1 } = req.query
-            const start = (page -1) * 12
-            const end = page * 12
+            const start = (page - 1) * 15
+            const end = page * 15
             const data = await axios({
                 method: 'get',
                 url: "https://api-berita-indonesia.vercel.app/cnn/terbaru/",
             })
             let limit = data.data.data.posts.slice(start, end)
-            let totalperPage = 12
-            let pages = Math.ceil(data.data.data.posts.length/totalperPage)
+            let totalperPage = 15
+            let pages = Math.ceil(data.data.data.posts.length / totalperPage)
 
             res.status(200).json({
                 pages,
                 data: limit,
-                category : ["terbaru", "nasional", "internasional","ekonomi", "olahraga", "teknologi", "hiburan", "gayaHidup" ]
             })
         } catch (error) {
             next(error)
         }
     }
-    
+
     static async CategoriesNews(req, res, next) {
         try {
             const params = req.params.categories
             const { page = 1 } = req.query
-            const start = (page -1) * 12
-            const end = page * 12
+            const start = (page - 1) * 15
+            const end = page * 15
             const data = await axios({
                 method: 'get',
                 url: `https://api-berita-indonesia.vercel.app/cnn/${params}/`,
             })
-            if(!data){
-                throw ({ name: "Data Not Found"})
+            if (!data) {
+                throw ({ name: "Data Not Found" })
             }
             let limit = data.data.data.posts.slice(start, end)
-            let totalperPage = 12
-            let pages = Math.ceil(data.data.data.posts.length/totalperPage)
+            let totalperPage = 15
+            let pages = Math.ceil(data.data.data.posts.length / totalperPage)
             res.status(200).json({
                 data: limit,
                 pages,
@@ -121,12 +120,12 @@ class Controller {
 
     static async WeatherMap(req, res, next) {
         try {
-            const Place = req.query.place
-            const data = await axios({
+            let Place = req.query.place
+            const datas = await axios({
                 method: 'get',
                 url: `https://api.openweathermap.org/data/2.5/weather?q=${Place}&units=metric&appid=7fe854b5e2857830feaf29507d862c52`
             })
-            res.status(200).json(data.data)
+            res.status(200).json(datas.data)
         } catch (error) {
             next(error)
         }
@@ -141,6 +140,7 @@ class Controller {
             let date;
             let description;
             let thumbnail;
+            let temp;
 
             const data = await axios({
                 method: 'get',
@@ -160,7 +160,7 @@ class Controller {
                     link: url
                 },
             })
-            if(show === null){
+            if (show === null) {
                 const create = await NewsAPI.create({
                     link,
                     title,
@@ -168,10 +168,12 @@ class Controller {
                     description,
                     thumbnail,
                 })
-                show = create
+                temp = create
+            }else{
+                temp=show
             }
             res.status(200).json({
-                show  
+                temp
             })
         } catch (error) {
             next(error)
@@ -194,7 +196,7 @@ class Controller {
             })
             const pick = await FavoriteNews.create({
                 UserId: id,
-                LinkId: link
+                LinkId: url
             })
             res.status(201).json({
                 message: "successfully Create"
@@ -206,7 +208,7 @@ class Controller {
 
     static async comment(req, res, next) {
         try {
-            const {id} = req.Tambahan
+            const { id } = req.Tambahan
             const url = req.body.url
             const comment = req.body.comment
             const data = await Comment.create({
@@ -217,7 +219,7 @@ class Controller {
             const showComment = await Comment.findAll({
                 where: {
                     LinkId: url,
-                    UserId : id
+                    UserId: id
                 }
             })
             res.status(200).json(showComment)
@@ -235,7 +237,7 @@ class Controller {
                 }
             })
             if (deleted <= 0) {
-                throw ({ name:"ID Product Not Found"})
+                throw ({ name: "ID Product Not Found" })
             }
             res.status(200).json({
                 message: "Success Erase Your Favorite News"

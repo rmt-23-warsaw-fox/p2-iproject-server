@@ -9,9 +9,10 @@ news.post("/login", Controller.login)
 news.post("/register", Controller.register)
 
 news.get("/", Controller.HomeNews)
-news.get("/:categories", Controller.CategoriesNews)
 news.get("/weather", Controller.WeatherMap)
-news.get("/:categories/detailNews", Controller.getDetailNews)
+news.get("/:categories", Controller.CategoriesNews)
+
+news.post("/:categories/detailNews", Controller.getDetailNews)
 
 news.use(Authentication)
 news.get("/favoritesNews", Controller.Favorite)

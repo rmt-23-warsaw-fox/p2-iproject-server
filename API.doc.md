@@ -6,7 +6,7 @@ List of Available Endpoints In Route:
 - `POST /register`
 - `GET /`
 - `GET /:categories`
-- `GET /:categories/detailNews`
+- `POST /:categories/detailNews`
 - 
  Authentication
 - `GET /favoritesNews`
