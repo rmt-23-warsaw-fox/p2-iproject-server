@@ -3,6 +3,7 @@ const cors = require('cors')
 const app = express()
 const {User} = require('./models/index')
 const {compareHash} = require('./helpers/bcrypt')
+const {createToken, decodeToken} = require('./helpers/jwt')
 
 const port = 3000
 
@@ -33,8 +34,17 @@ app.post('/login', async (request, response, next) => {
       throw new Error('unauthorized')
     }
    
-    let access_token = ''
+    let payload = {
+      id: foundUser.id,
+      username: foundUser.username,
+      email: foundUser.email
+    }
 
+    let access_token = createToken(payload)
+
+    response.status(200).json({
+      access_token
+    })
   } catch (err) {
     next(err)
   }
