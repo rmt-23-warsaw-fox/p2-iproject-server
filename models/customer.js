@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           len: {
-            args: [6, 15],
+            args: [5, 15],
             msg: "Password must be atleast between 5 to 15 characters",
           },
         },
