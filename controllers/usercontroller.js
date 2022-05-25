@@ -24,7 +24,7 @@ class UserController {
 
       const puuid = data.puuid
 
-      const newUser = await User.create({username,email,password,puuid})
+      const newUser = await User.create({username,email,password,puuid,tagline,ign})
 
       res.status(201).json({
         id : newUser.id,

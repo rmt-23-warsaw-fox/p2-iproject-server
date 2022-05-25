@@ -17,11 +17,14 @@ const authentication = async (req,res,next) => {
     if(!user){
       throw new Error("user_not_found")
     }
-
+    
     req.extra = {
       id : user.id,
-      puuid : user.puuid
+      puuid : user.puuid,
+      ign : user.ign,
+      tagline : user.tagline 
     }
+    next()
   } catch (err) {
     next(err)
   }
