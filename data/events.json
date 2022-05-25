@@ -1,0 +1,26 @@
+[
+  {
+    "nameOfEvent": "Forest Wildfire",
+    "description": "This wildfire is happening the earth is getting hotter and the forest becoming more and more empty",
+    "dateOfEvent": "2020-05-20",
+    "imageUrl": "https://images.newscientist.com/wp-content/uploads/2018/08/08114243/rexfeatures_9778243j.jpg?width=800",
+    "requiredHands": "500",
+    "receivedHands": "150"
+  },
+  {
+    "nameOfEvent": "Crippling disability",
+    "description": "This disability is so severe, this person are getting more and more helpless",
+    "dateOfEvent": "2021-06-21",
+    "imageUrl": "https://www.elitelearning.com/wp-content/uploads/2019/05/disability900x500.jpg",
+    "requiredHands": "300",
+    "receivedHands": "100"
+  },
+  {
+    "nameOfEvent": "House collapsing",
+    "description": "House in this town are collapsing because earthquake is happening 3 times in a row",
+    "dateOfEvent": "2022-07-22",
+    "imageUrl": "https://www.thediplomaticaffairs.com/wp-content/uploads/2020/11/PRI170644128.jpg?38e0cf&38e0cf",
+    "requiredHands": "150",
+    "receivedHands": "50"
+  }
+]
