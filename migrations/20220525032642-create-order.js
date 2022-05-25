@@ -28,6 +28,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      status: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultvalue: "unpaid",
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

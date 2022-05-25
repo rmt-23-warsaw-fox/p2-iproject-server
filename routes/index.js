@@ -1,13 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const user = require("./user");
+const { errorHandler } = require("../middlewares/errorHandler");
 
 // route to user
 router.use("/", user);
 
-// define the about route
-router.get("/about", (req, res) => {
-  res.send("About birds");
-});
+router.use(errorHandler);
 
 module.exports = router;
