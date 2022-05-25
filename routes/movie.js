@@ -3,6 +3,6 @@ const router = express.Router();
 const Controller = require("../controllers/controllerMovie");
 
 router.get("/", Controller.home);
-router.get("/detail", Controller.detail);
+router.get("/detail/:id", Controller.detail);
 
 module.exports = router;

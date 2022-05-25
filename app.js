@@ -23,7 +23,7 @@ app.use((err, req, res, next) => {
   console.log(err);
   res.status(500).json({
     statuscode: 500,
-    error: err,
+    error: `${err}`,
   });
 });
 // app.use(errorHandler);
