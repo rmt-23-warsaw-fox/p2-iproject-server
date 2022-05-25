@@ -50,28 +50,42 @@ class PublicController {
   }
   static async getAllFoods(req, res, next) {
     try {
+      const { page = 1 } = req.query;
+      const start = (page - 1) * 8;
+      const mark = page * 8;
       const response = await axios({
         method: "get",
         url: "http://www.themealdb.com/api/json/v1/1/filter.php?a=American",
       });
+      let data = response.data.meals.slice(start, mark);
+      let totalPage = response.data.meals.length / 8;
+      let currPage = +page;
       res.status(200).json({
-        data: response.data,
+        data,
+        totalPage,
+        currPage,
       });
     } catch (err) {
-      console.log(err);
       next(err);
     }
   }
+
+  static async getBookmarks(req, res, next) {
+    try {
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   static async addBookmarks(req, res, next) {
     try {
-      const { ApiId, ApiName, ApiThumb, price } = req.body;
+      const { ApiId, ApiName, ApiThumb } = req.body;
       const { UserId } = req.dataUser;
 
       const food = await Food.create({
         ApiId,
         ApiName,
         ApiThumb,
-        price,
       });
 
       const bookmark = await Bookmark.create({
