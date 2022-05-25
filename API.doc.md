@@ -1,10 +1,13 @@
-## Endpoints 
+## Endpoints News
 
 List of Available Endpoints In Route:
 
 - `POST /login`
 - `POST /register`
 
+ Authentication
+- `GET /`
+<br />
 <br />
 
 ## 1. POST /login
@@ -27,12 +30,6 @@ _200 - OK_
 }
 ```
 
-_401 - Unauthorized_
-```json
-{
-  "message": "Invalid Username/Password"
-}
-```
 
 <br />
 
@@ -80,6 +77,32 @@ OR
   "message": "Password is required"
 }
 
+```
+
+
+
+### Global Error
+#### Response
+
+_500 - Internal Server Error_
+
+  ```json
+  {
+      "message": "Internal Server Error"
+  }
+  ```
+
+_401 - Unauthorized_
+```json
+{
+  "message": "Token Is Invalid"
+},
+{
+  "message": "Invalid Username/Password"
+},
+{
+  "message": "User Not Found"
+}
 ```
 
 

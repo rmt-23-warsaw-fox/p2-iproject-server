@@ -7,6 +7,7 @@ const Authentication = require('../middleware/Authentication')
 
 news.post("/login", Controller.login)
 news.post("/register", Controller.register)
-news.use(Authentication)
 news.get("/", Controller.HomeNews)
+news.use(Authentication)
+news.get("/favoritesNews", Controller.Favorite)
 module.exports = news

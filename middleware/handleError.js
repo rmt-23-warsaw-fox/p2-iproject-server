@@ -1,6 +1,6 @@
 "use strict";
 function errorHandle (err, req, res, next) {
-    console.log(err.errors);
+    console.log(err);
     let code = 500;
     let message = "Internal Server Error"
     //ERROR 401 UNAUTHORIZED
@@ -8,7 +8,14 @@ function errorHandle (err, req, res, next) {
         code = 401
         message = "Invalid Username/Password"
     }
-    
+    if(err.name === "JsonWebTokenError"){
+        code = 401,
+        message = "Invalid Token"
+    }
+    if(err.name === "Unauthorized"){
+        code = 401,
+        message = "User Not Found"
+    }
     //ERROR 400 BAD REQUEST
     if(err.name === "SequelizeValidationError"){
         code = 400

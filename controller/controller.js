@@ -70,6 +70,14 @@ class Controller {
             console.log(error, "<<<<");
         }
     }
+
+    static async Favorite(req, res, next) {
+        try {
+            console.log("masuk");
+        } catch (error) {
+            
+        }
+    }
 }
 
 module.exports = Controller;
