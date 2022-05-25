@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Apartemen Fancy Look 2BR at West Vista Apartment",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/07d7c-5dddf1e53ad9617e58d2b218/INA-8855_s.jpg",
+        "AdminId": 1,
+        "location": "Jl. Sentra Primer Timur, RT.5/RW.8, Pulo Gebang, Cakung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13950",
+        "price": 456000,
+        "TypeId": 1,
+        "city": "Jakarta"
+    },
+    {
+        "name": "2BR Cosmo Terrace Apartment next to Thamrin City",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/2f40a-5cdbc968e80a595c32117605/DSC06481_s.JPG",
+        "AdminId": 1,
+        "location": "https://cdn.travelio.id/hotel/2f40a-5cdbc968e80a595c32117605/DSC06481_s.JPG",
+        "price": 546000,
+        "TypeId": 1,
+        "city": "Bogor"
+    },
+    {
+        "name": "2BR Cosmo Terrace Apartment next to Thamrin City",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/2f40a-5cdbc968e80a595c32117605/DSC06481_s.JPG",
+        "AdminId": 1,
+        "location": "https://cdn.travelio.id/hotel/2f40a-5cdbc968e80a595c32117605/DSC06481_s.JPG",
+        "price": 546000,
+        "TypeId": 1,
+        "city": "Bogor"
+    },
+    {
+        "name": "2BR Cosmo Terrace Apartment next to Thamrin City",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/2f40a-5cdbc968e80a595c32117605/DSC06481_s.JPG",
+        "AdminId": 1,
+        "location": "https://cdn.travelio.id/hotel/2f40a-5cdbc968e80a595c32117605/DSC06481_s.JPG",
+        "price": 546000,
+        "TypeId": 1,
+        "city": "Bogor"
+    }
+
+]
