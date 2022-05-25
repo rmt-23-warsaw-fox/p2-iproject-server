@@ -175,7 +175,7 @@ class patientController {
         service: "gmail",
         auth: {
           user: "hcms.edgar.test@gmail.com",
-          pass: "$hcmsadmin4",
+          pass: process.env.HCMS_PASS,
         },
       });
 
