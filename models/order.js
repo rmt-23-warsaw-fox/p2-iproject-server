@@ -30,6 +30,11 @@ module.exports = (sequelize, DataTypes) => {
           msg: "Address is required",
         },
       },
+      status: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "unpaid",
+      },
     },
     {
       sequelize,

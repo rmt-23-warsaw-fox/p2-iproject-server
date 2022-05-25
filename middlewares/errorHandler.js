@@ -5,6 +5,18 @@ function errorHandler(err, req, res, next) {
   if (err.message === "Invalid email") {
     code = 401;
     msg = err.message;
+  } else if (err.name === "SequelizeValidationError") {
+    code = 400;
+    let error = err.errors.map((el) => {
+      return el.message;
+    });
+    msg = error;
+  } else if (err.name === "SequelizeUniqueConstraintError") {
+    code = 400;
+    let error = err.errors.map((el) => {
+      return el.message;
+    });
+    msg = error;
   }
 
   res.status(code).json({
