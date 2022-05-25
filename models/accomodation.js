@@ -100,7 +100,21 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    TypeId: DataTypes.INTEGER
+    TypeId: DataTypes.INTEGER,
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "City is required"
+        },
+        notEmpty: {
+          args: true,
+          msg: "City is required"
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Accomodation',

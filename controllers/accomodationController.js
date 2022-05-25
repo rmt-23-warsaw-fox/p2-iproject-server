@@ -6,7 +6,7 @@ class AccomodationController {
     try {
       const { access_token } = req.headers;
       const payload = verifyToken(access_token);
-      let { name, facility, roomCapacity, imageUrl, location, price, TypeId } =
+      let { name, facility, roomCapacity, imageUrl, location, price, TypeId, city } =
         req.body;
       price = +price;
       roomCapacity = +roomCapacity;
@@ -18,6 +18,7 @@ class AccomodationController {
         location,
         price,
         TypeId,
+        city,
         AdminId: payload.id,
       });
 

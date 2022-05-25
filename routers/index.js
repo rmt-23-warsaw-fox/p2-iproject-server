@@ -13,7 +13,7 @@ routes.use("/accomodation", accomodationRoutes);
 routes.use("/type", typeRoutes);
 
 routes.use("/public/user", userRoutes)
-routes.use("/public/wishlist",authnUser, wishlistRoutes)
+routes.use("/public/wishlist", authnUser, wishlistRoutes)
 routes.use("/public/accomodation", accomodationUserRoutes);
 
 module.exports = routes;

@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   
     static associate(models) {
       Type.hasMany(models.Accomodation)
+      Type.hasMany(models.Wishlist)
     }
   }
   Type.init({

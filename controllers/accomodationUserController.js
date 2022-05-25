@@ -40,6 +40,8 @@ class AccomodationUserController {
     }
   }
 
+  
+
   static async fetchAccomodationById(req, res, next) {
     try {
       const { id } = req.params;
@@ -54,7 +56,7 @@ class AccomodationUserController {
         throw { name: "ACCOMODATION_NOT_FOUND" }
       }
 
-      res.status(200).json({accomodation})
+      res.status(200).json(accomodation)
     } catch (err) {
       next(err)
     }
