@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT ||7121
+const port = process.env.PORT || 1200
 const cors = require('cors')
 const router = require('./routes/index')
 const errorHandler = require('./middlewares/errorhandler')
