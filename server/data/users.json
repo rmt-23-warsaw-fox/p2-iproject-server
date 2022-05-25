@@ -3,14 +3,14 @@
     "username": "visor ichigo",
     "email": "ichigo@email.com",
     "password": "qwerty",
-    "gender": "",
+    "gender": "male",
     "bio": ""
   },
   {
     "username": "golden kyoraku",
     "email": "kyoraku@email.com",
     "password": "qwerty",
-    "gender": "",
+    "gender": "male",
     "bio": ""
   }
 ]
