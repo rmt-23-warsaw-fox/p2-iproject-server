@@ -6,6 +6,9 @@ const errorHandler = async (err, req, res, next) => {
     code = 400
     const errors = err.errors.map((el) => el.message)
     msg = errors.join(", ")
+  } else if (err.name === "JsonWebTokenError" || err.message === "user not found") {
+    code = 401
+    msg = "You're Unauthorized"
   } else if (err.message === "dota") {
     code = 400
     msg = "We couldn't find this Dota id"

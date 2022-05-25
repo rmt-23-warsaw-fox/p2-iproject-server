@@ -37,7 +37,6 @@ class UserController {
       const payload = {
         id: foundUser.id,
         email: foundUser.email,
-        dotaId: foundUser.role,
       }
 
       const accessToken = createToken(payload)
@@ -47,7 +46,6 @@ class UserController {
         access_token: accessToken,
       })
     } catch (err) {
-      console.log(err)
       next(err)
     }
   }
