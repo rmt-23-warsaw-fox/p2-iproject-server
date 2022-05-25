@@ -1,3 +1,5 @@
+const { checkPassword } = require("../helpers/bcrypt");
+const { encode } = require("../helpers/jwt");
 const { Product, User, Order, Category } = require("../models");
 
 class userController {
@@ -15,7 +17,36 @@ class userController {
         email: newUser.email,
       });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
+      next(err);
+    }
+  }
+
+  static async login(req, res, next) {
+    try {
+      const { email, password } = req.body;
+      const foundUser = await User.findOne({
+        where: {
+          email,
+        },
+      });
+      if (!foundUser) {
+        throw new Error("Invalid email");
+      }
+      const validPassword = checkPassword(password, foundUser.password);
+      if (!validPassword) {
+        throw new Error("Invalid password");
+      }
+      const payload = {
+        id: foundUser.id,
+        email: foundUser.email,
+      };
+      const access_token = encode(payload);
+      res.status(200).json({
+        access_token,
+      });
+    } catch (err) {
+      // console.log(err);
       next(err);
     }
   }
