@@ -45,5 +45,5 @@ xendit.post("/create", async function (req, res, next) {
     next(err);
   }
 });
-
+xendit.post("/pay");
 module.exports = xendit;
