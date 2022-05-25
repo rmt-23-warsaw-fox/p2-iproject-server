@@ -8,12 +8,14 @@ class userController {
         name,
         email,
         password,
+        role: "user",
       });
-      res.send(201).json({
+      res.status(201).json({
         id: newUser.id,
         email: newUser.email,
       });
     } catch (err) {
+      console.log(err);
       next(err);
     }
   }

@@ -3,7 +3,7 @@ const router = express.Router();
 const user = require("./user");
 
 // route to user
-router.get("/", user);
+router.use("/", user);
 
 // define the about route
 router.get("/about", (req, res) => {
