@@ -31,14 +31,17 @@ class Controller {
 
   static async coinHistory(req, res, next) {
     try {
-      const { coin, date = 1 } = req.body;
+      const { coin, dates = 1 } = req.query;
       let response = await axios({
         method: "get",
-        url: `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=usd&days=${date}`,
+        url: `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=usd&days=${dates}`,
       });
 
+
       let prices = response.data.prices.map((price) => {
-        return new Date(price[0])
+        let date = new Date(price[0])
+        let time = date.getHours() > 12 ? `${date.getHours() - 12}:${date.getMinutes()} PM` : `${date.getHours()}:${date.getMinutes()} AM`
+        return dates==1?[time, price[1]]:[date, price[1]]
       });
 
       res.status(200).json(prices);
