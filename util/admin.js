@@ -5,3 +5,6 @@ var serviceAccount = require("../music-app-49be9-firebase-adminsdk-1asvo-ce7d34e
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
+
+const db = admin.firestore();
+module.exports = {admin, db};

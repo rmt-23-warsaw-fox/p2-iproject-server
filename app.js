@@ -6,4 +6,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
-module.exports = express();
+app.use('/', require("./routers/index"));
+
+app.use((err, req, res, next) => {
+    let code = 500;
+    let message = "Internal Server Error";
+
+    if (err.name === "SequelizeValidationError" || err.name === "SequelizeUniqueConstraintError") {
+        code = 400;
+        message = err.errors[0].message;
+    }
+
+    if (err.message === "user not found") {
+        code = 401;
+        message = "Invalid username or password"
+    }
+    
+    res.status(code).json({message})
+})
+
+module.exports = app;
