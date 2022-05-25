@@ -40,7 +40,28 @@ class AccomodationUserController {
     }
   }
 
-  
+  static async fetchAccomodationByLocation(req, res, next) {
+    try {
+      const { location } = req.query;
+      const accomodations = await Accomodation.findAll({
+        where: {
+          city : {
+            [Op.iLike]: `%${location}%`
+          }
+        },
+        include: [
+          {
+            model: Type,
+            attributes: ["name"],
+          },
+        ],
+      });
+
+      res.status(200).json(accomodations);
+    } catch (err) {
+      next(err);
+    }
+  } 
 
   static async fetchAccomodationById(req, res, next) {
     try {
