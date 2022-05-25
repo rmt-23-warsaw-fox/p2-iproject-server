@@ -71,7 +71,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     puuid: {
       type:DataTypes.STRING,
-    }
+    },
+    tagline : DataTypes.STRING,
+    ign : DataTypes.STRING
   }, {
     sequelize,
     hooks : {

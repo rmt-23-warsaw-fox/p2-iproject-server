@@ -5,6 +5,7 @@ const { checkpw, createToken } = require('../helpers')
 class UserController {
   static async register(req,res,next) {
     try {
+      console.log(req.body)
       const {username,email,password,ign,tagline} = req.body
 
       if (!ign) {
@@ -23,7 +24,7 @@ class UserController {
 
       const puuid = data.puuid
 
-      const newUser = await User.create({username,email,password,puuid})
+      const newUser = await User.create({username,email,password,puuid,tagline,ign})
 
       res.status(201).json({
         id : newUser.id,
