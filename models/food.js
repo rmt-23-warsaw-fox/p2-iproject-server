@@ -9,13 +9,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Food.hasMany(models.Bookmark, {
+        foreignKey: "FoodId",
+      });
     }
   }
   Food.init(
     {
-      ApiId: DataTypes.INTEGER,
-      ApiName: DataTypes.STRING,
-      ApiThumb: DataTypes.STRING,
+      idMeal: DataTypes.INTEGER,
+      strMeal: DataTypes.STRING,
+      strMealThumb: DataTypes.STRING,
     },
     {
       sequelize,

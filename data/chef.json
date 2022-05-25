@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Gordon Ramsey",
+    "age": 50,
+    "gender": "male",
+    "price": 500000
+  },
+  {
+    "name": "Tahta Harta Rennatta",
+    "age": 29,
+    "gender": "female",
+    "price": 300000
+  },
+  {
+    "name": "Juno Tato",
+    "age": 45,
+    "gender": "male",
+    "price": 400000
+  },
+  {
+    "name": "Arnold Makan Poernomo",
+    "age": 39,
+    "gender": "male",
+    "price": 250000
+  }
+]

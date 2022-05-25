@@ -8,15 +8,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      ApiId: {
+      idMeal: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      ApiName: {
+      strMeal: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      ApiThumb: {
+      strMealThumb: {
         type: Sequelize.STRING,
         allowNull: false,
       },

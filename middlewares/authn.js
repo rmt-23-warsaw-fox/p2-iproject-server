@@ -15,7 +15,7 @@ async function isLogin(req, res, next) {
     req.dataUser = {
       UserId: user.id,
       UserEmail: user.email,
-      Username: user.username,
+      UserName: user.username,
     };
     next();
   } catch (err) {

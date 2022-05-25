@@ -8,5 +8,8 @@ public.post("/login", PublicController.loginCustomer);
 public.get("/foods", PublicController.getAllFoods);
 public.use(isLogin);
 public.post("/bookmarks", PublicController.addBookmarks);
+public.get("/bookmarks", PublicController.getBookmarks);
+public.get("/chefs", PublicController.getAllChef);
+public.post("/orders", PublicController.addOrder);
 
 module.exports = public;

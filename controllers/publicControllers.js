@@ -1,6 +1,6 @@
 const { comparePassword } = require("../helper/bcrypt");
 const { createToken } = require("../helper/jwt");
-const { User, Bookmark, Food } = require("../models/index");
+const { User, Bookmark, Food, Chef, Order } = require("../models/index");
 const axios = require("axios");
 class PublicController {
   static async registerCustomer(req, res, next) {
@@ -72,6 +72,14 @@ class PublicController {
 
   static async getBookmarks(req, res, next) {
     try {
+      const { UserId } = req.dataUser;
+      const bookmarks = await Bookmark.findAll({
+        where: {
+          UserId,
+        },
+        include: ["Food"],
+      });
+      res.status(200).json(bookmarks);
     } catch (err) {
       console.log(err);
     }
@@ -79,23 +87,71 @@ class PublicController {
 
   static async addBookmarks(req, res, next) {
     try {
-      const { ApiId, ApiName, ApiThumb } = req.body;
+      const { idMeal, strMeal, strMealThumb } = req.body;
       const { UserId } = req.dataUser;
 
-      const food = await Food.create({
-        ApiId,
-        ApiName,
-        ApiThumb,
+      const searchF = await Food.findOne({
+        where: {
+          idMeal,
+        },
       });
-
-      const bookmark = await Bookmark.create({
-        UserId,
-        FoodId: food.id,
-      });
-
-      res.status(200).json(bookmark);
+      if (!searchF) {
+        const food = await Food.create({
+          idMeal,
+          strMeal,
+          strMealThumb,
+        });
+        const bookmark = await Bookmark.create({
+          UserId,
+          FoodId: food.id,
+        });
+        res.status(200).json(bookmark);
+      } else {
+        const bookmark = await Bookmark.create({
+          UserId,
+          FoodId: searchF.id,
+        });
+        res.status(200).json(bookmark);
+      }
     } catch (err) {
       next(err);
+    }
+  }
+  static async getAllChef(req, res, next) {
+    try {
+      const chefs = await Chef.findAll({});
+      res.status(200).json(chefs);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  static async addOrder(req, res, next) {
+    try {
+      const { UserId } = req.dataUser;
+      const { ChefId, totalPrice, status, virtualAccount, external_id } =
+        req.body;
+      const order = await Order.create({
+        ChefId,
+        totalPrice,
+        status,
+        virtualAccount,
+        external_id,
+        UserId,
+      });
+      const bookmark = await Bookmark.update(
+        {
+          OrderId: order.id,
+        },
+        {
+          where: {
+            UserId,
+          },
+        }
+      );
+      res.status(200).json(order);
+    } catch (err) {
+      console.log(err);
     }
   }
 }
