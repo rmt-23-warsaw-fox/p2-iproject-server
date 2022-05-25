@@ -11,6 +11,12 @@ function errorHandler(err, req, res, next) {
   } else if (err.message === "Product not found") {
     code = 400;
     msg = err.message;
+  } else if (err.name === "JsonWebTokenError") {
+    code = 401;
+    msg = "Invalid token";
+  } else if (err.message === "Admin only") {
+    code = 403;
+    msg = err.message;
   } else if (err.name === "SequelizeValidationError") {
     code = 400;
     let error = err.errors.map((el) => {
