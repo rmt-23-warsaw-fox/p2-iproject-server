@@ -1,5 +1,4 @@
 "use strict";
-
 const { Package, User, Major, Buy } = require("../models/index");
 const { Op } = require("sequelize");
 
@@ -8,7 +7,7 @@ class PackageController {
     try {
       let offsetFilter = 0;
       let item = [];
-      const { offset, major, title } = req.query;
+      const { offset, major, name } = req.query;
       if (offset) {
         offsetFilter = offset;
       }
@@ -17,8 +16,8 @@ class PackageController {
         item.push({ MajorId: major });
       }
 
-      if (title) {
-        item.push({ title: { [Op.iLike]: `%${title}%` } });
+      if (name) {
+        item.push({ name: { [Op.iLike]: `%${name}%` } });
       }
       let filter = { [Op.and]: item };
       const products = await Package.findAndCountAll({
@@ -82,7 +81,7 @@ class PackageController {
   static async listBuy(req, res, next) {
     try {
       const { id } = req.data;
-
+      console.log(555);
       const findUser = await User.findOne({
         where: {
           id,
@@ -90,12 +89,13 @@ class PackageController {
         include: [
           {
             model: Buy,
-            include: [Package],
+            include: [{
+              model: Package,
+              include: [Major]
+            }],
           },
         ],
       });
-
-      // if()
 
       res.status(200).json({
         data: findUser,
@@ -149,30 +149,6 @@ class PackageController {
     }
   }
 
-  static async kemdikbud(req, res, next) {
-    try {
-      // const {id} = req.params
-      fetch("http://example.com/movies.json")
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-      console.log(244);
-      const response = await fetch(
-        `https://npd.kemdikbud.go.id/?appid=getun&kodeprov=040000`
-      );
-      console.log("lolo");
-      let data = await response.json();
-      console.log(data, "<<");
-      fetch("http://example.com/movies.json")
-        .then((response) => response.json())
-        .then((data) => console.log(data));
-      res.status(200).json({
-        iniData: data,
-      });
-    } catch (err) {
-      console.log(err);
-      next(err);
-    }
-  }
 }
 
 module.exports = PackageController;

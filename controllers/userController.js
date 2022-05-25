@@ -45,6 +45,7 @@ class UserController {
     const [newUser, created] = await User.findOrCreate({
       where: { email: payload.email },
       defaults: {
+        name: payload.email.split('@')[0],
         password: '12345',
       }
     });
@@ -53,16 +54,17 @@ class UserController {
       id: newUser.id,
       email:newUser.email,
     })
-    
     res.status(200).json({
       statusCode: 200,
       message: 'login success',
-      access_token
+      access_token,
+      id: newUser.id,
     })
 
     }
 
     catch(err) {
+      console.log(err);
       next(err)
     }
   }
@@ -101,6 +103,7 @@ class UserController {
         statusCode: 200,
         message: 'success login',
         access_token,
+        id: findUser.id
       })
 
     } catch(err) {
