@@ -11,5 +11,4 @@ const compareHash = (inputedPassword, databaseHash) => {
 module.exports = {
     hashed,
     compareHash
-
 }

@@ -2,7 +2,7 @@
 const errorHandler = (err,req,res,next) => {
     // console.log(err)
     // res.send(err.name)
-    console.log(err)
+    console.log('err> ', err)
     // console.log(err.name, '<<<<<<< err.name pada err handler')
     switch (err.name) {
         case 'JsonWebTokenError':
