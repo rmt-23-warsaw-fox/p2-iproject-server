@@ -81,7 +81,7 @@ class productController {
         message: "Stock updated",
       });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       next(err);
     }
   }
