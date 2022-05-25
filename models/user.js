@@ -1,5 +1,6 @@
 "use strict"
 const { Model } = require("sequelize")
+const { hashPass } = require("../helpers/validators")
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -64,6 +65,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
+      hooks: {
+        beforeCreate: (instance, options) => {
+          instance.password = hashPass(instance.password)
+        },
+      },
       modelName: "User",
     }
   )
