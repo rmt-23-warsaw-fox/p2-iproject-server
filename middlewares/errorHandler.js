@@ -5,6 +5,9 @@ function errorHandler(err, req, res, next) {
   if (err.message === "Invalid email") {
     code = 401;
     msg = err.message;
+  } else if (err.message === "Invalid password") {
+    code = 401;
+    msg = err.message;
   } else if (err.name === "SequelizeValidationError") {
     code = 400;
     let error = err.errors.map((el) => {
