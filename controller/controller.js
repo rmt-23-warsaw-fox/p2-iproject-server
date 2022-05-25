@@ -1,7 +1,7 @@
 "use strict";
 const axios = require('axios')
 const baseURL = "http://localhost:3000"
-const { User, Category, FavoriteNews } = require("../models/index")
+const { User, Category, FavoriteNews, NewsAPI, Comment } = require("../models/index")
 const { readHash } = require("../helper/hashPass")
 const { createToken } = require("../helper/jwt")
 
@@ -54,41 +54,63 @@ class Controller {
 
     static async HomeNews(req, res, next) {
         try {
-            const { page = 0 } = req.query
-            const search = req.query.name
-            const categories = req.body.category
-            let news;
-            if (categories) {
-                news = {
-                    method: 'get',
-                    url: `${categories}`,
-                }
-            } else {
-                news = {
-                    method: 'get',
-                    url: `https://api-berita-indonesia.vercel.app/cnn/terbaru/`,
-                }
-            }
-            const data = await axios(news)
+            const { page = 1 } = req.query
+            const start = (page -1) * 12
+            const end = page * 12
+            const data = await axios({
+                method: 'get',
+                url: "https://api-berita-indonesia.vercel.app/cnn/terbaru/",
+            })
+            let limit = data.data.data.posts.slice(start, end)
+            let totalperPage = 12
+            let pages = Math.ceil(data.data.data.posts.length/totalperPage)
+
             res.status(200).json({
-                data: data.data.data.posts,
-                // pages: Math.ceil(length / 12)
+                pages,
+                data: limit,
+                category : ["terbaru", "nasional", "internasional","ekonomi", "olahraga", "teknologi", "hiburan", "gayaHidup" ]
+            })
+        } catch (error) {
+            next(error)
+        }
+    }
+    
+    static async CategoriesNews(req, res, next) {
+        try {
+            const params = req.params.categories
+            const { page = 1 } = req.query
+            const start = (page -1) * 12
+            const end = page * 12
+            const data = await axios({
+                method: 'get',
+                url: `https://api-berita-indonesia.vercel.app/cnn/${params}/`,
+            })
+            if(!data){
+                throw ({ name: "Data Not Found"})
+            }
+            let limit = data.data.data.posts.slice(start, end)
+            let totalperPage = 12
+            let pages = Math.ceil(data.data.data.posts.length/totalperPage)
+            res.status(200).json({
+                data: limit,
+                pages,
             })
         } catch (error) {
             next(error)
         }
     }
 
+
     static async Favorite(req, res, next) {
         try {
-            const {id, username} = req.Tambahan
+            const { id, username } = req.Tambahan
             const check = await FavoriteNews.findAll({
-                where :{
-                    UserId : id
+                where: {
+                    UserId: id
                 }
             })
-            if(check.length<=0){
-                throw ({ name: "Your List Empty"})
+            if (check.length <= 0) {
+                throw ({ name: "Your List Empty" })
             }
             res.status(200).json(check)
         } catch (error) {
@@ -96,14 +118,6 @@ class Controller {
         }
     }
 
-    static async CategoriesNews(req, res, next) {
-        try {
-            const data = await Category.findAll()
-            res.status(200).json(data)
-        } catch (error) {
-            next(error)
-        }
-    }
 
     static async WeatherMap(req, res, next) {
         try {
@@ -118,19 +132,113 @@ class Controller {
         }
     }
 
-    static async AddFavorites(req, res, next) {
+    static async getDetailNews(req, res, next) {
         try {
-            const link = req.body.link
-            const {id} = req.Tambahan
-            const check = await FavoriteNews.findAll({
-                where: {
-                    UserId : id,
+            const params = req.params.categories
+            const url = req.body.url
+            let link;
+            let title;
+            let date;
+            let description;
+            let thumbnail;
+
+            const data = await axios({
+                method: 'get',
+                url: `https://api-berita-indonesia.vercel.app/cnn/${params}/`
+            })
+            data.data.data.posts.forEach(el => {
+                if (url === el.link) {
+                    link = el.link
+                    title = el.title,
+                    date = el.pubDate,
+                    description = el.description,
+                    thumbnail = el.thumbnail
                 }
             })
-            check.forEach(el=> {
-                if(el.LinkId===link){
+            let show = await NewsAPI.findOne({
+                where: {
+                    link: url
+                },
+            })
+            if(show === null){
+                const create = await NewsAPI.create({
+                    link,
+                    title,
+                    date,
+                    description,
+                    thumbnail,
+                })
+                show = create
+            }
+            res.status(200).json({
+                show  
+            })
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async AddFavorites(req, res, next) {
+        try {
+            const url = req.body.url
+            const { id } = req.Tambahan
+            const check = await FavoriteNews.findAll({
+                where: {
+                    UserId: id,
+                }
+            })
+            check.forEach(el => {
+                if (el.LinkId === url) {
                     throw ({ name: "Product has been Choice" })
                 }
+            })
+            const pick = await FavoriteNews.create({
+                UserId: id,
+                LinkId: link
+            })
+            res.status(201).json({
+                message: "successfully Create"
+            })
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async comment(req, res, next) {
+        try {
+            const {id} = req.Tambahan
+            const url = req.body.url
+            const comment = req.body.comment
+            const data = await Comment.create({
+                comment,
+                UserId: id,
+                LinkId: url
+            })
+            const showComment = await Comment.findAll({
+                where: {
+                    LinkId: url,
+                    UserId : id
+                }
+            })
+            res.status(200).json(showComment)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async Delete(req, res, next) {
+        try {
+            const LinkId = req.body.url
+            const deleted = await FavoriteNews.destroy({
+                where: {
+                    LinkId
+                }
+            })
+            if (deleted <= 0) {
+                throw ({ name:"ID Product Not Found"})
+            }
+            res.status(200).json({
+                message: "Success Erase Your Favorite News"
             })
         } catch (error) {
             next(error)

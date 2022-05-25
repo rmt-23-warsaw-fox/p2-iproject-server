@@ -12,11 +12,19 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       this.belongsTo(models.User)
-      this.belongsTo(models.NewsAPI)
+      this.belongsTo(models.NewsAPI, { foreignKey: 'LinkId' })
     }
   }
   Comment.init({
-    comment: DataTypes.STRING,
+    comment: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Comment is required'
+        }
+      }
+    },
     UserId: DataTypes.INTEGER,
     LinkId: DataTypes.STRING
   }, {

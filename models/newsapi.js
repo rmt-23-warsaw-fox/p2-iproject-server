@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasMany(models.Comment)
-      this.hasMany(models.FavoriteNews, {foreignKey: 'LinkId'})
+      this.hasMany(models.Comment, { foreignKey: 'LinkId' })
+      this.hasMany(models.FavoriteNews, { foreignKey: 'LinkId' })
     }
   }
   NewsAPI.init({
@@ -21,7 +21,6 @@ module.exports = (sequelize, DataTypes) => {
     date: DataTypes.STRING,
     description: DataTypes.STRING,
     thumbnail: DataTypes.STRING,
-    CategoryId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'NewsAPI',

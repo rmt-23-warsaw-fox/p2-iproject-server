@@ -21,10 +21,22 @@ function errorHandle (err, req, res, next) {
         code = 403,
         message = "Product has been Choice"
     }
+    if(err.name === "NOT_ALLOWED"){
+        code = 403,
+        message = "NOT_ALLOWED"
+    }
     //ERROR 404 Not Found
     if(err.name === "Your List Empty"){
         code = 404,
         message = "Your List Empty"
+    }
+    if(err.name === "Data Not Found"){
+        code = 404,
+        message = "Data Not Found"
+    }
+    if(err.name === "ID Product Not Found"){
+        code = 404,
+        message = "ID Product Not Found"
     }
     //ERROR 400 BAD REQUEST
     if(err.name === "SequelizeValidationError"){

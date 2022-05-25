@@ -24,17 +24,6 @@ module.exports = {
       thumbnail: {
         type: Sequelize.STRING
       },
-      CategoryId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'Categories',
-            key: 'id'
-          },
-          onDelete: 'cascade',
-          onUpdate: 'cascade'
-        }
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

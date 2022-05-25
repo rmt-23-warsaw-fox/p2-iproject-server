@@ -5,10 +5,15 @@ List of Available Endpoints In Route:
 - `POST /login`
 - `POST /register`
 - `GET /`
-- `GET /categories`
-- `GET /favoritesNews`
-
+- `GET /:categories`
+- `GET /:categories/detailNews`
+- 
  Authentication
+- `GET /favoritesNews`
+- `POST /favoritesNews`
+- `POST /comments`
+Authorization
+- `DELETE /delete`
 
 <br />
 <br />
@@ -95,11 +100,14 @@ _200 - OK_
             "description": string,
             "thumbnail": string
         },
-    ]
+    ],
+    "category" : array
 ```
 
 
-## 4. GET /categories
+## 4. GET /:categories
+### Request
+
 
 ### Response
 _200 - OK_
@@ -145,6 +153,145 @@ _404 - Not Found_
     "message" : "Your List Empty"
 }
 ```
+
+<br/>
+
+## 6. GET /detailNews/:id
+
+### Request
+- body
+
+```json
+{
+  "url" : string(url)
+}
+```
+
+### Response
+_200 - OK_
+```json
+[
+    "show": {
+        "id": integer,
+        "link": string,
+        "title": string,
+        "date": string,
+        "description": string,
+        "thumbnail": string,
+        "CategoryId": integer,
+        "createdAt": string,
+        "updatedAt": string
+        }
+]
+```
+
+
+
+## 7. POST /favoritesNews
+
+### Request
+- headers
+
+```json
+{
+  "access_token" : string
+}
+```
+- body
+```json
+{
+    "link" : string(URL),
+}
+``` 
+### Response
+_200 - OK_
+```json
+
+{
+    "message": "successfully Create"
+}
+
+```
+
+
+## 8. POST /comments
+
+### Request
+- headers
+
+```json
+{
+  "access_token" : string
+}
+```
+- body
+```json
+{
+    "link" : string(URL),
+},
+{
+    "comment" : string
+}
+``` 
+### Response
+_200 - OK_
+```json
+
+[
+    {
+        "id": integer,
+        "comment": string,
+        "UserId": integer,
+        "LinkId": string,
+        "createdAt": string,
+        "updatedAt": string
+    }
+]
+
+```
+
+
+## 9. DELETE /delete
+
+### Request
+- headers
+
+```json
+{
+  "access_token" : string
+}
+```
+- body
+```json
+{
+    "link" : string(URL),
+}
+``` 
+### Response
+_200 - OK_
+```json
+
+{
+    "message": "Success Erase Your Favorite News"
+}
+
+```
+
+_404 - Not Found_
+```json
+{
+    "message" = "ID Product Not Found"
+}
+```
+
+
+_403 - Forbidden_
+```json
+{
+    "message" = "NOT_ALLOWED"
+}
+```
+
 
 
 ### Global Error
