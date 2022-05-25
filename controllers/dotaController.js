@@ -33,6 +33,7 @@ class DotaController {
         method: "get",
         url: "https://api.opendota.com/api/teams",
       })
+
       res.status(200).json({
         statusCode: 200,
         data,
@@ -50,6 +51,32 @@ class DotaController {
         url: `https://api.opendota.com/api/teams/${teamId}`,
       })
       if (!data) throw new Error("not found")
+      data.players = []
+      const players = await axios({
+        method: "get",
+        url: `https://api.opendota.com/api/teams/${teamId}/players`,
+      })
+      players.data.forEach((el) => {
+        if (el.is_current_team_member) data.players.push(el)
+      })
+
+      res.status(200).json({
+        statusCode: 200,
+        data,
+      })
+    } catch (err) {
+      next(err)
+    }
+  }
+
+  static async getPlayer(req, res, next) {
+    try {
+      const { id } = req.params
+      const { data } = await axios({
+        method: "get",
+        url: `https://api.opendota.com/api/players/${id}`,
+      })
+      if (!data.profile) throw new Error("player")
       res.status(200).json({
         statusCode: 200,
         data,

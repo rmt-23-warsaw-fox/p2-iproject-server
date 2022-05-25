@@ -24,6 +24,9 @@ const errorHandler = async (err, req, res, next) => {
   } else if (err.message === "not found") {
     code = 404
     msg = "Team not Found"
+  } else if (err.message === "player") {
+    code = 404
+    msg = "Player not Found"
   }
   res.status(code).json({
     statusCode: code,
