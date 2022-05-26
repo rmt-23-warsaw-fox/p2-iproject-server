@@ -38,7 +38,11 @@ class apiController {
   static async getTrending(req, res, next) {
     try {
       const api_key = process.env.API_KEY;
-      const { page } = req.query;
+      let { page } = req.query;
+
+      if (!page) {
+        page = 1
+      }
 
       const { data } = await axios({
         method: "get",
@@ -46,6 +50,8 @@ class apiController {
       });
       res.status(200).json(data);
     } catch (error) {
+      console.log(error);
+      console.log(error);
       res.status(500).json(error);
     }
   }

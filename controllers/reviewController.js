@@ -47,7 +47,7 @@ class reviewController {
 
   static async editReview(req, res, next) {
     try {
-      const { MovieId } = req.params;
+      const { id } = req.params;
       const { review } = req.body;
 
       const reviewPost = await Review.update(
@@ -56,7 +56,7 @@ class reviewController {
         },
         {
           where: {
-            MovieId,
+            id,
           },
         }
       );
