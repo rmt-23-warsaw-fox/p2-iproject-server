@@ -1,6 +1,9 @@
 'use strict'
 
 const express = require('express')
-const routes = express.Router()
-const controller = require('../controllers/userController')
-const auth = require('package')
+const router = express.Router()
+const userRoutes = require('./userRoutes')
+
+router.use('/users', userRoutes)
+
+module.exports = router

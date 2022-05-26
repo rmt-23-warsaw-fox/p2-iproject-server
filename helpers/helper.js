@@ -1,8 +1,7 @@
 'use strict'
-
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const SECRET_KEY = process.env.SECRET_KEY
+const KEY = process.env.SECRET_KEY
 
 const hashingPass = (password) => {
     return bcrypt.hashSync(password, 8)
@@ -13,11 +12,11 @@ const compareHash = (password, hash) => {
 }
 
 const createToken = (payload) => {
-    return jwt.sign(payload, SECRET_KEY)
+    return jwt.sign(payload, KEY)
 }
 
 const readPayload = (token) => {
-    return jwt.verify(token, SECRET_KEY)
+    return jwt.verify(token, KEY)
 }
 
 module.exports = {

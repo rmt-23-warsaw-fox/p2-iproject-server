@@ -5,11 +5,7 @@ const {
 const { hashingPass } = require('../helpers/helper');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+
     static associate(models) {
       User.hasMany(models.Bookmark)
     }
@@ -54,15 +50,13 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     address: DataTypes.STRING,
-    phoneNumber: DataTypes.STRING,
-    profilPicture: DataTypes.STRING
+    phoneNumber: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'User',
   });
-
-  User.beforeCreate((instance, options) => {
-    instance.password = hashingPass(instance.password)
+  User.beforeCreate((instanceUser, options) => {
+    instanceUser.password = hashingPass(instanceUser.password)
   })
   return User;
 };

@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
-    "database": "Go_Traveling",
+    "database": "database_GO_TRAVEL",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

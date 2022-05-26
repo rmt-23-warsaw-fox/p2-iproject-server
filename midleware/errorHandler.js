@@ -34,6 +34,11 @@ function errorHandler(err, req, res, next) {
         message = `Email already registered`
     }
 
+    if (err.message === 'DESTINATION NOT FOUND') {
+        code = 404
+        message = 'DESTINATION NOT FOUND'
+    }
+
 
     res.status(code).json({
         statusCode: code,
