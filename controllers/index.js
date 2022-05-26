@@ -54,7 +54,7 @@ class Controller {
     }
   }
 
-  static async signup(req, res, next) {
+  static async register(req, res, next) {
     try {
       const {username, email, password} = req.body 
       if (!username) {
@@ -100,15 +100,63 @@ class Controller {
 
       const payload = {
         id: foundUser.id,
-        username: foundUser.username,
+        email: foundUser.email,
       };
       const accessToken = sign(payload, "secret");
 
       res.status(200).json({
+        username: foundUser.username,
         access_token: accessToken,
       });
     } catch (err) {
       next(err);
+    }
+  }
+
+  static async getWatchlist(req, res, next) {
+    try {
+      const user = await User.findOne({
+        where: {
+          id: req.additionalData.id
+        },
+        include: {
+          model: Watchlist,
+          required: false
+        }
+      })
+      res.status(200).json(user)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  static async addWatchlist(req, res, next) {
+    try {
+      const {coin} = req.body
+      const newCoin = await Watchlist.create({
+        UserId: req.additionalData.id,
+        coin: coin
+      })
+
+      res.status(201).json({message: "Coin has been added to your watchlist"})
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  static async deleteWatchlist(req, res, next) {
+    try {
+      const {coin} = req.body
+      const removedCoin = await Watchlist.destroy({
+        where: {
+          UserId: req.additionalData.id,
+          coin: coin
+        }
+      })
+
+      res.status(201).json({message: "Coin has been removed from your watchlist"})
+    } catch (error) {
+      next(error)
     }
   }
 }
