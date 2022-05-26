@@ -21,6 +21,20 @@ class PostController{
       next(err)
     }
   }
+
+  static async fetchPosts(request, response, next) {
+    try {
+      const posts = await Post.findAll()
+
+      response.status(200).json({
+        posts
+      })
+    } catch (err) {
+      next(err)
+    }
+  }
+
+  
 }
 
 module.exports = {PostController}
