@@ -85,7 +85,9 @@ class Controller {
                 from: 'josuawilliams17@gmail.com',
                 to: email,
                 subject: 'Thanks For Register To This News Website',
-                text: `Sawadikap ${username}, Welcome To Our Universe, Ini Adalah Website Anti Hoaks Silakan Bijak Dalam Membaca`
+                text: `Sawadikap ${username}, Welcome To Our Universe, Ini Adalah Website Anti Hoaks Silakan Bijak Dalam Membaca`,
+                html: `<img src="https://66.media.tumblr.com/64f958f4ca7e37b2bdf96e92ec561c92/tumblr_of60ebTlXh1rey868o1_500.gif"/>
+                        <h2>Sawadikap ${username}, Welcome To Our Universe, Ini Adalah Website Anti Hoaks Silakan Bijak Dalam Membaca</h2>`
             };
 
             const data = await User.create({
@@ -93,16 +95,11 @@ class Controller {
                 password,
                 username
             })
+            const sendMail = await transporter.sendMail(mailOptions)
 
-            transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    res.status(201).json({
-                        message: "Successfully registered",
-                        username: data.username
-                    })
-                }
+            res.status(201).json({
+                message: "Successfully registered",
+                username: data.username
             })
         } catch (error) {
             next(error)
