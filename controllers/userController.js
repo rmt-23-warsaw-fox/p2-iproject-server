@@ -4,14 +4,6 @@ const { compareHash, createToken } = require("../helpers/helper")
 const { User } = require("../models")
 
 class UserController {
-    //! LOGIN USER BY GOOGLE
-    static async googleLogin(req, res, next) {
-        try {
-            const { token } = req.body
-        } catch (error) {
-            next(error)
-        }
-    }
 
     //! REGISTER USER
     static async register(req, res, next) {
@@ -46,6 +38,7 @@ class UserController {
     //! LOGIN USER
     static async login(req, res, next) {
         try {
+            console.log('massuukk');
             const { email, password } = req.body
             const checkUser = await User.findOne({
                 where: {

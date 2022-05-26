@@ -8,7 +8,6 @@ const authN = require('../midleware/auth')
 
 userRoutes.post('/register', UserController.register)
 userRoutes.post('/login', UserController.login)
-userRoutes.post('/login-google', UserController.googleLogin)
 
 userRoutes.get('/travels', TravelController.getTravel)
 userRoutes.get('/travels/:id', TravelController.getTravelById)
