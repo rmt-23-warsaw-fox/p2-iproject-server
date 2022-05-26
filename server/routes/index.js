@@ -4,6 +4,7 @@ const { User } = require('../models/index')
 const { compareHash } = require('../helpers/bcrypt')
 const { createToken, decodeToken } = require('../helpers/jwt')
 const postRoutes = require('./post')
+const likeRouter = require('./like')
 
 router.post('/login', async (request, response, next) => {
   try {
@@ -89,5 +90,6 @@ router.get('/users/:id', async (request, response, next) => {
 })
 
 router.use('/posts', postRoutes)
+router.use('/likes', likeRouter)
 
 module.exports = router

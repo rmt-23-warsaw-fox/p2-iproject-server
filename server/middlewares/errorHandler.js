@@ -17,6 +17,12 @@ const errorHandling = (err, request, response, next) => {
   } else if (err.message === 'post_not_found') {
     status = 404
     message = 'Post is not found.'
+  } else if (err.message === 'liked') {
+    status = 403
+    message = "Post has been liked."
+  } else if (err.message === 'like_not_found') {
+    status = 404
+    message = "Data not found"
   }
 
   console.log(err);
