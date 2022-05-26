@@ -20,9 +20,9 @@ class OrderController {
 
             const order = await snap.createTransaction(parameter)
 
-            console.log(order)
-            let transactionToken = order.token;
-            console.log('transactionToken:', transactionToken);
+            if (!order) {
+                throw new Error("Order failed")
+            }
 
             res.status(200).json(order)
         } catch (err) {
