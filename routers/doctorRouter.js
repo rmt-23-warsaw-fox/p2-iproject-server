@@ -1,15 +1,9 @@
 const express = require('express')
-const router = express.Router()
-
+const doctorController = require('../controllers/doctorController')
+const doctorRouter = express.Router()
 
 // define the home page route
-router.get('/', (req, res) => {
-  res.send('Birds home page')
-})
-// define the about route
-router.get('/about', (req, res) => {
-  res.send('About birds')
-})
+doctorRouter.post('/login', doctorController.login)
 
 
-module.exports = router
+module.exports = doctorRouter
