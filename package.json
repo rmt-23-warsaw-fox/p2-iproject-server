@@ -1,0 +1,28 @@
+{
+  "name": "myproject-server",
+  "version": "1.0.0",
+  "description": "Individual Project - Server",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development npx nodemon app.js",
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dendijoil/MyProject-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dendijoil/MyProject-server/issues"
+  },
+  "homepage": "https://github.com/dendijoil/MyProject-server#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  }
+}
