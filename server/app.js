@@ -10,7 +10,11 @@ const axios = require("axios");
 const { Op } = require("sequelize");
 const routes = require('./routes/index.js')
 
-const port = 3000
+if(process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
+const port = process.env.PORT || 3000
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

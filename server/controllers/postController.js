@@ -1,4 +1,4 @@
-const { User, Post } = require('../models/index')
+const { User, Post, Like } = require('../models/index')
 
 class PostController{
   static async addPost(request, response, next) {
@@ -24,7 +24,13 @@ class PostController{
 
   static async fetchPosts(request, response, next) {
     try {
-      const posts = await Post.findAll()
+      const posts = await Post.findAll({
+        order:[['createdAt', 'DESC']],
+        include: [
+          {model: User},
+          {model: Like}
+        ]
+      })
 
       response.status(200).json({
         posts

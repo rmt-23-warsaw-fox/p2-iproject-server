@@ -1,15 +1,40 @@
 const express = require('express')
 const router = express.Router()
 const { User } = require('../models/index')
-const { compareHash } = require('../helpers/bcrypt')
+const { createHash, compareHash } = require('../helpers/bcrypt')
 const { createToken, decodeToken } = require('../helpers/jwt')
 const postRoutes = require('./post')
 const likeRouter = require('./like')
+const { Op } = require("sequelize");
+
+router.post('/register', async (request, response, next) => {
+  try {
+    const {username, email, password, genre, bio} = request.body
+
+    let hashPassword = ""
+    if (password !== null || password !== "") {
+      hashPassword = createHash(password)
+    }
+
+    await User.create({
+      username,
+      email,
+      password: hashPassword,
+      bio,
+      genre
+    })
+
+    response.status(201).json({
+      message: "Register is successfully"
+    })
+  } catch (err) {
+    next(err)
+  }
+})
 
 router.post('/login', async (request, response, next) => {
   try {
     const { email, password } = request.body
-    console.log(email, password);
 
     const foundUser = await User.findOne({
       where: {
