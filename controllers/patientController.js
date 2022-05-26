@@ -40,13 +40,13 @@ class patientController {
         },
       });
       if (!response) {
-        throw { name: "D_NOT_FOUND" };
+        throw { name: "P_NOT_FOUND" };
       } else {
         const isValid = compareHash(req.body.password, response.password);
         console.log(isValid, "<<<< isValid");
         console.log(response.id, "<<<< response id");
         if (!isValid) {
-          throw { name: "D_NOT_FOUND" };
+          throw { name: "P_NOT_FOUND" };
         }
         const payload = {
           id: response.id,
@@ -197,6 +197,33 @@ class patientController {
       next(err);
     }
   }
+
+ static async myAppointments (req, res, next) {
+    console.log("My appointments")
+    const { id } = req.user;
+    try {
+      const response = await DoctorPatient.findAll({
+        where: {
+          PatientId: id,
+        },
+        include: {
+          model: Doctor,
+          attributes: {
+            exclude: ["createdAt", "updatedAt"],
+          },
+        },
+        attributes: {
+          exclude: ["createdAt", "updatedAt"],
+        },
+      });
+      res.status(200).json(response);
+    } catch (err) {
+      console.log(err);
+      next(err);
+    }
+  };
+  
+  
 }
 
 module.exports = patientController;

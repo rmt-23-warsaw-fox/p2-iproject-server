@@ -1,15 +1,13 @@
 const express = require('express')
-const router = express.Router()
-
+const doctorController = require('../controllers/doctorController')
+const authentication = require('../middlewares/authentication')
+const doctorRouter = express.Router()
 
 // define the home page route
-router.get('/', (req, res) => {
-  res.send('Birds home page')
-})
-// define the about route
-router.get('/about', (req, res) => {
-  res.send('About birds')
-})
+doctorRouter.post('/login', doctorController.login)
+doctorRouter.use(authentication)
+doctorRouter.get('/myAppointments', doctorController.myAppointments2)
+doctorRouter.put('/approve/:approveId', doctorController.Approve)
 
 
-module.exports = router
+module.exports = doctorRouter

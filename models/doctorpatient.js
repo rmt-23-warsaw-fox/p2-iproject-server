@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     DoctorId: {type: DataTypes.INTEGER, allowNull: false},
-    PatientId: {type: DataTypes.INTEGER, allowNull: false}
+    PatientId: {type: DataTypes.INTEGER, allowNull: false},
+    status: {type: DataTypes.STRING, allowNull: false}
   }, {
     sequelize,
     modelName: 'DoctorPatient',

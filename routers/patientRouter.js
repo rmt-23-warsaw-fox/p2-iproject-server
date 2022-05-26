@@ -11,5 +11,6 @@ patientRouter.post('/google', PatientController.googleAuth)
 patientRouter.use(authentication)
 patientRouter.get('/read', PatientController.read)
 patientRouter.post('/request', PatientController.request)
+patientRouter.get('/myAppointments', PatientController.myAppointments)
 patientRouter.use(errorHandler)
 module.exports = patientRouter
