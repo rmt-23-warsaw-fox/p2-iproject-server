@@ -6,6 +6,7 @@ const Authentication = require('../middleware/Authentication')
 const AuthorizationDelete = require('../middleware/Authorized')
 
 news.post("/login", Controller.login)
+news.post("/login-google", Controller.LoginGoogle)
 news.post("/register", Controller.register)
 
 news.get("/", Controller.HomeNews)

@@ -4,8 +4,43 @@ const baseURL = "http://localhost:3000"
 const { User, Category, FavoriteNews, NewsAPI, Comment } = require("../models/index")
 const { readHash } = require("../helper/hashPass")
 const { createToken } = require("../helper/jwt")
+const { OAuth2Client } = require('google-auth-library');
 
 class Controller {
+    static async LoginGoogle(req, res, next) {
+        try {
+            const tokenGoogle = req.body.token
+            const client = new OAuth2Client("728531124702-580i65icr0hbk2sp7u31l11o2tl3er8e.apps.googleusercontent.com");
+            const ticket = await client.verifyIdToken({
+                idToken: tokenGoogle,
+                audience: "728531124702-580i65icr0hbk2sp7u31l11o2tl3er8e.apps.googleusercontent.com",
+            });
+            const payload = ticket.getPayload();
+            const [user, created] = await User.findOrCreate({
+                where: { email: payload.email },
+                defaults: {
+                    username: payload.email.split("@")[0],
+                    password: Math.random().toString(36).substring(2, 7),
+                }
+            });
+            const data = {
+                id: user.id,
+                email: user.email,
+                username: user.username,
+            }
+            console.log(data);
+            const access_token = createToken(data)
+            res.status(200).json({
+                statusCode: 200,
+                message: "Welcome",
+                id: user.id,
+                access_token
+            })
+        } catch (error) {
+            next(error)
+        }
+    }
+
     static async login(req, res, next) {
         try {
             const { email, password } = req.body
@@ -150,9 +185,9 @@ class Controller {
                 if (url === el.link) {
                     link = el.link
                     title = el.title,
-                    date = el.pubDate,
-                    description = el.description,
-                    thumbnail = el.thumbnail
+                        date = el.pubDate,
+                        description = el.description,
+                        thumbnail = el.thumbnail
                 }
             })
             let show = await NewsAPI.findOne({
@@ -169,8 +204,8 @@ class Controller {
                     thumbnail,
                 })
                 temp = create
-            }else{
-                temp=show
+            } else {
+                temp = show
             }
             res.status(200).json({
                 temp
@@ -183,7 +218,7 @@ class Controller {
     static async AddFavorites(req, res, next) {
         try {
             const url = req.body.url
-            const {title, description, thumbnail} = req.body
+            const { title, description, thumbnail } = req.body
             const { id } = req.Tambahan
             const check = await FavoriteNews.findAll({
                 where: {
@@ -215,7 +250,8 @@ class Controller {
             const { id } = req.Tambahan
             const url = req.body.url
             const comment = req.body.comment
-            if(comment){
+            console.log(comment);
+            if (comment) {
                 const data = await Comment.create({
                     textcomment: comment,
                     UserId: id,
@@ -227,7 +263,7 @@ class Controller {
                     LinkId: url,
                     UserId: id
                 },
-                include : [User]
+                include: [User]
             })
             res.status(200).json(showComment)
         } catch (error) {
@@ -249,7 +285,7 @@ class Controller {
             res.status(200).json({
                 message: "Success Erase Your Favorite News"
             })
-            
+
         } catch (error) {
             next(error)
         }

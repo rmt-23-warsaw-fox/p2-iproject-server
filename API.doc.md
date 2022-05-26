@@ -3,6 +3,7 @@
 List of Available Endpoints In Route:
 
 - `POST /login`
+- `POST /login-google`
 - `POST /register`
 - `GET /`
 - `GET /:categories`
