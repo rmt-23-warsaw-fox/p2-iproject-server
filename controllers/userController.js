@@ -19,6 +19,27 @@ class UserController {
         password,
         phoneNumber,
       })
+
+      let sendEmail = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'iqbal.muh998@gmail.com',
+          pass: 'kqboucqllkvhtmiu'
+        }
+      })
+      let mailOptions = {
+        from: 'iqbal.muh998@gmail.com',
+        to: email,
+        subject: 'Berhasil Register',
+        text: `Selamat anda telah berhasil melakukan register`
+      }
+  
+      sendEmail.sendMail(mailOptions, (err, info) => {
+        if (err) {
+          throw new Error(900)
+        }
+      })
+
       res.status(201).json({
         statusCode: 201,
         message: 'User created successfully',
@@ -31,50 +52,6 @@ class UserController {
     } catch(err) {
       next(err)
     }
-  }
-
-  static async isEmail(req, res, next) {
-    try {
-      const {
-        name,
-        email,
-        password,
-        phoneNumber,
-      } = req.body
-
-      const item = await User.build({
-        name,
-        email,
-        password,
-        phoneNumber,
-      })
-      const validateItem = await item.validate()
-
-      let sendEmail = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'iqbal.muh998@gmail.com',
-          pass: 'kqboucqllkvhtmiu'
-        }
-      })
-      let mailOptions = {
-        from: 'iqbal.muh998@gmail.com',
-        to: email,
-        subject: 'Verifikasi untuk register',
-        text: 'your profile has been updated'
-      }
-  
-      sendEmail.sendMail(mailOptions, (err, info) => {
-        if (err) {
-          throw new Error(900)
-        }
-      })
-      res.status(200).json({message: 'Cek email untuk verifikasi'})
-    } catch(err) {
-      console.log(err);
-      next(err)
-    }
-
   }
 
   static async loginGoogle(req, res, next) {

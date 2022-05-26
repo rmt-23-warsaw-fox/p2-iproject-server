@@ -6,7 +6,7 @@ const errorHandler = (err, req, res, next) => {
   if (err.message === '401') {
     code = 401
     if (err.login) {
-      msg = 'Invalid email or password'
+      msg = 'Email atau password salah'
     } else {
       msg = 'Unauthorized'
     }
@@ -19,6 +19,9 @@ const errorHandler = (err, req, res, next) => {
   } else if (err.message == 800) {
     code = 400
     msg = 'already added to the list'
+  } else if (err.message == 801) {
+    code = 400
+    msg = 'email must be unique'
   }
 
   if (err.errors) {
