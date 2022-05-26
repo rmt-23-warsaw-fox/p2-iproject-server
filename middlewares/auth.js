@@ -7,7 +7,7 @@ const authentication = async (req,res,next) => {
     const {access_token} = req.headers
     const payload = readToken(access_token)
     const {puuid} = payload
-
+    console.log(payload)
     const user = await User.findOne({
       where : {
         puuid : puuid
