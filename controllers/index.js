@@ -1,10 +1,10 @@
 "use strict"
 
-const { User } = require("../models")
+const { User, Profile, Content } = require("../models")
 const { Op } = require("sequelize")
 const { hashCompare } = require("../helpers/bcrypts")
 const { createToken } = require("../helpers/jsonwebtoken")
-const user = require("../models/user")
+
 
 class Controller {
     static async register(req, res, next){
@@ -55,6 +55,25 @@ class Controller {
                 message:"Login Success",
                 access_token: access_token,
                 foundName
+            })
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async createProfile(req, res, next){
+        try {
+            const UserId = req.dataUser.id
+            const { fullName, bio, profilePicture } = req.body
+            const profile = await Profile.create({
+                fullName,
+                bio,
+                profilePicture,
+                UserId
+            })
+            res.status(201).json({
+                message:"Succes create profile",
+                data:profile
             })
         } catch (err) {
             next(err)

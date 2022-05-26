@@ -16,7 +16,6 @@ module.exports = {
       },
       profilePicture: {
         type: Sequelize.STRING,
-        allowNull:false,
         defaultValue:"https://i.stack.imgur.com/l60Hf.png"
       },
       UserId: {
