@@ -18,10 +18,16 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
+      brand: {
+        type: Sequelize.STRING,
+      },
       productName: {
         type: Sequelize.STRING,
       },
       price: {
+        type: Sequelize.INTEGER,
+      },
+      priceTotal: {
         type: Sequelize.INTEGER,
       },
       amount: {
@@ -36,10 +42,12 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: new Date(),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: new Date(),
       },
     });
   },

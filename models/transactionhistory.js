@@ -14,8 +14,10 @@ module.exports = (sequelize, DataTypes) => {
   TransactionHistory.init(
     {
       userId: DataTypes.INTEGER,
+      brand: DataTypes.STRING,
       productName: DataTypes.STRING,
       price: DataTypes.INTEGER,
+      priceTotal: DataTypes.INTEGER,
       amount: DataTypes.INTEGER,
       detailProduct: DataTypes.STRING,
       orderId: DataTypes.STRING,
