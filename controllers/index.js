@@ -5,6 +5,19 @@ const {User, Watchlist} = require("../models")
 
 
 class Controller {
+  
+  static async getNews(req, res, next) {
+    try {
+      let response = await axios({
+        method: "get",
+        url: "https://gnews.io/api/v4/search?q=crypto&token=e429246aae9f592aca06c033041b4ce6&max=3&lang=en"
+      })
+
+      res.status(200).json(response.data)
+    } catch (error) {
+      next(error)
+    }
+  }
   static async getCoins(req, res, next) {
     try {
       const { page = 1 } = req.query;

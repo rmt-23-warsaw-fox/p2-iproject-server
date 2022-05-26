@@ -5,6 +5,7 @@ const authentication = require("../middlewares/authn");
 const {User, Watchlist} = require("../models")
 
 
+router.get("/news", Controller.getNews)
 router.get("/markets", Controller.getCoins)
 router.get("/coin", Controller.coinDetail)
 router.get("/coin/history", Controller.coinHistory)
