@@ -79,6 +79,10 @@ module.exports = (sequelize, DataTypes) => {
           msg: "Address is required",
         },
       },
+      verified: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
     {
       sequelize,

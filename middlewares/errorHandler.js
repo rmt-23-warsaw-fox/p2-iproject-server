@@ -14,6 +14,9 @@ function errorHandler(err, req, res, next) {
   } else if (err.name === "JsonWebTokenError") {
     code = 401;
     msg = "Invalid token";
+  } else if (err.message === "A verification link has sent to your email") {
+    code = 401;
+    msg = err.message;
   } else if (err.message === "Admin only") {
     code = 403;
     msg = err.message;
