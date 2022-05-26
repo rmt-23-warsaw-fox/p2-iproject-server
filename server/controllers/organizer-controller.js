@@ -55,6 +55,7 @@ class Controller{
         id:foundOrganizer.id,
         name:foundOrganizer.name,
         email:foundOrganizer.email,
+        eventId:foundOrganizer.eventId,
         access_token
       })
     } catch (error) {

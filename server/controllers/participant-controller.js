@@ -16,7 +16,7 @@ class Controller{
       res.status(201).json({
         id:newParticipant.id,
         name:newParticipant.name,
-        email:newParticipant.email
+        email:newParticipant.email,
       })
     } catch (error) {
       next(error)
@@ -56,6 +56,7 @@ class Controller{
         id:foundParticipant.id,
         name:foundParticipant.name,
         email:foundParticipant.email,
+        eventId:foundParticipant.eventId,
         access_token
       })
     } catch (error) {
