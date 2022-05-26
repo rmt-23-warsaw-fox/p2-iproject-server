@@ -8,8 +8,8 @@ async function sendEmail(objMail) {
             port: 587,
             secure: false,
             auth: {
-                user: "dreamescape774@gmail.com", // generated ethereal user
-                pass: "mzugevipalncrqxz" // generated ethereal password
+                user: process.env.email,
+                pass: process.env.passMail
             },
         });
 

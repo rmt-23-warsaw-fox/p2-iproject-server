@@ -33,17 +33,15 @@ class OrderController {
 
             let snap = new midtransClient.Snap({
                 isProduction: false,
-                serverKey: 'SB-Mid-server-B892m0AJFL0ueMF_84gqAW-u',
-                clientKey: 'SB-Mid-client-ACE2fDAk9G_Scio9'
+                serverKey: process.env.serverKey,
+                clientKey: process.env.clientKey
             });
 
             let parameter = {
                 "transaction_details": {
                     "order_id": `orderDream-${Date.now()}`,
                     "gross_amount": `${findDestination.price * amountOfPeople}`
-                }, "credit_card": {
-                    "secure": true
-                }
+                }, 
             };
 
             let order = await snap.createTransaction(parameter)
@@ -72,8 +70,8 @@ class OrderController {
                 }
             })
 
-            if(!updatedOrder) {
-                throw new Error (`Order not found`)
+            if (!updatedOrder) {
+                throw new Error(`Order not found`)
             }
             res.status(200).json({
                 statusCode: 200,
