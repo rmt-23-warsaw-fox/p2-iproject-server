@@ -26,7 +26,7 @@ function errorHandler(err, req, res, next) {
 
     if (err.message === 'Destination already in your favorite') {
         code = 400
-        message = `Destination already in your favorite`
+        message = `This destination already in your favorite`
     }
 
     if (err.message === `Email already registered`) {

@@ -159,6 +159,7 @@ _Response (200 - OK)_
 Description:
 - Show detil destination by id
 
+
 _Response (200 - OK)_
 
 ```json
@@ -194,3 +195,127 @@ _Response (200 - OK)_
     "message": "DESTINATION NOT FOUND"
 }
 ```
+
+### 5. POST /users/favorites/:id
+
+-request: 
+- headers: 
+
+```json
+{
+  "access_token": "string"
+}
+
+ Description:
+- Add user favorites destination to bookmark
+
+-request: 
+- headers: 
+
+```json
+{
+  "access_token": "string"
+}
+
+  _Response (200 - OK)_
+
+  - Body
+ ```json
+ {
+   "statusCode": 201,
+    "message": "Malioboro successfully added in your favorite",
+    "favDestination": {
+        "id": 1,
+        "UserId": 3,
+        "DestinationId": 1,
+        "updatedAt": "2022-05-26T01:13:39.223Z",
+        "createdAt": "2022-05-26T01:13:39.223Z"
+    }
+ }
+ ```
+
+  _Response (404 - DESTINATION NOT FOUND)_
+
+ -Body
+```json
+{
+    "statusCode": 404,
+    "message": "DESTINATION NOT FOUND"
+}
+```
+
+  _Response (400 - Destination already in your favorite )_
+
+ -Body
+```json
+{
+    "statusCode": 400,
+    "message": "This destination already in your favorite"
+}
+```
+
+### 6. POST /users/favorites
+
+ Description:
+- Get all data user favorites destination
+
+-request: 
+- headers: 
+
+```json
+{
+  "access_token": "string"
+}
+
+  _Response (200 - successful access)_
+
+  - Body
+ ```json
+ {
+    "statusCode": 200,
+    "message": "success to accesss",
+    "favDestinationData": [
+        {
+            "id": 1,
+            "UserId": 3,
+            "DestinationId": 1,
+            "createdAt": "2022-05-26T01:13:39.223Z",
+            "updatedAt": "2022-05-26T01:13:39.223Z",
+            "Destination": {
+                "id": 1,
+                "name": "Malioboro",
+                "imageUrl": "https://www.yogyes.com/id/yogyakarta-tourism-object/other/malioboro/1.jpg",
+                "description": "Malioboro adalah jantung Kota Jogja. Tak heran bila banyak penginapan murah dekat Malioboro, meskipun sekarang banyak hotel berbintang. Apa saja tempat wisata dan hotel dekat Malioboro? Temukan info lengkapnya di sini.",
+                "price": 250000,
+                "RegionId": 1,
+                "createdAt": "2022-05-25T23:01:13.926Z",
+                "updatedAt": "2022-05-25T23:01:13.926Z"
+            }
+        }
+    ]
+ }
+ ```
+
+ ### 7. DELETE /users/favorites/:Id
+
+Description:
+- Remove destination on User favorite list by Id
+
+ _Response (200 - OK)_
+
+  -Body
+```json
+{
+    "statusCode": 200,
+    "message": "Malioboro successfully remove in your favorite destination"
+}
+```
+
+ _Response (404 - Bad Request )_
+
+ -Body
+```json
+{
+      "statusCode": 404,
+    "message": "DESTINATION NOT FOUND"
+}
