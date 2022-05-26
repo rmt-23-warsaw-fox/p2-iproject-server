@@ -24,14 +24,17 @@ module.exports = {
           key: "id",
         },
       },
-      address: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       status: {
         type: Sequelize.STRING,
         allowNull: false,
         defaultvalue: "unpaid",
+      },
+      midtransResponse: {
+        type: Sequelize.TEXT,
+      },
+      orderCode: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

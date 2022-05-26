@@ -23,17 +23,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      address: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          msg: "Address is required",
-        },
-      },
+
       status: {
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: "unpaid",
+      },
+      midtransResponse: {
+        type: DataTypes.TEXT,
+      },
+      orderCode: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
     },
     {
@@ -41,5 +42,8 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "Order",
     }
   );
+  Order.beforeCreate((instance, options) => {
+    instance.orderCode = (Math.random() + 1).toString(36).substring(7);
+  });
   return Order;
 };

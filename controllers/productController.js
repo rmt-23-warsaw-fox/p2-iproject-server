@@ -25,6 +25,7 @@ class productController {
       });
       res.status(201).json(newProduct);
     } catch (err) {
+      // console.log(err);
       next(err);
     }
   }
