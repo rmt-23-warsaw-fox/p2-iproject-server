@@ -20,7 +20,7 @@ async function sendEmail(objMail) {
             from: 'dreamescape774@gmail.com', // sender address
             to: `${objMail.email}`, // list of receivers
             subject: 'Successful payment travelling',
-            text: `Halo ${objMail.fullName}, selamat telah membeli paket wisata ${objMail.destinasi} pada tanggal ${date}`
+            text: `Halo ${objMail.fullName}, selamat telah membeli paket wisata ${objMail.destinasi} berjumlah ${objMail.amountOfPeople} tiket pada tanggal ${date}`
         });
         console.log("Message sent: %s", info.messageId);
 

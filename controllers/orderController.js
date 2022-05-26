@@ -1,6 +1,7 @@
 const midtransClient = require('midtrans-client');
 const { Order, Destination } = require('../models')
 const { sendEmail } = require('../helpers/nodemailer')
+
 class OrderController {
     static async order(req, res, next) {
         try {
@@ -11,6 +12,7 @@ class OrderController {
             const objMail = {
                 fullName,
                 email,
+                amountOfPeople,
                 date,
                 destinasi: findDestination.name
             }
