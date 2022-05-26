@@ -48,7 +48,6 @@ class ControllerRadio {
         }
       }
 
-      console.log(options);
       const response = await axios.request(options)
 
       let temp = response.data.map((el, i) => {
@@ -67,10 +66,12 @@ class ControllerRadio {
         return data
       })
 
-      // let start = page * 10
+      if(response.length === 0) {
+        throw new Error('Radio not found')
+      }
+
       let end = 0 + 10
       let data = temp.slice(0, end)
-      // console.log(temp.length);
       res.status(200).json({
         totalPage: 15,
         data,
@@ -115,6 +116,10 @@ class ControllerRadio {
         return data
       })
 
+      if(response.length === 0) {
+        throw new Error('Radio not found')
+      }
+
       res.status(200).json(result);
 
     } catch (err) {
@@ -151,7 +156,9 @@ class ControllerRadio {
         return artist
       })
 
-      console.log(result);
+      if(temp.length === 0) {
+        throw new Error('Song not found')
+      }
 
       res.status(200).json(result);
 
@@ -166,7 +173,7 @@ class ControllerRadio {
     try {
 
       const { id } = req.params
-      // console.log(id);
+
       const options = {
         method: 'GET',
         url: `https://deezerdevs-deezer.p.rapidapi.com/track/${id}`,
@@ -188,6 +195,10 @@ class ControllerRadio {
         realeaseDate: temp.data.album.release_date
       }
 
+      if(temp.length === 0) {
+        throw new Error('Song not found')
+      }
+      
       res.status(200).json(result)
 
     } catch (err) {
@@ -221,16 +232,18 @@ class ControllerRadio {
           let data = {
             stationId: el.stationuuid,
             name: el.name,
-            lat: el.geo_lat,
-            lng: el.geo_long,
-            icon: el.favicon
+            icon: el.favicon,
+            
+            position: {
+              lat: el.geo_lat,
+              lng: el.geo_long 
+            },
           };
           temp.push(data)
         }
       })
       
       res.status(200).json({
-        totalPage: 15,
         data: temp,
       })
 
