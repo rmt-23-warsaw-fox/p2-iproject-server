@@ -1,0 +1,223 @@
+[
+    {
+        "name": "Apartemen Fancy Look 2BR at West Vista Apartment",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/07d7c-5dddf1e53ad9617e58d2b218/INA-8855_s.jpg",
+        "AdminId": 1,
+        "location": "Jl. Sentra Primer Timur, RT.5/RW.8, Pulo Gebang, Cakung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13950",
+        "price": 456000,
+        "TypeId": 1,
+        "city": "Kota Jakarta"
+    },
+    {
+        "name": "2BR Cosmo Terrace Apartment next to Thamrin City",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 3,
+        "imageUrl": "https://cdn.travelio.id/hotel/1b0db-5d808a86bd1f27061bb1bfcb/IMG-0360_l.jpg",
+        "AdminId": 1,
+        "location": "Jl. Raya Pasar Minggu No.15, RT.7/RW.9, Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12780",
+        "price": 980000,
+        "TypeId": 2,
+        "city": "Kota Jakarta"
+    },
+    {
+        "name": "3BR Business Residence at Grand Palace Kemayoran",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/db0e3-5d972897cd287210279bd0f8/AZM-9627_l.JPG",
+        "AdminId": 1,
+        "location": "Jalan Benyamin Suaeb Blok A No.5, RT.13/RW.6, Kebon Kosong, Kemayoran, RT.13/RW.6, Kb. Kosong, Kemayoran, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10630 ",
+        "price": 345800,
+        "TypeId": 1,
+        "city": "Kota Jakarta"
+    },
+    {
+        "name": "3BR Executive Residence at Grand Palace Kemayoran",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/536b4-5d972897cd287210279bd0a4/AZM-9592_l.JPG",
+        "AdminId": 1,
+        "location": "Jalan Benyamin Suaeb Blok A No.5, RT.13/RW.6, Kebon Kosong, Kemayoran, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10630",
+        "price": 546000,
+        "TypeId": 3,
+        "city": "Kota Jakarta"
+    },
+    {
+        "name": "2BR Best Rate Kebayoran Icon Apartment near Gandaria City",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 4,
+        "imageUrl": "https://cdn.travelio.id/hotel/e4f86-60af834df56a7b2a8adf50bd/DSCF6746_l.jpg",
+        "AdminId": 1,
+        "location": "Jl. Ciledug Raya No.37, RT.6/RW.1, Cipulir, Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12230",
+        "price": 456556,
+        "TypeId": 3,
+        "city": "Kota Jakarta"
+    },
+    {
+        "name": "Comfy & Well Appointed 2BR at Tamansari Panoramic Apartment",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/33b8c-602bab6f7c21a975cdf794f2/image0_l.jpeg",
+        "AdminId": 1,
+        "location": "Jl. Ciledug Raya No.37, RT.6/RW.1, Cipulir, Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12230",
+        "price": 234567,
+        "TypeId": 4,
+        "city": "Kota Jakarta"
+    },
+    {
+        "name": "Stylish Studio Room Grand Asia Afrika Apartment",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 3,
+        "imageUrl": "https://cdn.travelio.id/hotel/20466-5dcb895cfa4af40325a175ea/-MG-6771_l.JPG",
+        "AdminId": 1,
+        "location": "Jl. Karapitan No.1, Paledang, Lengkong, Kota Bandung, Jawa Barat 40261",
+        "price": 345678,
+        "TypeId": 3,
+        "city": "Kota Bandung"
+    },
+    {
+        "name": "Comfy Studio Room at Mekarwangi Square Apartment Cibaduyut",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 4,
+        "imageUrl": "https://cdn.travelio.id/hotel/21231-6010af2f724cbb71b5d1f4c3/-MG-7632_l.jpg",
+        "AdminId": 1,
+        "location": "Jl. Cibaduyut Raya No.142, Cibaduyut, Kec. Bojongloa Kidul, Kota Bandung, Jawa Barat 40236",
+        "price": 789000,
+        "TypeId": 5,
+        "city": "Kota Bandung"
+    },
+    {
+        "name": "Cozy Studio Room at Dago Suites Apartment",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 3,
+        "imageUrl": "https://cdn.travelio.id/hotel/9c982-608279c05a51b935a47c01b8/image0_l.jpeg",
+        "AdminId": 1,
+        "location": "Jl. Sangkuriang No.13, Dago, Coblong, Kota Bandung, Jawa Barat 40135",
+        "price": 456000,
+        "TypeId": 2,
+        "city": "Kota Bandung"
+    },
+    {
+        "name": "3BR Catellya Full Furnsihed House at Cigadung Timur Bandung near Dago",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 3,
+        "imageUrl": "https://cdn.travelio.id/hotel/6676f-610049b04cd3f120714f074e/image1_l.jpeg",
+        "AdminId": 1,
+        "location": "Jl Cigadung Pesantren Timur II, Kec. Cibeunying Kaler Kota Bandung Jawa Barat 40191",
+        "price": 345900,
+        "TypeId": 1,
+        "city": "Kota Bandung"
+    },
+    {
+        "name": "Remarkable Studio at Baileys City Apartment",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/2a4ec-601150deff486a6c7107a0f5/2_l.jpg",
+        "AdminId": 1,
+        "location": "Jl. Dewi Sartika No.31, Ciputat, Kec. Ciputat, Kota Tangerang Selatan, Banten 15411",
+        "price": 490000,
+        "TypeId": 1,
+        "city": "Kota Tangerang"
+    },
+    {
+        "name": "Spacious and Elegant 2BR Apartment at U Residence",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 3,
+        "imageUrl": "https://cdn.travelio.id/hotel/3a33b-6238754c3e1c0a3eabb28803/DSC-5355_l.jpg",
+        "AdminId": 1,
+        "location": "Lippo Karawaci 1200, Jalan Bulevard Diponegoro No.105, Bencongan, Kelapa Dua, Tangerang, Banten 15811",
+        "price": 679000,
+        "TypeId": 4,
+        "city": "Kota Tangerang"
+    },
+    {
+        "name": "Comfortable and Simply Studio at B Residence",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/56e38-61207bd94d81624f8ec46e1a/DSC-7287_l.jpg",
+        "AdminId": 1,
+        "location": "Jl. BSD Raya Utama No.63, Situ Gadung, Kec. Pagedangan, Tangerang, Banten 15338",
+        "price": 650000,
+        "TypeId": 4,
+        "city": "Kota Tangerang"
+    },
+    {
+        "name": "Nice and Comfort 1BR at M-Town Signature Apartment",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/cfe3a-6211d204f9e0be07891e1079/3_l.jpg",
+        "AdminId": 1,
+        "location": "Jl. Boulevard Gading Serpong Blok BLVD 1, Pakulonan Bar., Klp. Dua, Tangerang, Banten 15810",
+        "price": 800000,
+        "TypeId": 2,
+        "city": "Kota Tangerang"
+    },
+    {
+        "name": "Furnished Studio (No Kitchen) Apartment Mustika Golf Residence",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 3,
+        "imageUrl": "https://cdn.travelio.id/hotel/c2170-5d2d3f397f727959d7a5bff5/DSCF9863_l.jpg",
+        "AdminId": 1,
+        "location": "Jl. Arifin C. Noor Kav. A3A, Movieland, Jababeka City, Mekarmukti, Cikarang, Bekasi, Jawa Barat 17530",
+        "price": 450000,
+        "TypeId": 5,
+        "city": "Kota Bekasi"
+    },
+    {
+        "name": "Town View Studio Apartment @ The Oasis Apartment",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/14c7a-5bb71267e30e642bde7b7086/DSCF5183_l.jpg",
+        "AdminId": 1,
+        "location": "Jl.Raya Cikarang Cibarusah Kav. 1, Sukaresmi, Cikarang Selatan, Sukaresmi, Cikarang Sel., Bekasi, Jawa Barat 17530",
+        "price": 670000,
+        "TypeId": 2,
+        "city": "Kota Bekasi"
+    },
+    {
+        "name": "Comfy and Spacious Studio Azalea Suites Apartment",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/2c9ea-621cb8703ac93617d8bcbeca/IMG-0221_l.jpg",
+        "AdminId": 1,
+        "location": "Jl. Cikarang Cibarusah Carrefour Business Center, Pasirsari, Cikarang Sel., Bekasi, Jawa Barat 17550",
+        "price": 678990,
+        "TypeId": 4,
+        "city": "Kota Bekasi"
+    },
+    {
+        "name": "Homey and Cozy Studio Apartment at Elvis Tower",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/20b50-62171e1314e615336b1e685c/IMG-9184_l.jpg",
+        "AdminId": 1,
+        "location": "Mekarmukti, North Cikarang, Bekasi, West Java 17530",
+        "price": 567443,
+        "TypeId": 3,
+        "city": "Kota Bekasi"
+    },
+    {
+        "name": "Warm and Cozy 2BR at Cinere Bellevue Suites Apartment",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 2,
+        "imageUrl": "https://cdn.travelio.id/hotel/78dd4-622aea1da2676f72324e2cbd/3_l.jpg",
+        "AdminId": 1,
+        "location": "Jl. Merawan No.1, Pangkalan Jati, Cinere, Kota Depok, Jawa Barat 16514 ",
+        "price": 789000,
+        "TypeId": 5,
+        "city": "Kota Depok"
+    },
+    {
+        "name": "Cozy Studio Apartment Margonda Residence 4 near Train Station",
+        "facility": "Kitchen,Living Room,Bathroom,Bedroom,FitnessCenter,Wifi,Swimming Pool,Camera CCTV 24 Hour",
+        "roomCapacity": 3,
+        "imageUrl": "https://cdn.travelio.id/hotel/ec4ae-61287357a6d0786f4fd1cf2b/DSCF4469_l.jpg",
+        "AdminId": 1,
+        "location": "Kemiri Muka, Beji, Kemiri Muka, Beji, Kota Depok, Jawa Barat 16423",
+        "price": 800000,
+        "TypeId": 2,
+        "city": "Kota Depok"
+    }
+
+]
