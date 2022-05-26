@@ -5,6 +5,7 @@ const nodemailer = require("nodemailer");
 const { compareHash } = require("../helpers/bcrypt");
 const { generateToken } = require("../helpers/jwt");
 const { type } = require("express/lib/response");
+const {Op} = require('sequelize');
 
 class patientController {
   static async register(req, res, next) {
@@ -135,9 +136,8 @@ class patientController {
       
       if(speciality){
          condition.where = {
-             ...condition.where,
-             name: {
-                 [Op.iLike]: `%${speciality}`
+             speciality: {
+                 [Op.iLike]: `%${speciality}%`
              }
          }
       }
@@ -146,7 +146,7 @@ class patientController {
         condition.where = {
             ...condition.where,
             name: {
-                [Op.iLike]: `%${name}`
+                [Op.iLike]: `%${name}%`
             }
         }
      }
