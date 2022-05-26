@@ -46,7 +46,7 @@ class doctorController {
     try {
       const response = await DoctorPatient.findAll({
         where: {
-          PatientId: id,
+          DoctorId: id,
         },
         include: {
           model: Patient,
@@ -66,6 +66,7 @@ class doctorController {
   }
 
   static async Approve(req, res, next) {
+    console.log("approoooveee")
     const {approveId} = req.params;
     const { id } = req.user;
     const {patientId} = req.body
@@ -73,14 +74,14 @@ class doctorController {
     console.log('approve id', approveId)
     console.log('patientId', patientId)
     try {
-      const FindPatient = await DoctorPatient.findByPk(patientId);
-      if (!FindPatient) {
-        throw { name: "Patient not found" };
+      const FindAppointment = await DoctorPatient.findByPk(approveId);
+      if (!FindAppointment) {
+        throw { name: "Appointment not found" };
       }
 
-      console.log(FindPatient)
+      console.log(FindAppointment)
 
-      if (FindPatient.DoctorId !== id) {
+      if (FindAppointment.DoctorId !== id) {
         throw { name: "You are not authorized" };
       }
 

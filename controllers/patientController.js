@@ -5,7 +5,7 @@ const nodemailer = require("nodemailer");
 const { compareHash } = require("../helpers/bcrypt");
 const { generateToken } = require("../helpers/jwt");
 const { type } = require("express/lib/response");
-const {Op} = require('sequelize');
+const { Op } = require("sequelize");
 
 class patientController {
   static async register(req, res, next) {
@@ -126,31 +126,31 @@ class patientController {
   }
   static async read(req, res, next) {
     console.log("read controller");
-    const {page, speciality, name} = req.query
-    console.log('req.query', req.query)
+    const { page, speciality, name } = req.query;
+    console.log("req.query", req.query);
     try {
       const condition = {
-          limit: 4,
-          offset: (page - 1) * 4,
-      }
-      
-      if(speciality){
-         condition.where = {
-             speciality: {
-                 [Op.iLike]: `%${speciality}%`
-             }
-         }
+        limit: 4,
+        offset: (page - 1) * 4,
+      };
+
+      if (speciality) {
+        condition.where = {
+          speciality: {
+            [Op.iLike]: `%${speciality}%`,
+          },
+        };
       }
 
-      if(name){
+      if (name) {
         condition.where = {
-            ...condition.where,
-            name: {
-                [Op.iLike]: `%${name}%`
-            }
-        }
-     }
-      console.log(condition)
+          ...condition.where,
+          name: {
+            [Op.iLike]: `%${name}%`,
+          },
+        };
+      }
+      console.log(condition);
       const response = await Doctor.findAll(condition);
       res.status(200).json(response);
     } catch (err) {
@@ -198,11 +198,36 @@ class patientController {
     }
   }
 
- static async myAppointments (req, res, next) {
-    console.log("My appointments")
+  static async myAppointments(req, res, next) {
+    console.log("My appointments");
     const { id } = req.user;
+    const { page, speciality, name } = req.query;
+    console.log(req.query);
     try {
+      const condition = {
+        limit: 4,
+        offset: (page - 1) * 4,
+      };
+
+      if (speciality) {
+        condition.where = {
+          speciality: {
+            [Op.iLike]: `%${speciality}%`,
+          },
+        };
+      }
+
+      if (name) {
+        condition.where = {
+          ...condition.where,
+          name: {
+            [Op.iLike]: `%${name}%`,
+          },
+        };
+      }
       const response = await DoctorPatient.findAll({
+        limit: 4,
+        offset: (page - 1) * 4,
         where: {
           PatientId: id,
         },
@@ -221,9 +246,7 @@ class patientController {
       console.log(err);
       next(err);
     }
-  };
-  
-  
+  }
 }
 
 module.exports = patientController;
