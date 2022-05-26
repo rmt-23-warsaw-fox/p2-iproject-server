@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const { options } = require('../routes');
 module.exports = (sequelize, DataTypes) => {
   class Profile extends Model {
     /**
@@ -17,10 +18,20 @@ module.exports = (sequelize, DataTypes) => {
   Profile.init({
     fullName: DataTypes.STRING,
     bio: DataTypes.STRING,
-    profilePicture: DataTypes.STRING,
+    profilePicture: {
+      type:DataTypes.STRING,
+      defaultValue:"https://i.stack.imgur.com/l60Hf.png"
+    },
     UserId: DataTypes.INTEGER
   }, {
     sequelize,
+    hooks:{
+      beforeCreate(instance, options) {
+        if(instance.profilePicture === null || instance.profilePicture === ""){
+          instance.profilePicture = "https://i.stack.imgur.com/l60Hf.png"
+        } 
+      }
+    },
     modelName: 'Profile',
   });
   return Profile;

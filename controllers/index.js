@@ -70,6 +70,8 @@ class Controller {
                 bio,
                 profilePicture,
                 UserId
+            },{
+                indvidualHooks:true
             })
             res.status(201).json({
                 message:"Succes create profile",
