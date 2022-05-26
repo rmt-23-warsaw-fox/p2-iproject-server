@@ -27,7 +27,10 @@ const errorHandlers = (err, req, res, next) => {
     message = "Invalid token";
   }
 
-  if (err.message === "Email or password is incorrect") {
+  if (
+    err.message === "Email or password is incorrect" ||
+    err.message === "User profile not found"
+  ) {
     code = 404;
     message = err.message;
   }

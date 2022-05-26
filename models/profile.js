@@ -16,16 +16,8 @@ module.exports = (sequelize, DataTypes) => {
       userId: DataTypes.INTEGER,
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
-      address: DataTypes.STRING,
-      phone: {
-        type: DataTypes.STRING,
-        validate: {
-          len: {
-            args: [10, 12],
-            msg: "Phone number must be 10 digits",
-          },
-        },
-      },
+      address: DataTypes.TEXT,
+      phone: DataTypes.STRING,
     },
     {
       sequelize,
