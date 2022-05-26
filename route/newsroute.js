@@ -15,9 +15,11 @@ news.get("/:categories", Controller.CategoriesNews)
 news.post("/:categories/detailNews", Controller.getDetailNews)
 
 news.use(Authentication)
-news.get("/favoritesNews", Controller.Favorite)
+news.get("/favoritesList/List", Controller.Favorite)
+
 news.post("/favoritesNews", Controller.AddFavorites)
-news.post("/comments", Controller.comment)
+
+news.post("/comments/news", Controller.comment)
 
 news.delete("/delete", AuthorizationDelete ,Controller.Delete)
 module.exports = news

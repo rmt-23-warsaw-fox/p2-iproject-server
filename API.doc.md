@@ -9,9 +9,9 @@ List of Available Endpoints In Route:
 - `POST /:categories/detailNews`
 - 
  Authentication
-- `GET /favoritesNews`
+- `GET /favoritesList/List`
 - `POST /favoritesNews`
-- `POST /comments`
+- `POST /comments/news`
 Authorization
 - `DELETE /delete`
 

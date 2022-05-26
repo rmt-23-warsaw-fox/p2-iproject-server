@@ -183,6 +183,7 @@ class Controller {
     static async AddFavorites(req, res, next) {
         try {
             const url = req.body.url
+            const {title, description, thumbnail} = req.body
             const { id } = req.Tambahan
             const check = await FavoriteNews.findAll({
                 where: {
@@ -196,7 +197,10 @@ class Controller {
             })
             const pick = await FavoriteNews.create({
                 UserId: id,
-                LinkId: url
+                LinkId: url,
+                title,
+                description,
+                thumbnail
             })
             res.status(201).json({
                 message: "successfully Create"
@@ -211,16 +215,19 @@ class Controller {
             const { id } = req.Tambahan
             const url = req.body.url
             const comment = req.body.comment
-            const data = await Comment.create({
-                comment,
-                UserId: id,
-                LinkId: url
-            })
+            if(comment){
+                const data = await Comment.create({
+                    textcomment: comment,
+                    UserId: id,
+                    LinkId: url
+                })
+            }
             const showComment = await Comment.findAll({
                 where: {
                     LinkId: url,
                     UserId: id
-                }
+                },
+                include : [User]
             })
             res.status(200).json(showComment)
         } catch (error) {
@@ -242,6 +249,7 @@ class Controller {
             res.status(200).json({
                 message: "Success Erase Your Favorite News"
             })
+            
         } catch (error) {
             next(error)
         }

@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Comment.init({
-    comment: {
+    textcomment: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
