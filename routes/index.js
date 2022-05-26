@@ -4,7 +4,7 @@ const destinationRouter = require('./destination')
 const orderRouter = require('./order')
 
 
+router.use('/', orderRouter)
 router.use('/destination', destinationRouter)
-router.use('/order', orderRouter)
 
 module.exports = router

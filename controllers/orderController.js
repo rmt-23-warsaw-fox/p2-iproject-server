@@ -1,12 +1,13 @@
 const midtransClient = require('midtrans-client');
-const { Order } = require('../models')
+const { Order, Destination } = require('../models')
 
 class OrderController {
-
-    static async createOrder(req, res, next) {
+    static async order(req, res, next) {
         try {
-            const DestinationId = +req.params.id
+            const id = +req.params.id
             const { fullName, email, phone, date, amountOfPeople } = req.body
+
+            const findDestination = await Destination.findByPk(id)
 
             const newOrder = await Order.create({
                 fullName,
@@ -14,20 +15,14 @@ class OrderController {
                 phone,
                 date,
                 amountOfPeople,
-                DestinationId,
+                DestinationId: id,
                 status: "unpaid"
             })
 
-            console.log(newOrder)
+            if (!newOrder) {
+                throw new Error('order not created')
+            }
 
-            res.status(201).json(newOrder)
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
-    static async order(req, res, next) {
-        try {
             let snap = new midtransClient.Snap({
                 isProduction: false,
                 serverKey: 'SB-Mid-server-B892m0AJFL0ueMF_84gqAW-u',
@@ -37,7 +32,7 @@ class OrderController {
             let parameter = {
                 "transaction_details": {
                     "order_id": `orderDream-${Date.now()}`,
-                    "gross_amount": 200000
+                    "gross_amount": `${findDestination.price * amountOfPeople}`
                 }, "credit_card": {
                     "secure": true
                 }
