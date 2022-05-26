@@ -81,6 +81,48 @@ class Controller {
             next(err)
         }
     }
+
+    static async getProfile(req, res, next){
+        try {
+            const UserId = req.dataUser.id
+            if(!UserId){
+                throw new Error("User Not Found")
+            }
+            const profile = await Profile.findAll({
+                attributes:{
+                    exclude:["createdAt", "updatedAt"]
+                },
+                where:{
+                    UserId:UserId
+                }
+            })
+            res.status(200).json(profile)
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async editProfile(req, res, next){
+        try {
+            const UserId = req.dataUser.id
+            const { fullName, bio, profilePicture } = req.body
+            const profile = await Profile.update({
+                fullName, 
+                bio, 
+                profilePicture
+            }, {
+                where:{
+                    UserId:UserId
+                }
+            })
+            res.status(200).json({
+                message:"Succes update your profile!",
+            })
+        } catch (err) {
+            console.log(err)
+            next(err)
+        }
+    }
 }
 
 module.exports = Controller

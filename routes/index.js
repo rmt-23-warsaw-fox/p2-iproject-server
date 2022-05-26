@@ -11,6 +11,8 @@ router.post("/login", Controller.login)
 
 router.use(authn)
 router.post("/profiles", Controller.createProfile)
+router.get("/profiles", Controller.getProfile)
+router.put("/profiles", Controller.editProfile)
 
 router.use(errorHandlres)
 

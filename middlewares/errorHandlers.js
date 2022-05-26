@@ -19,6 +19,10 @@ const errorHandlres = async (err, req, res, next) => {
     res.status(401).json({
       message: err.message,
     });
+  } else if(err.message === "User Not Found") {
+    res.status(404).json({
+      message:err.message
+    })
   } else {
     res.status(500).json({
       statusCode: 500,
