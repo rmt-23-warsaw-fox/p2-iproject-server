@@ -8,12 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      ApiId: {
+      idMeal: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      price: {
-        type: Sequelize.INTEGER,
+      strMeal: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      strMealThumb: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       createdAt: {

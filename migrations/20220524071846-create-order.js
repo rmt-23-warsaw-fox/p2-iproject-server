@@ -20,6 +20,26 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      status: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      virtualAccount: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      external_id: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      UserId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "Users",
+          key: "id",
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
