@@ -11,6 +11,15 @@ const handlingError = (err, req, res, next) => {
   } else if (err.name === "passIncorrect") {
       code = 400
       msg = "Password Incorect"
+  } else if (err.name === "notToken") {
+      code = 403
+      msg = "access forbidden / must login"
+  } else if(err.name === "accountIsNotActive") {
+      code = 403
+      msg = "please check email to activate"
+  } else if(err.name === "require") {
+    code = 404,
+    msg = "email & password required"
   }
 
   res.status(code).json({

@@ -3,6 +3,6 @@ const router = express.Router();
 const Controller = require('../controllers/coin')
 
 router.get('/', Controller.getCoin)
-router.get('/search', Controller.searchCoin)
+// router.get('/search',)
 
 module.exports = router
