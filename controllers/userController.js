@@ -1,6 +1,7 @@
 const { comparePassword, createToken } = require('../helpers/index')
 const {User} = require('../models/index')
 const {OAuth2Client} = require('google-auth-library');
+const nodemailer = require('nodemailer')
 
 class UserController {
   static async userRegister(req, res, next) {
@@ -30,6 +31,50 @@ class UserController {
     } catch(err) {
       next(err)
     }
+  }
+
+  static async isEmail(req, res, next) {
+    try {
+      const {
+        name,
+        email,
+        password,
+        phoneNumber,
+      } = req.body
+
+      const item = await User.build({
+        name,
+        email,
+        password,
+        phoneNumber,
+      })
+      const validateItem = await item.validate()
+
+      let sendEmail = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'iqbal.muh998@gmail.com',
+          pass: 'kqboucqllkvhtmiu'
+        }
+      })
+      let mailOptions = {
+        from: 'iqbal.muh998@gmail.com',
+        to: email,
+        subject: 'Verifikasi untuk register',
+        text: 'your profile has been updated'
+      }
+  
+      sendEmail.sendMail(mailOptions, (err, info) => {
+        if (err) {
+          throw new Error(900)
+        }
+      })
+      res.status(200).json({message: 'Cek email untuk verifikasi'})
+    } catch(err) {
+      console.log(err);
+      next(err)
+    }
+
   }
 
   static async loginGoogle(req, res, next) {
