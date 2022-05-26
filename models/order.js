@@ -35,7 +35,10 @@ module.exports = (sequelize, DataTypes) => {
     amountOfPeople: {
       allowNull: false,
       type: DataTypes.INTEGER
-    }
+    },
+    status: {
+      type: DataTypes.STRING
+    },
   }, {
     sequelize,
     modelName: 'Order',

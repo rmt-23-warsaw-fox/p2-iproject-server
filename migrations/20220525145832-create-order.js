@@ -18,7 +18,7 @@ module.exports = {
       },
       phone: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       DestinationId: {
         allowNull: false,
@@ -37,6 +37,9 @@ module.exports = {
       amountOfPeople: {
         allowNull: false,
         type: Sequelize.INTEGER
+      },
+      status: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

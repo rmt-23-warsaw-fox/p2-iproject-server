@@ -1,6 +1,32 @@
 const midtransClient = require('midtrans-client');
+const { Order } = require('../models')
 
 class OrderController {
+
+    static async createOrder(req, res, next) {
+        try {
+            const DestinationId = +req.params.id
+            const { fullName, email, phone, date, amountOfPeople } = req.body
+
+            const newOrder = await Order.create({
+                fullName,
+                email,
+                phone,
+                date,
+                amountOfPeople,
+                DestinationId,
+                status: "unpaid"
+            })
+
+            console.log(newOrder)
+
+            res.status(201).json(newOrder)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+
     static async order(req, res, next) {
         try {
             let snap = new midtransClient.Snap({
