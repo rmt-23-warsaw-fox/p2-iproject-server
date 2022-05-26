@@ -82,7 +82,7 @@ class WishlistController {
         req.currentUser;
 
       let snap = new midtransClient.Snap({
-        isProduction: false,
+        isProduction: true,
         serverKey: "SB-Mid-server-okUj6lYx4xPOAL8OMFdRn4sE",
       });
 
@@ -156,33 +156,6 @@ class WishlistController {
     }
   }
 
-  static async addTransaction(req, res, next) {
-    try {
-      const {
-        accomodationId,
-        accomodationName,
-        typeId,
-        price,
-        totalNight,
-        totalPrice,
-      } = req.body;
-      await Transaction.create({
-        name: accomodationName,
-        price,
-        totalNight,
-        totalPrice,
-        UserId: id,
-        AccomodationId: accomodationId,
-        TypeId: typeId,
-      });
-      res.status(201).json({
-        message: "New transaction successfully added !!!",
-      });
-    } catch (err) {
-      next(err);
-    }
-  }
-
   static async fetchTransactions(req, res, next) {
     try {
       const { id } = req.currentUser;
@@ -205,7 +178,7 @@ class WishlistController {
     try {
       const { orderId, id } = req.body;
       let apiClient = new midtransClient.Snap({
-        isProduction: false,
+        isProduction: true,
         serverKey: "SB-Mid-server-okUj6lYx4xPOAL8OMFdRn4sE",
         clientKey: "SB-Mid-client-62QhHpa6vM7tXjuL",
       });
