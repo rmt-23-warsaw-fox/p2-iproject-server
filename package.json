@@ -11,5 +11,25 @@
   },
   "devDependencies": {
     "sequelize-cli": "^6.4.1"
-  }
+  },
+  "name": "p2-iproject-server",
+  "description": "Individual Project - Server",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nael2112/p2-iproject-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nael2112/p2-iproject-server/issues"
+  },
+  "homepage": "https://github.com/nael2112/p2-iproject-server#readme"
 }
