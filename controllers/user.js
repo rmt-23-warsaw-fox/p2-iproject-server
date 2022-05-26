@@ -32,7 +32,7 @@ class UserController {
         access_token: token,
       });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       next(err);
     }
   }

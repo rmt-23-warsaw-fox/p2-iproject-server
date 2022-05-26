@@ -2,7 +2,7 @@ const { readPayload } = require("../helpers/jwt");
 const { User, Profile_Picture } = require("../models/index");
 async function authenticate(req, res, next) {
   try {
-    console.log(req.headers);
+    // console.log(req.headers);
     const token = req.headers.access_token;
     const payload = readPayload(token);
     const foundUser = await User.findOne({
@@ -22,7 +22,7 @@ async function authenticate(req, res, next) {
     };
     next();
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     next(err);
   }
 }
