@@ -14,7 +14,9 @@ const errorHandling = (err, request, response, next) => {
   } else if(err.name === 'SequelizeValidationError') {
     status = 400
     message = err.errors[0].message
-    // message = err.
+  } else if (err.message === 'post_not_found') {
+    status = 404
+    message = 'Post is not found.'
   }
 
   console.log(err);
