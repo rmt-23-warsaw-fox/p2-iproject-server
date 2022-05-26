@@ -29,14 +29,19 @@ class DotaController {
 
   static async getTeams(req, res, next) {
     try {
+      let { page = 0 } = req.headers
+      console.log(page)
+      page !== 0 ? (page = page * 9) : null
+
       const { data } = await axios({
         method: "get",
         url: "https://api.opendota.com/api/teams",
       })
 
+      const teams = data.slice(page, page + 10)
       res.status(200).json({
         statusCode: 200,
-        data,
+        teams,
       })
     } catch (err) {
       next(err)
@@ -80,6 +85,25 @@ class DotaController {
       res.status(200).json({
         statusCode: 200,
         data,
+      })
+    } catch (err) {
+      next(err)
+    }
+  }
+
+  static async getHeroes(req, res, next) {
+    try {
+      let { page = 0 } = req.headers
+      page !== 0 ? (page = page * 9) : null
+
+      const { data } = await axios({
+        method: "get",
+        url: "https://api.opendota.com/api/heroStats",
+      })
+      const heroes = data.slice(page, page + 10)
+      res.status(200).json({
+        statusCode: 200,
+        heroes,
       })
     } catch (err) {
       next(err)

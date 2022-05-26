@@ -44,6 +44,7 @@ class UserController {
         statusCode: 200,
         message: "You're Logged in!",
         access_token: accessToken,
+        username: foundUser.username,
       })
     } catch (err) {
       next(err)
