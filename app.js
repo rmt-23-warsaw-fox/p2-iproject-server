@@ -9,7 +9,7 @@ app.use(express.json());
 app.use('/', require("./routers/index"));
 
 app.use((err, req, res, next) => {
-    console.log(err);
+    // console.log(err);
     let code = 500;
     let message = "Internal Server Error";
 
