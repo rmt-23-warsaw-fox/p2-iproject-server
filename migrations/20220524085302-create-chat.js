@@ -9,9 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       AuthorId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       PostId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       ChatId: {

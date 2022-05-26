@@ -21,6 +21,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    queryInterface.removeConstraint('Posts', 'statusArchieve');
+    await queryInterface.removeColumn('Posts', 'statusArchieve');
   }
 };

@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { User } = require("../models");
+const { User,Transaction,TransactionHistory } = require("../models");
 const { hashPassword, comparePassword } = require("../helper/bcrypt");
 const { payloadToToken } = require("../helper/jwt");
 const { Op } = require("sequelize")
@@ -132,6 +132,66 @@ class UserController {
             console.log(error);
             next(error);
         }
+    }
+
+    static async buyCoin(req, res, next) {
+        let userId=req.user.id;
+        let transactionId=req.body.id;
+        console.log(transactionId)
+        let userupdate;
+        try{
+            let user = User.findByPk(userId).then((result)=>{
+                userupdate=result;
+                return Transaction.findByPk(transactionId);
+            }).then((result)=>{
+
+                return userupdate.update({coin:userupdate.coin+result.ammount})
+                
+            }).then((result)=>{
+                return TransactionHistory.create({UserId:userId,TransactionId:transactionId})
+            }).then((result)=>{
+                res.status(200).json({
+                    message: "Coin have been purchased"
+                });
+            })
+        }catch(error){
+            console.log(error);
+            next(error);
+        }
+    }
+    static async getPrices(req, res, next) {
+        
+        try{
+            let transaction = Transaction.findAll().then((result)=>{
+                res.status(201).json({
+                transaction: result
+            });
+            })
+            
+        }
+        catch(error){
+            console.log(error);
+            next(error);
+        }
+        
+
+    }
+    static async setPrice(req, res, next) {
+        let {price,coin} = req.body;
+        try{
+            let transaction = Transaction.create({ammount:coin,price}).then((result)=>{
+                res.status(201).json({
+                message: "Transaction created"
+            });
+            })
+            
+        }
+        catch(error){
+            console.log(error);
+            next(error);
+        }
+        
+
     }
 }
 

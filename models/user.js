@@ -49,6 +49,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     role: DataTypes.STRING,
     phoneNumber: DataTypes.STRING,
+    coin: DataTypes.INTEGER,
     address: DataTypes.STRING
   },{
       sequelize,
