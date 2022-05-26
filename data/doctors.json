@@ -1,6 +1,6 @@
 [
   {
-    "name": "Dr. Edgar",
+    "name": "Dr. Edgar Dimas",
     "email": "edgar.dimas.ir@gmail.com",
     "password": "edgardimash",
     "phoneNumber": "0111122223",
@@ -8,7 +8,7 @@
     "imageUrl": "https://st.depositphotos.com/1771835/1477/i/950/depositphotos_14779771-stock-photo-portrait-of-confident-young-doctor.jpg"
   },
   {
-    "name": "Dr. Erika",
+    "name": "Dr. Erika Suttopo",
     "email": "erika@gmail.com",
     "password": "erika",
     "phoneNumber": "01112221101",
@@ -16,7 +16,7 @@
     "imageUrl": "https://img.freepik.com/free-photo/beautiful-young-female-doctor-looking-camera-office_1301-7807.jpg"
   },
   {
-    "name": "Dr. Joko",
+    "name": "Dr. Joko Priyandono",
     "email": "joko@gmail.com",
     "password": "erika",
     "phoneNumber": "01112221101",
@@ -24,7 +24,7 @@
     "imageUrl": "https://www.stockvault.net/data/2015/09/01/177580/preview16.jpg"
   },
   {
-    "name": "Dr. Astrid",
+    "name": "Dr. Astrid Sinarti",
     "email": "astrid@gmail.com",
     "password": "erika",
     "phoneNumber": "01112221101",
@@ -32,15 +32,15 @@
     "imageUrl": "https://st.focusedcollection.com/13422768/i/650/focused_185048586-stock-photo-female-doctor-standing-clipboard-portrait.jpg"
   },
   {
-    "name": "Dr. Edgar",
+    "name": "Dr. Edgar Tricahyono",
     "email": "edgar.dimas.ir2@gmail.com",
     "password": "edgardimash",
     "phoneNumber": "0111122223",
-    "speciality": "General Practice",
+    "speciality": "Internal Medicine",
     "imageUrl": "https://st.depositphotos.com/1771835/1477/i/950/depositphotos_14779771-stock-photo-portrait-of-confident-young-doctor.jpg"
   },
   {
-    "name": "Dr. Erika",
+    "name": "Dr. Erika Maharani",
     "email": "erika2@gmail.com",
     "password": "erika",
     "phoneNumber": "01112221101",
@@ -48,7 +48,7 @@
     "imageUrl": "https://img.freepik.com/free-photo/beautiful-young-female-doctor-looking-camera-office_1301-7807.jpg"
   },
   {
-    "name": "Dr. Joko",
+    "name": "Dr. Joko Hasanuddin",
     "email": "joko2@gmail.com",
     "password": "erika",
     "phoneNumber": "01112221101",
@@ -56,7 +56,7 @@
     "imageUrl": "https://www.stockvault.net/data/2015/09/01/177580/preview16.jpg"
   },
   {
-    "name": "Dr. Astrid",
+    "name": "Dr. Astrid Sulastri",
     "email": "astrid2@gmail.com",
     "password": "erika",
     "phoneNumber": "01112221101",
@@ -64,7 +64,7 @@
     "imageUrl": "https://st.focusedcollection.com/13422768/i/650/focused_185048586-stock-photo-female-doctor-standing-clipboard-portrait.jpg"
   },
   {
-    "name": "Dr. Edgar",
+    "name": "Dr. Edgar 2",
     "email": "edgar.dimas.ir3@gmail.com",
     "password": "edgardimash",
     "phoneNumber": "0111122223",
@@ -72,7 +72,7 @@
     "imageUrl": "https://st.depositphotos.com/1771835/1477/i/950/depositphotos_14779771-stock-photo-portrait-of-confident-young-doctor.jpg"
   },
   {
-    "name": "Dr. Erika",
+    "name": "Dr. Erika 2",
     "email": "erika3@gmail.com",
     "password": "erika",
     "phoneNumber": "01112221101",
@@ -80,7 +80,7 @@
     "imageUrl": "https://img.freepik.com/free-photo/beautiful-young-female-doctor-looking-camera-office_1301-7807.jpg"
   },
   {
-    "name": "Dr. Joko",
+    "name": "Dr. Joko 2",
     "email": "joko3@gmail.com",
     "password": "erika",
     "phoneNumber": "01112221101",
@@ -88,23 +88,23 @@
     "imageUrl": "https://www.stockvault.net/data/2015/09/01/177580/preview16.jpg"
   },
   {
-    "name": "Dr. Astrid",
+    "name": "Dr. Astrid 2",
     "email": "astrid3@gmail.com",
     "password": "erika",
     "phoneNumber": "01112221101",
-    "speciality": "Gynecology",
+    "speciality": "General Practice",
     "imageUrl": "https://st.focusedcollection.com/13422768/i/650/focused_185048586-stock-photo-female-doctor-standing-clipboard-portrait.jpg"
   },
   {
-    "name": "Dr. Edgar",
+    "name": "Dr. Edgar 3",
     "email": "edgar.dimas.ir4@gmail.com",
     "password": "edgardimash",
     "phoneNumber": "0111122223",
-    "speciality": "General Practice",
+    "speciality": "Gynecology",
     "imageUrl": "https://st.depositphotos.com/1771835/1477/i/950/depositphotos_14779771-stock-photo-portrait-of-confident-young-doctor.jpg"
   },
   {
-    "name": "Dr. Erika",
+    "name": "Dr. Erika 3",
     "email": "erika4@gmail.com",
     "password": "erika",
     "phoneNumber": "01112221101",
@@ -112,19 +112,19 @@
     "imageUrl": "https://img.freepik.com/free-photo/beautiful-young-female-doctor-looking-camera-office_1301-7807.jpg"
   },
   {
-    "name": "Dr. Joko",
+    "name": "Dr. Joko 3",
     "email": "joko4@gmail.com",
     "password": "erika",
     "phoneNumber": "01112221101",
-    "speciality": "Infectiology",
+    "speciality": "Gynecology",
     "imageUrl": "https://www.stockvault.net/data/2015/09/01/177580/preview16.jpg"
   },
   {
-    "name": "Dr. Astrid",
+    "name": "Dr. Astrid 3",
     "email": "astrid4@gmail.com",
     "password": "erika",
     "phoneNumber": "01112221101",
-    "speciality": "Gynecology",
+    "speciality": "Infectionology",
     "imageUrl": "https://st.focusedcollection.com/13422768/i/650/focused_185048586-stock-photo-female-doctor-standing-clipboard-portrait.jpg"
   }
   
