@@ -41,7 +41,7 @@ class OrderController {
                 "transaction_details": {
                     "order_id": `orderDream-${Date.now()}`,
                     "gross_amount": `${findDestination.price * amountOfPeople}`
-                }, 
+                },
             };
 
             let order = await snap.createTransaction(parameter)
@@ -51,11 +51,10 @@ class OrderController {
             }
 
             order.orderIDBE = newOrder.id
-
             sendEmail(objMail)
             res.status(200).json(order)
         } catch (err) {
-            console.log(err)
+            next(err)
         }
     }
 
@@ -79,7 +78,7 @@ class OrderController {
                 message: `Order paid`
             })
         } catch (err) {
-            console.log(err)
+            next(err)
         }
     }
 }
