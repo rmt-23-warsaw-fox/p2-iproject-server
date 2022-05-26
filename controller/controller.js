@@ -28,7 +28,6 @@ class Controller {
                 email: user.email,
                 username: user.username,
             }
-            console.log(data);
             const access_token = createToken(data)
             res.status(200).json({
                 statusCode: 200,
