@@ -5,9 +5,11 @@ class Controller {
 
     static async getHistory(req, res, next) {
         try {
-            console.log("History access")
+            console.log("History access"+req.user)
             const history = await History.findAll(
-                {include: [{
+                
+                {where:{UserId:req.user.id},
+                    include: [{
                 model: Post,
                 attributes: ["name"],
             }, {
