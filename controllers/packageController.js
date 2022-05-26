@@ -81,7 +81,6 @@ class PackageController {
   static async listBuy(req, res, next) {
     try {
       const { id } = req.data;
-      console.log(555);
       const findUser = await User.findOne({
         where: {
           id,
