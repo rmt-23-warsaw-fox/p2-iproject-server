@@ -1,10 +1,11 @@
-const { Post, Type, User ,History,Favourite} = require("../models");
+const { Follower,PostPaid,Post, Type, User ,History,Favourite} = require("../models");
 const { Op } = require("sequelize");
 const { tokenToPayload } = require("../helper/jwt");
 class PostController {
     static async list(req, res, next) {
-        const { access_token } = req.headers;
+        const { access_token,load_only } = req.headers;
         let userId=-1;
+        let total=0;
         if(access_token){
 
             let payload = tokenToPayload(access_token);
@@ -15,6 +16,8 @@ class PostController {
                 userId=userFound.id;
             }
         }
+        let followerPost=[];
+        let paidPost=[];
         console.log(req.query);
         console.log(req.body);
         let name=req.query.name;
@@ -28,52 +31,179 @@ class PostController {
         }
         console.log(offset+" is OFFSET");
         
-        let where = {
-            statusArchieve: "active"
+        if(userId!=-1&&!load_only){
+            try{
+            let tempFollower=Follower.findAll({                
+                where:{
+                    FollowerId:2
+                }
+                
+            }).then((result)=>{
+                
+                let whereData=[];
+                result.forEach(element => {
+                    whereData.push(element.TargetId);
+                });
+                let where = {
+                    AuthorId: {[Op.in]: whereData},
+                    statusArchieve: "follower"
+                }        
+                if(name){
+                    name= "%"+name+"%"
+                    where.name={[Op.iLike]: name}
+                }
+                if(location){
+                    location="%"+location+"%"
+                    where.location={[Op.iLike]: location}
+                }
+                return Post.findAndCountAll({where: where,
+                    include: [
+                        {
+                            model: Type,
+                            attributes: ["name"]
+                        }, {
+                            model: User,
+                            attributes: ["email"]
+                        }
+                    ]})
+            }).then((result)=>{
+                //console.log(result.rows)
+                result.rows.forEach(element=>{
+                    followerPost.push(element);
+                })
+                let where = {
+                    
+                }        
+                if(name){
+                    name= "%"+name+"%"
+                    where.name={[Op.iLike]: name}
+                }
+                if(location){
+                    location="%"+location+"%"
+                    where.location={[Op.iLike]: location}
+                }
+                return PostPaid.findAll({
+                    attributes:[],
+                    where:{
+                        PayerId:2
+                    },
+                    include:[{
+                        model: Post,
+                        include: [
+                            {
+                                model: Type,
+                                attributes: ["name"]
+                            }, {
+                                model: User,
+                                attributes: ["email"]
+                            }
+                        ],where:where
+                    }
+                        
+                    ]
+                    
+                })
+            }).then((result)=>{
+                console.log("Paid post");
+                //console.log(result);
+                result.forEach(element => {
+                    paidPost.push(element.Post);
+                });
+                //console.log(paidPost);
+                
+                let where = {
+                    statusArchieve: "active"
+                }        
+                if(name){
+                    name= "%"+name+"%"
+                    where.name={[Op.iLike]: name}
+                }
+                if(location){
+                    location="%"+location+"%"
+                    where.location={[Op.iLike]: location}
+                }
+                let option ={
+                    limit: limit,
+                    offset: offset,
+                    where:where,
+                    include: [
+                        {
+                            model: Type,
+                            attributes: ["name"]
+                        }, {
+                            model: User,
+                            attributes: ["email"]
+                        }
+        
+                    ]
+                }
+                return Post.findAndCountAll(option);
+            }).then(({count,rows})=>{
+                // count+=paidPost.length+followerPost.length;
+                console.log("Paid post");
+                console.log(paidPost)
+                console.log("Follower post");
+                console.log(followerPost)
+                let totalPages=Math.ceil(count/limit) 
+                res.status(200).json({
+                    message: "Posts",
+                    data: rows,
+                    paid: paidPost,
+                    follower:followerPost,
+                    totalPages:totalPages
+                });
+            })
+        }catch(error){
+            console.log(error);
+                next(error);
         }
-        if(userId!=-1){
-            where ={
-                [Op.not]: {statusArchieve: "archieved"}
+            
+
+        }
+        else{
+            let where = {
+                statusArchieve: "active"
+            }        
+            if(name){
+                name= "%"+name+"%"
+                where.name={[Op.iLike]: name}
+            }
+            if(location){
+                location="%"+location+"%"
+                where.location={[Op.iLike]: location}
+            }
+            
+            let option ={
+                limit: limit,
+                offset: offset,
+                where:where,
+                include: [
+                    {
+                        model: Type,
+                        attributes: ["name"]
+                    }, {
+                        model: User,
+                        attributes: ["email"]
+                    }
+    
+                ]
+            }
+            
+            try {
+                const {count,rows} = await Post.findAndCountAll(option);
+    
+                let totalPages=Math.ceil(count/limit) 
+                res.status(200).json({
+                    message: "Posts",
+                    data: rows,
+                    totalPages:totalPages
+                });
+            } catch (error) {
+                console.log(error);
+                next(error);
             }
         }
-        if(name){
-            name= "%"+name+"%"
-            where.name={[Op.iLike]: name}
-        }
-        if(location){
-            location="%"+location+"%"
-            where.location={[Op.iLike]: location}
-        }
         
-        let option ={
-            limit: limit,
-            offset: offset,
-            where:where,
-            include: [
-                {
-                    model: Type,
-                    attributes: ["name"]
-                }, {
-                    model: User,
-                    attributes: ["email"]
-                }
-
-            ]
-        }
-        
-        try {
-            const {count,rows} = await Post.findAndCountAll(option);
-
-            let totalPages=Math.ceil(count/limit) 
-            res.status(200).json({
-                message: "Posts",
-                data: rows,
-                totalPages:totalPages
-            });
-        } catch (error) {
-            console.log(error);
-            next(error);
-        }
     }
 
     static async listOwn(req, res, next) {
