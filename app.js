@@ -9,7 +9,7 @@ app.use(express.json());
 app.use('/', require("./routers/index"));
 
 app.use((err, req, res, next) => {
-    console.log(err);
+    // console.log(err);
     let code = 500;
     let message = "Internal Server Error";
 
@@ -17,10 +17,19 @@ app.use((err, req, res, next) => {
         code = 400;
         message = err.errors[0].message;
     }
+    if (err.message === "invalid image type") {
+        code = 400;
+        message = "Invalid Image Type"
+    }
 
     if (err.message === "user not found") {
         code = 401;
         message = "Invalid username or password"
+    }
+
+    if (err.message === "invalid token" || err.name === "JsonWebTokenError") {
+        code = 401;
+        message = "Invalid token"
     }
     
     res.status(code).json({message})
