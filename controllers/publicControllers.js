@@ -65,12 +65,14 @@ class PublicController {
       const [user, created] = await User.findOrCreate({
         where: { email: payload.email },
         defaults: {
+          username: "unknown",
           password: Math.random().toString(36).substring(2, 7),
           phoneNumber: "123456789",
           address: "unknown",
         },
       });
-      const access_token = createTokenFromData({
+
+      const access_token = createToken({
         id: user.id,
         email: user.email,
       });
