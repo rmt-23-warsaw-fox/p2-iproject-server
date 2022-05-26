@@ -6,13 +6,11 @@ class Controller {
   static async home(req, res, next) {
     try {
       const allMovie = await Movie.findAll();
-      //   console.log(allMovie);
       res.status(200).json({
         statusCode: 200,
         allMovie,
       });
     } catch (error) {
-      //   console.log(error);
       next(error);
     }
   }

@@ -1,7 +1,6 @@
 "use strict";
 
 const express = require("express");
-// const { errorHandler } = require("./middlewares/errorHandler");
 const routes = require("./routes/index");
 const app = express();
 const cors = require("cors");
@@ -21,7 +20,6 @@ app.use(express.json());
 
 app.use("/", routes);
 app.use(errorHandler);
-// app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Example app listening on http://localhost:${port}`);

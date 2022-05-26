@@ -1,5 +1,4 @@
 function errorHandler(err, req, res, next) {
-  console.log(err);
   let code = 500;
   let message = "Internal Server Error";
   let error = [];
@@ -18,9 +17,6 @@ function errorHandler(err, req, res, next) {
   } else if (err.message === "Not Found") {
     code = 404;
     message = "Not Found";
-  } else if (err.message === "Not allowed") {
-    code = 403;
-    message = "Forbidden to access";
   } else if (
     err.name === "SequelizeValidationError" ||
     err.name === "SequelizeUniqueConstraintError"
@@ -30,10 +26,8 @@ function errorHandler(err, req, res, next) {
     error = err.errors.map((el) => {
       return { message: el.message, path: el.path };
     });
-  } else if (err.message === "Already Favorite") {
-    message = "this food already your favorite";
-  } else if (err.message === "Not Your Favorite") {
-    message = "this food is not your favorite";
+  } else if (err.message === "Seats is unavailable") {
+    message = "Seats is unavailable";
   }
   let errors = { message, error };
   if (error.length === 0) {
