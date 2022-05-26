@@ -3,20 +3,30 @@
 const axios = require('axios');
 
 class ControllerMovie {
-  static async trendingMovies(req, res, next) {
+  static async popularMovies(req, res, next) {
     try {
-      let { time = 'day' } = req.query;
-
-      time === '' ? (time = 'day') : time;
+      let { page = 1 } = req.query
 
       const { data } = await axios({
+        mehotd: 'GET',
+        url: `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=${page}`
+      })
+
+      res.status(200).json(data)
+    } catch (err) {
+      next(err)
+    }
+  }
+
+   static async trendingMovies(req, res, next) {
+    try {
+      const { data } = await axios({
         method: 'GET',
-        url: `https://api.themoviedb.org/3/trending/movie/${time}?api_key=${process.env.API_KEY}`,
+        url: `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.API_KEY}`,
       });
 
       res.status(200).json(data);
     } catch (err) {
-      console.log(err);
       next(err);
     }
   }
@@ -45,7 +55,6 @@ class ControllerMovie {
 
       res.status(200).json(data);
     } catch (err) {
-      console.log(err);
       next(err);
     }
   }
