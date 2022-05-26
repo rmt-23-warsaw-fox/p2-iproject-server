@@ -1,5 +1,5 @@
 const { Order } = require("../models");
-const { coreApi, apiClient } = require("../helpers/midtrans");
+const { coreApi } = require("../helpers/midtrans");
 const order = require("../models/order");
 
 class orderController {
