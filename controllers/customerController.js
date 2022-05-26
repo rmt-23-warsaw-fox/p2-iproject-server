@@ -99,7 +99,6 @@ class customerController {
     try {
       const { CustomerId } = req.user;
       const { orderedHands } = req.body;
-      console.log(orderedHands, "INI DIA BAMBANG");
 
       const createOrder = await Order.create({
         CustomerId,
@@ -107,12 +106,12 @@ class customerController {
       });
 
       let order = await Order.findAll();
-      let order_id = order.length;
+      let order_id = order[order.length - 1].id + 10;
       let gross_amount = orderedHands * 100000;
 
       let parameter = {
         transaction_details: {
-          order_id: `trivastop-development-${order_id}`,
+          order_id: `kamimampu-development-${order_id}`,
           gross_amount: gross_amount,
         },
       };

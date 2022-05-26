@@ -8,9 +8,15 @@ class eventController {
         order: [["dateOfEvent", "DESC"]],
       });
 
+      events.forEach((el) => {
+        el.dataValues.percentage = Math.floor(
+          (el.receivedHands / el.requiredHands) * 100
+        );
+      });
+
       res.status(200).json({
         message: "Successfully get newest events",
-        events,
+        events: events,
       });
     } catch (error) {
       next(error);
@@ -21,9 +27,15 @@ class eventController {
     try {
       const events = await Event.findAll();
 
+      events.forEach((el) => {
+        el.dataValues.percentage = Math.floor(
+          (el.receivedHands / el.requiredHands) * 100
+        );
+      });
+
       res.status(200).json({
         message: "Successfully get all events",
-        events,
+        events: events,
       });
     } catch (error) {
       next(error);

@@ -18,7 +18,7 @@ const errorHandler = (error, req, res, next) => {
   } else if (error.statusCode === 403) {
     res.status(403).json({
       statusCode: 403,
-      message: "Forbidden",
+      message: "You dont have any Hands",
     });
   } else if (error.name === "INVALID_PASSWORD") {
     res.status(401).json({
