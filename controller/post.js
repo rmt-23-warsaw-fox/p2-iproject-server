@@ -1,8 +1,20 @@
 const { Post, Type, User ,History,Favourite} = require("../models");
 const { Op } = require("sequelize");
+const { tokenToPayload } = require("../helper/jwt");
 class PostController {
     static async list(req, res, next) {
-        
+        const { access_token } = req.headers;
+        let userId=-1;
+        if(access_token){
+
+            let payload = tokenToPayload(access_token);
+            let userFound = await User.findByPk(payload.id);
+    
+            if (!userFound) {
+            } else {
+                userId=userFound.id;
+            }
+        }
         console.log(req.query);
         console.log(req.body);
         let name=req.query.name;
@@ -19,6 +31,11 @@ class PostController {
         let where = {
             statusArchieve: "active"
         }
+        if(userId!=-1){
+            where ={
+                [Op.not]: {statusArchieve: "archieved"}
+            }
+        }
         if(name){
             name= "%"+name+"%"
             where.name={[Op.iLike]: name}
@@ -27,6 +44,7 @@ class PostController {
             location="%"+location+"%"
             where.location={[Op.iLike]: location}
         }
+        
         let option ={
             limit: limit,
             offset: offset,
@@ -194,7 +212,7 @@ class PostController {
                 if(path=="/hide"){
                     statusArchieve="hidden"
                 }else{
-                    statusArchieve="follower-only"
+                    statusArchieve="follower"
                 }
             }
             let post = await Post.findByPk(id);
@@ -227,7 +245,7 @@ class PostController {
                 post = post.update({ name, description, imgUrl, location, tag, typeId }).then((response)=>{
                     if(response){
                         let history = History.create({
-                            action: 'updated',
+                            action: 'updated ',
                             TargetId: response.id,
                             UserId: authorId
                         });
