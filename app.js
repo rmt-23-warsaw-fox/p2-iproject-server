@@ -12,4 +12,4 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/", router);
 
-app.listen(port, () => console.log(`This app is listening on ${port}`));
+app.listen(port, () => console.log(`This app is listening on ${+port}`));
