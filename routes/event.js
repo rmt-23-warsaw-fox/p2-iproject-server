@@ -5,7 +5,6 @@ const authentication = require("../middlewares/authentication");
 const authorization = require("../middlewares/authorization");
 
 router.get("/", eventController.eventList);
-router.get("/master-list", eventController.eventMasterList);
 router.patch(
   "/hands/:EventId",
   authentication,
