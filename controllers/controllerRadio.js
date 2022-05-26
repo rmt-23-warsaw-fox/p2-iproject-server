@@ -7,7 +7,8 @@ class ControllerRadio {
 
     try {
 
-      let { votes, radioName, page = 0 } = req.query
+      let { votes, radioName, page } = req.query
+       
       console.log(req.query,'<<<<<<<<<<<');
       let options = {
         method: 'GET',
@@ -196,7 +197,47 @@ class ControllerRadio {
     }
   }
 
+  static async getRadioPosition(req, res, next) {
+    try {
+      let options = {
+        method: 'GET',
+        url: 'https://radio-browser.p.rapidapi.com/json/stations/search',
+        params: {
+          country: 'Indonesia',
+          reverse: 'false',
+          offset: 0,
+          limit: '155',
+          hidebroken: 'false'
+        },
+        headers: {
+          'X-RapidAPI-Host': 'radio-browser.p.rapidapi.com',
+          'X-RapidAPI-Key': process.env.API_KEY
+        }
+      }
+      const response = await axios.request(options)
+      let temp = []
+      response.data.forEach((el) => {
+        if(el.geo_lat && el.geo_long){
+          let data = {
+            stationId: el.stationuuid,
+            name: el.name,
+            lat: el.geo_lat,
+            lng: el.geo_long,
+            icon: el.favicon
+          };
+          temp.push(data)
+        }
+      })
+      
+      res.status(200).json({
+        totalPage: 15,
+        data: temp,
+      })
 
+    } catch (err) {
+      next(err)
+    }
+  }
 }
 
 module.exports = ControllerRadio

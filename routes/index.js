@@ -5,6 +5,8 @@ const errorHandler = require('../helpers/errorHandler')
 
 routes.get('/', ControllerRadio.getAllRadio)
 
+routes.get('/radioPosition', ControllerRadio.getRadioPosition)
+
 routes.post('/songs', ControllerRadio.getSong)
 
 routes.get('/songs/:id', ControllerRadio.getSongById)
