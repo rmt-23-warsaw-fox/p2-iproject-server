@@ -26,7 +26,6 @@ class OrderController {
         }
     }
 
-
     static async order(req, res, next) {
         try {
             let snap = new midtransClient.Snap({
@@ -51,6 +50,28 @@ class OrderController {
             }
 
             res.status(200).json(order)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    static async UpdateOrder(req, res, next) {
+        try {
+            const orderId = +req.params.id
+
+            const updatedOrder = await Order.update({
+                status: "paid",
+            }, {
+                where: {
+                    id: orderId
+                }
+            })
+
+            res.status(200).json({
+                statusCode: 200,
+                data: updatedOrder,
+                message: `Order paid`
+            })
         } catch (err) {
             console.log(err)
         }
