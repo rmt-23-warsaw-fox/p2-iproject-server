@@ -13,6 +13,9 @@ router.use(authn)
 router.post("/profiles", Controller.createProfile)
 router.get("/profiles", Controller.getProfile)
 router.put("/profiles", Controller.editProfile)
+router.post("/upload", Controller.createContent)
+router.get("/content", Controller.getContent)
+router.delete("/content/:id", Controller.deleteContent)
 
 router.use(errorHandlres)
 

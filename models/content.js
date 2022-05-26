@@ -15,8 +15,30 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Content.init({
-    upload: DataTypes.STRING,
-    caption: DataTypes.STRING,
+    upload: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:{
+          msg:"Please upload your content!"
+        },
+        notNull:{
+          msg:"cannot be null!"
+        }
+      }
+    },
+    caption: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:{
+          msg:"please input your caption!"
+        },
+        notNull:{
+          msg:"cannot be null!"
+        }
+      }
+    },
     UserId: DataTypes.INTEGER
   }, {
     sequelize,
