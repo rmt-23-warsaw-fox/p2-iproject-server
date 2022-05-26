@@ -1,10 +1,11 @@
 "use strict";
 const axios = require('axios')
-const baseURL = "http://localhost:3000"
 const { User, Category, FavoriteNews, NewsAPI, Comment } = require("../models/index")
 const { readHash } = require("../helper/hashPass")
 const { createToken } = require("../helper/jwt")
 const { OAuth2Client } = require('google-auth-library');
+const nodemailer = require("nodemailer");
+
 
 class Controller {
     static async LoginGoogle(req, res, next) {
@@ -72,14 +73,36 @@ class Controller {
     static async register(req, res, next) {
         try {
             const { email, password, username } = req.body
+            var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'josuawilliams17@gmail.com',
+                    pass: 'vojyplkbnsbhcgvy'
+                }
+            });
+
+            var mailOptions = {
+                from: 'josuawilliams17@gmail.com',
+                to: email,
+                subject: 'Thanks For Register To This News Website',
+                text: `Sawadikap ${username}, Welcome To Our Universe, Ini Adalah Website Anti Hoaks Silakan Bijak Dalam Membaca`
+            };
+
             const data = await User.create({
                 email,
                 password,
                 username
             })
-            res.status(201).json({
-                message: "Successfully registered",
-                username: data.username
+
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    res.status(201).json({
+                        message: "Successfully registered",
+                        username: data.username
+                    })
+                }
             })
         } catch (error) {
             next(error)
@@ -249,7 +272,6 @@ class Controller {
             const { id } = req.Tambahan
             const url = req.body.url
             const comment = req.body.comment
-            console.log(comment);
             if (comment) {
                 const data = await Comment.create({
                     textcomment: comment,

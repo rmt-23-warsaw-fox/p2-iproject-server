@@ -6,6 +6,7 @@ List of Available Endpoints In Route:
 - `POST /login-google`
 - `POST /register`
 - `GET /`
+- `GET /weather`
 - `GET /:categories`
 - `POST /:categories/detailNews`
 - 
@@ -14,6 +15,7 @@ List of Available Endpoints In Route:
 - `POST /favoritesNews`
 - `POST /comments/news`
 Authorization
+
 - `DELETE /delete`
 
 <br />
@@ -39,10 +41,32 @@ _200 - OK_
 }
 ```
 
+## 2. POST /login-google
+
+### Request
+- body
+
+```json
+{
+  "tokenGoogle": "string",
+}
+```
+
+### Response
+_200 - OK_
+```json
+{
+  "statusCode": 200,
+  "message": "Welcome",
+  "id": integer,
+  "access_token" : string`
+}
+```
+
 
 <br />
 
-## 2. POST /register
+## 3. POST /register
 
 ### Request
 - body
@@ -88,7 +112,7 @@ OR
 
 ```
 
-## 3. GET /
+## 4. GET /
 
 ### Response
 _200 - OK_
@@ -102,13 +126,19 @@ _200 - OK_
             "thumbnail": string
         },
     ],
-    "category" : array
 ```
 
 
-## 4. GET /:categories
+## 5. GET /:categories
 ### Request
-
+- params
+- query
+```json
+{
+  "params": "string" (for category)
+  "page": integer (for Pagination)
+}
+```
 
 ### Response
 _200 - OK_
@@ -124,14 +154,14 @@ _200 - OK_
  ]
 ```
 
-## 5. GET /favoritesNews
+## 6. GET /favoritesList/List
 
 ### Request
 - Headers
 
 ```json
 {
-  "access_token" : string
+  "access_token" : string,
 }
 ```
 
@@ -157,10 +187,17 @@ _404 - Not Found_
 
 <br/>
 
-## 6. GET /detailNews/:id
+## 7. GET /:categories/detailNews
 
 ### Request
+- params
 - body
+
+```json
+{
+  "url" : string
+}
+```
 
 ```json
 {
@@ -188,7 +225,7 @@ _200 - OK_
 
 
 
-## 7. POST /favoritesNews
+## 8. POST /favoritesNews
 
 ### Request
 - headers
@@ -215,7 +252,7 @@ _200 - OK_
 ```
 
 
-## 8. POST /comments
+## 9. POST /comments
 
 ### Request
 - headers
@@ -252,7 +289,7 @@ _200 - OK_
 ```
 
 
-## 9. DELETE /delete
+## 10. DELETE /delete
 
 ### Request
 - headers
@@ -281,7 +318,7 @@ _200 - OK_
 _404 - Not Found_
 ```json
 {
-    "message" = "ID Product Not Found"
+    "message" : "ID Product Not Found"
 }
 ```
 
@@ -289,11 +326,30 @@ _404 - Not Found_
 _403 - Forbidden_
 ```json
 {
-    "message" = "NOT_ALLOWED"
+    "message" : "NOT_ALLOWED"
 }
 ```
 
 
+
+## 11. GET /weather
+
+### Request
+- query
+
+```json
+{
+  "Place": "string",
+}
+```
+
+### Response
+_200 - OK_
+```json
+{
+  Data API from Weather
+}
+```
 
 ### Global Error
 #### Response
