@@ -1,0 +1,121 @@
+[
+  {
+    "name": "Fisika Kelas 8",
+    "totalVideo": 12,
+    "price": 50000,
+    "imgUrl": "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
+    "MajorId": 1
+  },
+  {
+    "name": "Kimia Kelas 7",
+    "totalVideo": 10,
+    "price": 40000,
+    "imgUrl": "https://images.theconversation.com/files/121885/original/image-20160510-20731-1pf8nwv.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop",
+    "MajorId": 1
+  },
+  {
+    "name": "Bahasa Inggris Kelas 9",
+    "totalVideo": 11,
+    "price": 55000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWuW_OWaXxqKYJtvEei4CsC7giZzq379Yz_A&usqp=CAU",
+    "MajorId": 3
+  },
+  {
+    "name": "Geografi Kelas 8",
+    "totalVideo": 9,
+    "price": 35000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRERzRw7j24iGjNYlVU9dooOFw1MHf05gfjmQ&usqp=CAU",
+    "MajorId": 2
+  },
+  {
+    "name": "Bahasa Arab Kelas 7",
+    "totalVideo": 14,
+    "price": 45000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxU6meMgoLEB2WiYl0CSLiUvXOjpT4nhbP5Q&usqp=CAU",
+    "MajorId": 3
+  },
+  {
+    "name": "Fisika Kelas 7",
+    "totalVideo": 12,
+    "price": 70000,
+    "imgUrl": "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
+    "MajorId": 1
+  },
+  {
+    "name": "Ekonomi Kelas 9",
+    "totalVideo": 20,
+    "price": 100000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyv-ZTQxvWQQ4rWp7t6zuZ94RO_1bEhOxxWQ&usqp=CAU",
+    "MajorId": 2
+  },
+  {
+    "name": "Bahasa Inggris Kelas 7",
+    "totalVideo": 5,
+    "price": 20000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWuW_OWaXxqKYJtvEei4CsC7giZzq379Yz_A&usqp=CAU",
+    "MajorId": 3
+  },
+  {
+    "name": "Bahasa Arab Kelas 8",
+    "totalVideo": 7,
+    "price": 30000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxU6meMgoLEB2WiYl0CSLiUvXOjpT4nhbP5Q&usqp=CAU",
+    "MajorId": 3
+  },
+  {
+    "name": "Bahasa Inggris Kelas 8",
+    "totalVideo": 8,
+    "price": 35000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWuW_OWaXxqKYJtvEei4CsC7giZzq379Yz_A&usqp=CAU",
+    "MajorId": 3
+  },
+  {
+    "name": "Biologi Kelas 8",
+    "totalVideo": 10,
+    "price": 50000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyQAUNNfOM-MLWZE0Y0oNE-kiKgClMV5TiCA&usqp=CAU",
+    "MajorId": 1
+  },
+  {
+    "name": "Bahasa Perancis Kelas 8",
+    "totalVideo": 8,
+    "price": 40000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3gEe18jLDSbWk3swckteRAVsAG-fb5jVhCQ&usqp=CAU",
+    "MajorId": 3
+  },
+  {
+    "name": "Bahasa Jerman Kelas 8",
+    "totalVideo": 8,
+    "price": 40000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdrJ8cM9MV63POjI2g2ekZftQUOKBua2JXog&usqp=CAU",
+    "MajorId": 3
+  },
+  {
+    "name": "Matematika Kelas 7",
+    "totalVideo": 7,
+    "price": 35000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk5xcup05cLNLQk3FkcgjlBOQMxr7FfZRqSQ&usqp=CAU",
+    "MajorId": 1
+  },
+  {
+    "name": "Bahasa Indonesia Kelas 7",
+    "totalVideo": 6,
+    "price": 25000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCZfEbAU9axCdotsmcr6neQ3N383R-3zIX8Q&usqp=CAU",
+    "MajorId": 3
+  },
+  {
+    "name": "Bahasa Perancis Kelas 8",
+    "totalVideo": 6,
+    "price": 25000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd_iBQE2sj2qvQ2jcteo6FEbmryHGQ00Mrow&usqp=CAU",
+    "MajorId": 3
+  },
+  {
+    "name": "Bahasa Jerman Kelas 9",
+    "totalVideo": 10,
+    "price": 50000,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0xfUh1edkjTeTMXVuIhzdjMYhaivWETTHTQ&usqp=CAU",
+    "MajorId": 3
+  }
+]
