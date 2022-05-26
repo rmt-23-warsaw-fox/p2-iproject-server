@@ -1,0 +1,16 @@
+[
+    {
+        "username": "user01",
+        "email": "user01@email.com",
+        "password": "qwerty",
+        "phoneNumber": "+62111222333444",
+        "address": "0212 Cambridge Way"
+    },
+    {
+        "username": "user02",
+        "email": "user02@email.com",
+        "password": "qwerty",
+        "phoneNumber": "+62333222111444",
+        "address": "9279 Arizona Lane"
+    }
+]

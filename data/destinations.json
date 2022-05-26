@@ -1,0 +1,136 @@
+[
+    {
+        "name": "Malioboro",
+        "imageUrl": "https://www.yogyes.com/id/yogyakarta-tourism-object/other/malioboro/1.jpg",
+        "description": "Malioboro adalah jantung Kota Jogja. Tak heran bila banyak penginapan murah dekat Malioboro, meskipun sekarang banyak hotel berbintang. Apa saja tempat wisata dan hotel dekat Malioboro? Temukan info lengkapnya di sini.",
+        "price": 250000,
+        "RegionId": 1
+    },
+    {
+        "name": "Candi Prambanan",
+        "imageUrl": "https://www.yogyes.com/id/yogyakarta-tourism-object/candi/prambanan/1.jpg",
+        "description": "Candi Prambanan dibangun pada abad ke-9. Menjulang setinggi 47 meter dengan ornamen yang mengagumkan, kecantikan candi Hindu ini tak tertandingi. Candi Prambanan terletak 17 km ke arah timur dari pusat Kota Jogja dan bisa dijangkau dengan bus Trans Jogja.",
+        "price": 300000,
+        "RegionId": 1
+    },
+    {
+        "name": "Candi Borobudur",
+        "imageUrl": "https://www.yogyes.com/id/yogyakarta-tourism-object/candi/borobudur/1.jpg",
+        "description": "Candi Borobudur adalah candi Buddha terbesar di dunia. Dibangun pada abad ke-9, Candi Borobudur sekarang menjadi magnet yang mampu menarik jutaan wisatawan setiap tahun. Temukan fakta menarik, sejarah, dan gambar Candi Borobudur di sini.",
+        "price": 350000,
+        "RegionId": 1
+    },
+    {
+        "name": "Pantai Parangtritis",
+        "imageUrl": "https://www.yogyes.com/id/yogyakarta-tourism-object/beach/parangtritis/1.jpg",
+        "description": "Pantai Parangtritis hanya 27 km dari pusat Kota Jogja dan terkenal memiliki pemandangan sunset yang romantis. Naik bendi menyusuri Pantai Parangtritis sore hari akan menjadi kenangan yang manis.",
+        "price": 300000,
+        "RegionId": 1
+    },
+    {
+        "name": "Tugu Jogja",
+        "imageUrl": "https://www.yogyes.com/id/yogyakarta-tourism-object/other/tugu-jogja/1.jpg",
+        "description": "Tugu Jogja memendam makna filosofis tentang semangat perlawanan atas penjajahan dan kini menjadi landmark yang sangat lekat dengan Kota Jogja. Ada juga tradisi memeluk atau mencium tugu ini ketika lulus kuliah.",
+        "price": 250000,
+        "RegionId": 1
+    },
+    {
+        "name": "Pantai Silili",
+        "imageUrl": "https://www.yogyes.com/id/places/gunungkidul/pantai-slili/1.jpg",
+        "description": "Gazebo dan tempat makan menyambut saat mulai masuk ke area Pantai Slili. Jika dibandingkan pantai lain, Pantai Slili menjadi salah satu pantai yang memiliki garis pantai yang pendek. Pasir pantai yang putih bersih menambah keindahan dari pantai yang bersebelahan dengan Pantai Sadranan ini. Pantai ini cukup sepi, cocok bagi pengunjung yang ingin bersantai. Bebatuan karang yang ada di pinggir pantai dengan ombak-ombak kecil yang saling beradu, juga cocok untuk pengunjung yang ingin bermain-main air. Pantai ini juga cocok untuk menikmati indahnya sunrise dan sunset.",
+        "price": 300000,
+        "RegionId": 1
+    },
+    {
+        "name": "Pantai Nglambor",
+        "imageUrl": "https://www.yogyes.com/id/yogyakarta-tourism-object/beach/nglambor/1.jpg",
+        "description": "Dasar laut Pantai Nglambor bagai akuarium semesta yang menyimpan sejuta pesona. Atas jasa sepasang 'kura-kura raksasa' yang mampu menjinakkan garangnya ombak dari Samudera Hindia, panorama bawah laut di pesisir selatan ini pun bisa diselami keindahannya.",
+        "price": 300000,
+        "RegionId": 1
+    },
+    {
+        "name": "Goa Pindul",
+        "imageUrl": "https://www.yogyes.com/id/yogyakarta-tourism-object/nature-and-outdoor/cave-tubing-pindul/1.jpg",
+        "description": "Dasar laut Pantai Nglambor bagai akuarium semesta yang menyimpan sejuta pesona. Atas jasa sepasang 'kura-kura raksasa' yang mampu menjinakkan garangnya ombak dari Samudera Hindia, panorama bawah laut di pesisir selatan ini pun bisa diselami keindahannya.",
+        "price": 300000,
+        "RegionId": 1
+    },
+    {
+        "name": "Ratu Boko",
+        "imageUrl": "https://www.yogyes.com/id/yogyakarta-tourism-object/candi/ratu-boko/1.jpg",
+        "description": "Candi Ratu Boko adalah kompleks istana megah yang dibangun pada abad ke-8. Bangunan yang bisa dikatakan termegah di jamannya itu dibangun oleh salah satu kerabat pendiri Borobudur.",
+        "price": 250000,
+        "RegionId": 1
+    },
+    {
+        "name": "Monumen Jogja Kembali",
+        "imageUrl": "https://www.yogyes.com/id/yogyakarta-tourism-object/pilgrimage-sites/monjali/1.jpg",
+        "description": "Monumen Yogya Kembali (Monjali) adalah museum untuk memperingati peristiwa direbutnya kembali Kota Yogyakarta dari penjajah Belanda pada 29 Juni 1949. Bangunannya yang berbentuk seperti tumpeng sangat ikonik.",
+        "price": 200000,
+        "RegionId": 1
+    },
+    {
+        "name": "Kampoeng Kopi Banaran",
+        "imageUrl": "https://cdn1.katadata.co.id/media/images/temp/2022/03/11/Saloka_Theme_Park-2022_03_11-10_16_49_3fd513979340ad75419718ef9e00f71a.jpg",
+        "description": "Saloka Theme Park merupakan taman hiburan dan taman rekreasi keluarga terbesar di Jawa Tengah yang berlokasi di Jl. Fatmawati No.154, Gumuksari, Lopait, Kec. Tuntang, Kabupaten Semarang, Jawa Tengah. Tempat wisata ini dibangun di tanah seluas 18 hektar diresmikan 15 Desember 2018. Terdapat 25 wahana di Saloka Theme Park yang terbagi ke dalam lima zona, yaitu Zona Pesisir, Belantara, Segara Prana, Kamayayi, dan Ararya.",
+        "price": 200000 ,
+        "RegionId": 2
+    },
+    {
+        "name": "Klenteng Sam Poo Kong",
+        "imageUrl": "https://cdn1.katadata.co.id/media/images/temp/2021/08/17/Kelenteng_Sam_Poo_Kong-2021_08_17-16_07_12_44b93b4ee1a87bb775fdf6243d9e565b.png",
+        "description": "Klenteng Sam Poo Kong terletak di Jl. Simongan No. 129 Bongsari, Kecamatan Semarang Barat, Kota Semarang, Jawa Tengah. Jarak klenteng dari pusat Kota Simpang Lima Semarang hanya 4,1 km dan dapat ditempuh dalam waktu sekitar 15 menit.",
+        "price": 250000,
+        "RegionId": 2
+    },
+    {
+        "name": "Grand Maerakaca",
+        "imageUrl": "http://seputarsemarang.com/images/2017/02/perahu-wisata-maerakaca.jpg",
+        "description": "Grand Maerakaca merupakan branding baru Puri Maerokoco, tempat wisata ini sebelumnya cukup lama kurang terawat. Berbagai pembenahan telah dilakukan sejak tahun 2015. Pembuatan jogging track mangrove, pembenahan area jembatan, perbaikan di anjungan anjungan, diadakannya event M2M Malem Minggon Maerakaca dengan Festival Lampion serta penambahan perahu dengan aneka warna menambah daya tarik wisata dari Maerakaca ini.",
+        "price": 250000,
+        "RegionId": 2
+    },
+    {
+        "name": "Lawang Sewu",
+        "imageUrl": "http://seputarsemarang.com/images/2016/05/lawang-sewu-semarang.jpg",
+        "description": "Lawang Sewu merupakan ikon wisata kota Semarang. Salah satu bangunan cagar budaya yang telah berusia lebih dari seratus tahun ini berada di ujung Jalan Pemuda dan Pandanaran yang di depannya terdapat Tugu Muda, Lawang Sewu menjadi salah satu destinasi wisata yang buka hingga malam. Disebut Lawang Sewu karena jumlah pintunya banyak sekali. Meski tidak sampai seribu untuk jumlah lubang pintunya, namun jumlah daun pintu yang ada jumlahnya lebih dari seribu. Paling bagus jika mau foto foto di tempat ini saat sore hari hingga sebelum isya.",
+        "price": 300000,
+        "RegionId": 2
+    },
+    {
+        "name": "Kampung Pelangi",
+        "imageUrl": "http://seputarsemarang.com/images/2016/05/kampung-pelangi.jpg",
+        "description": "Lokasinya di Kampung Gunung Brintik, belakang Pasar Bunga Kalisari, di pinggir Kali Semarang, Jl Dr Soetomo tak jauh dari Tugu Muda. Sebelumnya area ini merupakan kampung kumuh yang tak tertata dengan rimbunan pepohonan dan tembok-tembok merah tak berplester. Kurang lebih 325 rumah yang dicat warna warni, dan saat ada yang posting di instagram, Kampung Pelangi ini mendadak ramai sekali dikunjungi orang, yang sebagian besar adalah anak muda.",
+        "price": 250000,
+        "RegionId": 2
+    },
+    {
+        "name": "Masjid Agung Jawa Tengah",
+        "imageUrl": "http://seputarsemarang.com/images/2016/05/masjid-agung-jawa-tengah.jpg",
+        "description": "Masjid Agung Jawa Tengah seolah menjadi pilar 25 nabi ala koloseum di Kota Semarang. MAJT beserta fasilitas pendukungnya terletak di jalan Gajah Raya, Kelurahan Sambirejo, Kecamatan Gayamsari menempati tanah bandha Masjid Agung Semarang seluas 10 ha serta mampu menampung jamaah lebih kurang 13.000 orang. Disamping bangunan Masjid disini juga dilngkapi fasilitas-fasilitas lain seperti : ruang kantor, ruang kursus dan pelatihan, ruang perpustakaan, ruang akad nikah, auditorium. Dengan bangunannya yang megah, MAJT menjadi salah satu destinasi wisata religi di Kota Semarang dan Jawa Tengah.",
+        "price": 200000,
+        "RegionId": 2
+    },
+    {
+        "name": "Brown Canyon",
+        "imageUrl": "http://seputarsemarang.com/images/2016/05/brown-canyon-semarang.jpg",
+        "description": "Sejatinya Brown Canyon bukanlah tempat wisata, namun ini adalah bekas tambang galian tipe C. Namun karena meninggalkan bentuk tanah dengan bentuk unik, banyak yang berdatangan ke tempat ini. Saat pagi hari atau sore hari dengan cuaca yang cerah foto yang bisa didapat seringkali sangat bagus. Secara administratif Brown Canyon berada di Rowosari, Kecamatan Tembalang, Kota Semarang. Namun demikian, akses jalan paling mudah melalui sebelah timur Klipang, setelah menyeberangi jembatan ganda, lokasinya sekitar 2 KM dari stasiun TVRI yang berada di Demak, sehingga sebagian mengira tempat ini berada di Demak.",
+        "price": 300000,
+        "RegionId": 2
+    },
+    {
+        "name": "Pagoda Avalokitesvara di Vihara Buddhagaya",
+        "imageUrl": "http://seputarsemarang.com/images/2016/05/pagoda-watugong.jpg",
+        "description": "Lebih sering disebut Pagoda Watugong, Pagoda Avalokitesvara di Vihara Buddhagaya ditetapkan Museum Rekor Indonesia sebagai pagoda tertinggi di Indonesia. Pagoda yang memiliki tinggi 45 meter itu dibangun tujuh tingkat. Menurut sejarah vihara ini merupakan Vihara pertama di Indonesia setelah keruntuhan kerajaan Majapahit. Pada tahun 1955 YM Bhante Narada dan Bhante Ashin meresmikan vihara tersebut. Saat kedatangan YM Narada di Indonesia.",
+        "price": 200000,
+        "RegionId": 2
+    },
+    {
+        "name": "Kawasan Kota Lama, Citra Visual Arsitektur Eropa di Semarang",
+        "imageUrl": "http://seputarsemarang.com/images/2016/05/kotalama-semarang.jpg",
+        "description": "Banyak sekali perubahan di kota lama. Kawasan ini merupakan citra visual arsitektur eropa karena banyak sekali bangunan kuno dengan arsitektur eropa. Kawasan ini kini sangat ramai sekali dikunjungi wisatawan. Penataan yang dilakukan oleh pemerintah kota juga cukup banyak. Area paling favorit untuk foto foto di kawasan Kota Lama ini seperti Rumah Akar, Gereja Blenduk, Taman Srigunting, Gedung Marba, dan juga Semarang Kreatif Galeri di jalan Letjen Suprapto sebelah barat Gereja Blenduk. Kini banyak cafe cafe bermunculan yang siap menyambut wisatawan setelah lelah berkeliling dengan sajian kopi atau menu lainnya.",
+        "price": 200000,
+        "RegionId": 2
+    }
+    
+]
