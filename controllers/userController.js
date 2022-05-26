@@ -94,7 +94,6 @@ class UserController {
   static async login(req, res, next) {
     try {
       const {email, password} = req.body
-
       if(!email || !password) {
         throw new Error('401')
       }
@@ -129,6 +128,7 @@ class UserController {
       })
 
     } catch(err) {
+      console.log(err);
       err.login = true
       next(err)
     }

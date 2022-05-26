@@ -9,7 +9,7 @@ function comparePassword(password, hashPass) {
 }
 
 const jwt = require('jsonwebtoken')
-const secretKey = 'secret'
+const secretKey = process.env.SECRET
 
 const createToken = (data) => {
   return jwt.sign(data, secretKey)
