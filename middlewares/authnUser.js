@@ -14,6 +14,10 @@ const authnUser = async (req, res, next) => {
         req.currentUser = {
             id: user.id,
             email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            phoneNumber: user.phoneNumber,
+            address: user.address
         }
 
         next()

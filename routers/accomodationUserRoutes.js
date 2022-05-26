@@ -3,7 +3,8 @@ const AccomodationUserController = require('../controllers/accomodationUserContr
 
 accomodationUserRoutes.get("/", AccomodationUserController.fetchAllAccomodations)
 accomodationUserRoutes.get("/search", AccomodationUserController.fetchAccomodationByLocation)
-accomodationUserRoutes.get("/search/:city", AccomodationUserController.fetchAccomodationByCity)
+accomodationUserRoutes.get("/filter", AccomodationUserController.fetchAccomodationByCity)
 accomodationUserRoutes.get("/detail/:id", AccomodationUserController.fetchAccomodationById)
+
 
 module.exports = accomodationUserRoutes

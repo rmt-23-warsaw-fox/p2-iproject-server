@@ -1,5 +1,4 @@
 const { Accomodation, Type } = require("../models");
-const { verifyToken } = require("../helpers");
 const { Op } = require("sequelize");
 
 class AccomodationUserController {
@@ -21,10 +20,17 @@ class AccomodationUserController {
   }
   static async fetchAccomodationByCity(req, res, next) {
     try {
-      const { city } = req.params;
+      const { city, province } = req.query;
       const accomodations = await Accomodation.findAll({
         where: {
-          city : city
+          [Op.or]: {
+            city: {
+              [Op.iLike]: `%${city}%`,
+            },
+            location: {
+              [Op.iLike]: `%${province}%`,
+            },
+          },
         },
         include: [
           {
@@ -42,26 +48,23 @@ class AccomodationUserController {
 
   static async fetchAccomodationByLocation(req, res, next) {
     try {
-      const { location } = req.query;
-      const accomodations = await Accomodation.findAll({
-        where: {
-          city : {
-            [Op.iLike]: `%${location}%`
-          }
+      const { location, TypeId } = req.query;
+      const option = location || TypeId ? { where: {} } : {};
+      if (location) option.where.location = { [Op.iLike]: `%${location}%` };
+      if (TypeId) option.where.TypeId = +TypeId;
+      option.include = [
+        {
+          model: Type,
+          attributes: ["name"],
         },
-        include: [
-          {
-            model: Type,
-            attributes: ["name"],
-          },
-        ],
-      });
+      ];
+      const accomodations = await Accomodation.findAll(option);
 
       res.status(200).json(accomodations);
     } catch (err) {
       next(err);
     }
-  } 
+  }
 
   static async fetchAccomodationById(req, res, next) {
     try {
@@ -69,19 +72,20 @@ class AccomodationUserController {
       const accomodation = await Accomodation.findByPk(+id, {
         include: {
           model: Type,
-          attributes: ['name'],
-        }
+          attributes: ["name"],
+        },
       });
 
-      if(!accomodation) {
-        throw { name: "ACCOMODATION_NOT_FOUND" }
+      if (!accomodation) {
+        throw { name: "ACCOMODATION_NOT_FOUND" };
       }
 
-      res.status(200).json(accomodation)
+      res.status(200).json(accomodation);
     } catch (err) {
-      next(err)
+      next(err);
     }
   }
+
 }
 
 module.exports = AccomodationUserController;
