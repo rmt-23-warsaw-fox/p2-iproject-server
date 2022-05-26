@@ -1,5 +1,5 @@
 const axios = require("axios");
-
+const { Bookmark } = require('../models/index.js')
 class Controller {
   static async getCoin(req, res, next) {
     const options = {
@@ -27,6 +27,27 @@ class Controller {
         next(err)
       });
   }
+
+
+  static async getNews(req, res, next) {
+    const options = {
+      method: 'GET',
+      url: 'https://crypto-news-live3.p.rapidapi.com/news/cryptonews.com',
+      headers: {
+        'X-RapidAPI-Host': 'crypto-news-live3.p.rapidapi.com',
+        'X-RapidAPI-Key': '52a4a46acbmsh27697a967765ae5p1f872djsn8dfec0d78946'
+      }
+    };
+    
+    axios.request(options).then(function (response) {
+      res.status(200).json(response.data)
+    }).catch(function (err) {
+      next(err)
+    });
+  }
+
+
+  
 
 }
 

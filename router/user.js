@@ -8,3 +8,4 @@ router.post('/login', Controller.login)
 router.put('/login', Controller.loginLink)
 
 module.exports = router
+
