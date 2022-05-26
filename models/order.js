@@ -23,10 +23,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-
       status: {
         type: DataTypes.STRING,
-        allowNull: false,
         defaultValue: "unpaid",
       },
       midtransResponse: {
@@ -34,7 +32,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       orderCode: {
         type: DataTypes.STRING,
-        allowNull: true,
       },
     },
     {

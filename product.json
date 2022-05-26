@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Bubur Manado",
+    "imageUrl": "https://awsimages.detik.net.id/community/media/visual/2019/09/03/79e4c468-99d2-430b-a1bd-f5bc997e8eb3.jpeg?w=1280",
+    "price": 34000,
+    "description": "Bubur lezat berbahan dasar jagung dan sayuran terutama daun gedi. Disajikan dengan daging ikan cakalang dan sambal Roa",
+    "stock": 10,
+    "CategoryId": 1
+  }
+]

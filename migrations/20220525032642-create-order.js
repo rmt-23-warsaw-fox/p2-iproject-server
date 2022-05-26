@@ -26,15 +26,13 @@ module.exports = {
       },
       status: {
         type: Sequelize.STRING,
-        allowNull: false,
-        defaultvalue: "unpaid",
+        defaultValue: "unpaid",
       },
       midtransResponse: {
         type: Sequelize.TEXT,
       },
       orderCode: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       createdAt: {
         allowNull: false,
