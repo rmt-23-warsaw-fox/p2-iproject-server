@@ -1,4 +1,5 @@
 function errorHandler(err, req, res, next) {
+  console.log(err);
   let code = 500;
   let message = "Internal Server Error";
   let error = [];
@@ -26,7 +27,7 @@ function errorHandler(err, req, res, next) {
     error = err.errors.map((el) => {
       return { message: el.message, path: el.path };
     });
-  } else if (err.message === "Seats is unavailable") {
+  } else if (err.Error === "Seats is unavailable") {
     message = "Seats is unavailable";
   }
   let errors = { message, error };

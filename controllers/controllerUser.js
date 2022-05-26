@@ -44,6 +44,7 @@ class Controller {
   static async registerCustomer(req, res, next) {
     try {
       const { username, email, password } = req.body;
+      console.log(username, email, password);
       const newUser = await User.create({
         username,
         email,

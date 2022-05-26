@@ -71,8 +71,8 @@ class Controller {
         ],
       });
       console.log("Test pay :", charge.actions);
-      console.log("Test Account :", testAccount);
       let testAccount = await nodemailer.createTestAccount();
+      console.log("Test Account :", testAccount);
       let transporter = nodemailer.createTransport({
         host: "smtp.ethereal.email",
         port: 587,
