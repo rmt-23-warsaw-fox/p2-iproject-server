@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class UserSeat extends Model {
+  class Ticket extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,11 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      UserSeat.belongsTo(models.Movie);
-      UserSeat.belongsTo(models.User);
+      Ticket.belongsTo(models.User);
     }
   }
-  UserSeat.init(
+  Ticket.init(
     {
       seatNumber: {
         type: DataTypes.STRING,
@@ -32,20 +31,35 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: "cascade",
         onDelete: "cascade",
       },
-      MovieId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "Movies",
-          key: "id",
+      movieTitle: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true,
+          notNull: true,
         },
-        onUpdate: "cascade",
-        onDelete: "cascade",
+      },
+      movieImg: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true,
+          notNull: true,
+        },
+      },
+      movieId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notEmpty: true,
+          notNull: true,
+        },
       },
     },
     {
       sequelize,
-      modelName: "UserSeat",
+      modelName: "Ticket",
     }
   );
-  return UserSeat;
+  return Ticket;
 };

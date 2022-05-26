@@ -5,6 +5,7 @@ const Controller = require("../controllers/controllerSeats");
 router.get("/", Controller.checkSeats);
 router.get("/rows", Controller.rows);
 router.get("/booking", Controller.bookedSeats);
-router.post("/booking/:MovieId", Controller.booking);
+// router.post("/booking/:MovieId", Controller.booking);
+router.post("/booking", Controller.booking);
 
 module.exports = router;
