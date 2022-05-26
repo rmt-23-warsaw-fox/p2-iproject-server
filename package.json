@@ -1,0 +1,38 @@
+{
+  "name": "p2-iproject-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon ./bin/www",
+    "dev": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Audy-Wallace/p2-iproject-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Audy-Wallace/p2-iproject-server/issues"
+  },
+  "homepage": "https://github.com/Audy-Wallace/p2-iproject-server#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "firebase": "^9.8.1",
+    "firebase-admin": "^10.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.4",
+    "nodemon": "^2.0.16",
+    "pg": "^8.7.3",
+    "sequelize": "^6.20.0",
+    "sequelize-cli": "^6.4.1"
+  }
+}
