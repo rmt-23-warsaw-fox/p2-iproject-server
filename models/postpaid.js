@@ -16,8 +16,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   PostPaid.init({
-    PostId: DataTypes.INTEGER,
-    PayerId: DataTypes.INTEGER
+    PostId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    PayerId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    coin: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'PostPaid',

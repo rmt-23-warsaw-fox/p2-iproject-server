@@ -57,6 +57,10 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       AuthorId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      }, 
+      coin: {
         type: DataTypes.INTEGER
       },
       location: {
