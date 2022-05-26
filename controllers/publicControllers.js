@@ -155,6 +155,21 @@ class PublicController {
       next(err);
     }
   }
+  static async removeBookmark(req, res, next) {
+    try {
+      const { FoodId } = req.params;
+      const bookmark = await Bookmark.destroy({
+        where: {
+          FoodId,
+        },
+      });
+      res.status(200).json({
+        message: "bookmark deleted successfully",
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
   static async getAllChef(req, res, next) {
     try {
       const chefs = await Chef.findAll({});

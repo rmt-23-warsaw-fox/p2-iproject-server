@@ -13,5 +13,6 @@ public.get("/bookmarks", PublicController.getBookmarks);
 public.get("/chefs", PublicController.getAllChef);
 public.post("/orders", PublicController.addOrder);
 public.get("/orders", PublicController.getOrder);
+public.delete("/bookmarks/:FoodId", PublicController.removeBookmark);
 
 module.exports = public;
