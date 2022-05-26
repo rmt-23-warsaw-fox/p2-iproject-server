@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const express = require('express')
 const cors = require('cors')
 const app = express()
@@ -10,9 +14,7 @@ const axios = require("axios");
 const { Op } = require("sequelize");
 const routes = require('./routes/index.js')
 
-if(process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
-}
+
 
 const port = process.env.PORT || 3000
 
