@@ -1,6 +1,7 @@
 const { User } = require("../models");
 const { comparePassword, signToken, verifyToken } = require("../helpers");
-const sendMail = require('../helpers/sendMail');
+const sendMail = require("../helpers/sendMail");
+const { OAuth2Client } = require('google-auth-library');
 
 class UserController {
   static async login(req, res, next) {
@@ -56,9 +57,9 @@ class UserController {
         <br>
         <p>Best Regard,</p>
         <p>Rent Room Official</p>
-      `
+      `;
 
-      if(user) {
+      if (user) {
         sendMail(email, message);
       }
 
@@ -69,7 +70,37 @@ class UserController {
       next(err);
     }
   }
+  static async loginGoogle(req, res, next) {
+    try {
+      const { token } = req.body;
+      const client = new OAuth2Client(process.env.CLIENT_ID);
+      const ticket = await client.verifyIdToken({
+        idToken: token,
+        audience: process.env.CLIENT_ID,
+      });
+      const payLoad = ticket.getPayload();
+      const [user, created] = await User.findOrCreate({
+        where: { email: payLoad.email },
+        defaults: {
+          password: (Math.random() + 1).toString(36).substring(2, 9),
+          address: "null",
+          phoneNumber: "null",
+          firstName: "Someone",
+          lastName: "Special"
+        },
+      });
+      const access_token = signToken({
+        id: user.id,
+        email: user.email,
+      });
 
+      res.status(200).json({
+        access_token,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
   static async getUserProfile(req, res, next) {
     try {
       const token = req.headers.access_token;
@@ -80,9 +111,9 @@ class UserController {
       if (!user) {
         throw { name: "USER_NOT_FOUND" };
       }
-      res.status(200).json({user});
+      res.status(200).json({ user });
     } catch (err) {
-        console.log(err);
+      console.log(err);
       next(err);
     }
   }
