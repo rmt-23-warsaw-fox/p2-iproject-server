@@ -82,7 +82,7 @@ class WishlistController {
         req.currentUser;
 
       let snap = new midtransClient.Snap({
-        isProduction: true,
+        isProduction: false,
         serverKey: "SB-Mid-server-okUj6lYx4xPOAL8OMFdRn4sE",
       });
 
@@ -178,7 +178,7 @@ class WishlistController {
     try {
       const { orderId, id } = req.body;
       let apiClient = new midtransClient.Snap({
-        isProduction: true,
+        isProduction: false,
         serverKey: "SB-Mid-server-okUj6lYx4xPOAL8OMFdRn4sE",
         clientKey: "SB-Mid-client-62QhHpa6vM7tXjuL",
       });
