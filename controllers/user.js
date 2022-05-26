@@ -74,6 +74,24 @@ class ControllerUser {
       next(error);
     }
   }
+  static async updateMembership(req, res, next) {
+    try {
+      const { id } = req.loginfo;
+
+      const updateUser = await User.update(
+        { isPremium: true },
+        { where: { id } }
+      );
+
+      res.status(200).json({
+        statusCode: 200,
+        data: updateUser,
+        message: 'membership updated succesfullly',
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = ControllerUser;

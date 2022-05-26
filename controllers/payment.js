@@ -1,4 +1,3 @@
-const { User } = require('../models');
 const midtransClient = require('midtrans-client');
 // Create Snap API instance
 let snap = new midtransClient.Snap({
@@ -24,15 +23,6 @@ class ControllerPayment {
       if (!transaction) {
         throw { name: 'TRANSACTION_FAILED' };
       }
-
-      await User.update(
-        { isPremium: true },
-        {
-          where: {
-            id: id,
-          },
-        }
-      );
 
       let transactionToken = transaction.token;
       console.log('transactionToken:', transactionToken);
