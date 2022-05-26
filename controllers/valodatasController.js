@@ -68,8 +68,18 @@ class ValoController {
       const {ign,tagline} = req.extra
       console.log(ign,tagline)
       const {data} = await ValorantAPI.getAccount(ign,tagline)
-      console.log(data)
-        res.status(200).json(data)
+      const small = data.card.small
+      const wide = data.card.wide
+      const myProfile = {
+        puuid : data.puuid,
+        name : data.name,
+        tag : data.tag,
+        accountLevel : data.account_level,
+        smallImage : small,
+        wideImage : wide
+      }
+      console.log(data.card.small)
+        res.status(200).json(myProfile)
     } catch (err) {
       next(err)
     }
