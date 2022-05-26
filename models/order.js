@@ -29,11 +29,21 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         defaultValue: "unpaid",
       },
+      midtransResponse: {
+        type: DataTypes.TEXT,
+      },
+      orderCode: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       sequelize,
       modelName: "Order",
     }
   );
+  Order.beforeCreate((instance, options) => {
+    instance.orderCode = (Math.random() + 1).toString(36).substring(7);
+  });
   return Order;
 };

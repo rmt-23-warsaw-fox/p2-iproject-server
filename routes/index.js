@@ -13,7 +13,7 @@ router.use("/products", product);
 // route to category
 router.use("/categories", category);
 // route to order
-router.use("/order", order);
+router.use("/orders", order);
 
 router.use(errorHandler);
 

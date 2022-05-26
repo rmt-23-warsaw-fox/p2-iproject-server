@@ -1,4 +1,6 @@
 const { Order } = require("../models");
+const { coreApi, apiClient } = require("../helpers/midtrans");
+const order = require("../models/order");
 
 class orderController {
   static async getOrder(req, res, next) {
@@ -40,21 +42,96 @@ class orderController {
       });
       res.status(201).json(newOrder);
     } catch (err) {
+      // console.log(err);
       next(err);
     }
   }
 
-  static async payOrder(req, res, next) {
+  static async charge(req, res, next) {
     try {
-      const paidOrder = await Order.update({
-        status: "paid",
+      const orderCode = req.params.orderCode;
+      const { bank, amount, payment_type } = req.body;
+      const parameter = {
+        payment_type: `${payment_type}`,
+        transaction_details: {
+          gross_amount: `${amount}`,
+          order_id: `${orderCode}`,
+        },
+        bank_transfer: {
+          bank: `${bank}`,
+        },
+      };
+      const response = await coreApi.charge(parameter);
+      console.log(response);
+      await Order.update(
+        {
+          midtransResponse: JSON.stringify(response),
+        },
+        {
+          where: {
+            orderCode,
+          },
+        }
+      );
+      res.status(201).json({
+        message: "transaction charged",
       });
-      if (paidOrder[0] === 0) {
-        throw new Error("Order not paid");
+    } catch (err) {
+      // console.log(err);
+      next(err);
+    }
+  }
+
+  static async notification(req, res, next) {
+    try {
+      const response = await coreApi.transaction.notification(req.body);
+      const orderCode = response.order_id;
+      const transactionStatus = response.transaction_status;
+
+      console.log(
+        `Transaction notification received. Order ID: ${orderCode}. Transaction status: ${transactionStatus}`
+      );
+
+      if (transactionStatus == "settlement") {
+        await Order.update(
+          {
+            status: "success",
+            midtransResponse: response,
+          },
+          {
+            where: {
+              orderCode,
+            },
+          }
+        );
+      } else if (
+        transactionStatus == "cancel" ||
+        transactionStatus == "expire"
+      ) {
+        await Order.update(
+          {
+            status: "failed",
+            midtransResponse: response,
+          },
+          {
+            where: {
+              orderCode,
+            },
+          }
+        );
+      } else if (transactionStatus == "pending") {
+        await Order.update(
+          {
+            status: "pending",
+            midtransResponse: response,
+          },
+          {
+            where: {
+              orderCode,
+            },
+          }
+        );
       }
-      res.status(200).json({
-        message: "Order paid",
-      });
     } catch (err) {
       next(err);
     }
