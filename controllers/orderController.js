@@ -28,7 +28,7 @@ class OrderController {
             })
 
             if (!newOrder) {
-                throw new Error('order not created')
+                throw new Error('Order not created')
             }
 
             let snap = new midtransClient.Snap({
@@ -72,6 +72,9 @@ class OrderController {
                 }
             })
 
+            if(!updatedOrder) {
+                throw new Error (`Order not found`)
+            }
             res.status(200).json({
                 statusCode: 200,
                 data: updatedOrder,

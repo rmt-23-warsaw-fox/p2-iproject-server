@@ -12,7 +12,6 @@ class DestinationController {
                 data: destinationList,
             })
         } catch (err) {
-            console.log(err)
             next(err)
         }
     }

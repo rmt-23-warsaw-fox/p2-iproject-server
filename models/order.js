@@ -17,24 +17,54 @@ module.exports = (sequelize, DataTypes) => {
   Order.init({
     fullName: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      validate: {
+        notNull: true,
+        notEmpty: {
+          msg: `fullName is required`
+        }
+      }
     },
     email: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      validate: {
+        notNull: true,
+        notEmpty: {
+          msg: `email is required`
+        }
+      }
     },
     phone: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      validate: {
+        notNull: true,
+        notEmpty: {
+          msg: `phone is required`
+        }
+      }
     },
     DestinationId: DataTypes.INTEGER,
     date: {
       allowNull: false,
       type: DataTypes.DATE,
+      validate: {
+        notNull: true,
+        notEmpty: {
+          msg: `date is required`
+        }
+      }
     },
     amountOfPeople: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      validate: {
+        notNull: true,
+        notEmpty: {
+          msg: `amountOfPeople is required`
+        }
+      }
     },
     status: {
       type: DataTypes.STRING
