@@ -11,5 +11,6 @@ public.post("/bookmarks", PublicController.addBookmarks);
 public.get("/bookmarks", PublicController.getBookmarks);
 public.get("/chefs", PublicController.getAllChef);
 public.post("/orders", PublicController.addOrder);
+public.get("/orders", PublicController.getOrder);
 
 module.exports = public;

@@ -13,6 +13,9 @@ function errorHandler(err, req, res, next) {
   ) {
     code = 401;
     msg = "Invalid token";
+  } else if (err.message === "failed_login") {
+    code = 401;
+    msg = "Invalid email/password";
   }
   res.status(code).json({
     message: msg,

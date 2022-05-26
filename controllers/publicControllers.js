@@ -2,6 +2,7 @@ const { comparePassword } = require("../helper/bcrypt");
 const { createToken } = require("../helper/jwt");
 const { User, Bookmark, Food, Chef, Order } = require("../models/index");
 const axios = require("axios");
+const { OAuth2Client } = require("google-auth-library");
 class PublicController {
   static async registerCustomer(req, res, next) {
     try {
@@ -48,6 +49,39 @@ class PublicController {
       next(err);
     }
   }
+
+  static async loginGoogleCustomer(req, res, next) {
+    try {
+      const { token } = req.body;
+      const client = new OAuth2Client(
+        "252692457948-m6968rm29j0bems92mpada94fa4b4ti8.apps.googleusercontent.com"
+      );
+      const ticket = await client.verifyIdToken({
+        idToken: token,
+        audience:
+          "252692457948-m6968rm29j0bems92mpada94fa4b4ti8.apps.googleusercontent.com",
+      });
+      const payload = ticket.getPayload();
+      const [user, created] = await User.findOrCreate({
+        where: { email: payload.email },
+        defaults: {
+          password: Math.random().toString(36).substring(2, 7),
+          phoneNumber: "123456789",
+          address: "unknown",
+        },
+      });
+      const access_token = createTokenFromData({
+        id: user.id,
+        email: user.email,
+      });
+      res.status(200).json({
+        access_token,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+
   static async getAllFoods(req, res, next) {
     try {
       const { page = 1 } = req.query;
@@ -81,7 +115,7 @@ class PublicController {
       });
       res.status(200).json(bookmarks);
     } catch (err) {
-      console.log(err);
+      next(err);
     }
   }
 
@@ -131,27 +165,76 @@ class PublicController {
       const { UserId } = req.dataUser;
       const { ChefId, totalPrice, status, virtualAccount, external_id } =
         req.body;
-      const order = await Order.create({
-        ChefId,
-        totalPrice,
-        status,
-        virtualAccount,
-        external_id,
-        UserId,
-      });
-      const bookmark = await Bookmark.update(
-        {
-          OrderId: order.id,
+
+      const find = await Order.findOne({
+        where: {
+          UserId,
         },
-        {
-          where: {
+      });
+      if (!find) {
+        const order = await Order.create({
+          ChefId,
+          totalPrice,
+          status,
+          virtualAccount,
+          external_id,
+          UserId,
+        });
+        const bookmark = await Bookmark.update(
+          {
+            OrderId: order.id,
+          },
+          {
+            where: {
+              UserId,
+            },
+          }
+        );
+        res.status(200).json(order);
+      } else {
+        const order = await Order.update(
+          {
+            ChefId,
+            totalPrice,
+            status,
+            virtualAccount,
+            external_id,
             UserId,
           },
-        }
-      );
+          {
+            where: {
+              id: find.id,
+            },
+          }
+        );
+        const bookmark = await Bookmark.update(
+          {
+            OrderId: find.id,
+          },
+          {
+            where: {
+              UserId,
+            },
+          }
+        );
+        res.status(200).json(order);
+      }
+    } catch (err) {
+      next(err);
+    }
+  }
+  static async getOrder(req, res, next) {
+    try {
+      const { UserId } = req.dataUser;
+      const order = await Order.findAll({
+        where: {
+          UserId,
+          status: "PENDING",
+        },
+      });
       res.status(200).json(order);
     } catch (err) {
-      console.log(err);
+      next(err);
     }
   }
 }

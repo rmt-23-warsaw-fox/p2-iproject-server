@@ -4,7 +4,7 @@ const axios = require("axios");
 require("dotenv").config();
 const username = process.env.USERNAME;
 const password = process.env.PASSWORD;
-const { Order } = require("../models");
+const { Order, Bookmark } = require("../models");
 xendit.post("/create", async function (req, res, next) {
   try {
     const { bank_code, totalPrice } = req.body;
@@ -59,9 +59,13 @@ xendit.post("/pay", async function (req, res, next) {
         },
       }
     );
+    const bookmark = await Bookmark.destroy({
+      where: {
+        UserId,
+      },
+    });
     res.status(200).json(response.data);
   } catch (err) {
-    console.log(err);
     next(err);
   }
 });
