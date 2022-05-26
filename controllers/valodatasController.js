@@ -7,19 +7,30 @@ class ValoController {
       const {puuid} = req.extra
       const { mode,map } = req.query
       const {data} = await ValorantAPI.getMatchesByPUUID('ap',puuid,'1',mode,map)
+
+      if(!data[0]){
+        throw new Error('match 404')
+      }
+
       const metadata = data[0].metadata
       const myData = data[0].players.all_players.find(el=>{
         if(el.puuid === puuid) {
           return el
         }
       })
-
+       if(!myData){
+         throw new Error('match 404')
+       }
       const myStats = {
         puuid : myData.puuid,
         name : myData.name,
         tag : myData.tag,
         imageUrl : myData.assets.agent.bust,
         myStat : myData.stats
+      }
+
+      if(!myStats){
+        throw new Error('match 404')
       }
 
       const redTeam = data[0].players.red.map(el=>{
@@ -30,6 +41,11 @@ class ValoController {
         }
         return player
       })
+
+      if(!redTeam){
+        throw new Error('match 404')
+      }
+
       const blueTeam = data[0].players.blue.map(el=>{
         const player = {
           name : el.name,
@@ -38,6 +54,11 @@ class ValoController {
         }
         return player
       })
+      console.log()
+
+      if(!blueTeam){
+        throw new Error('match 404')
+      }
 
       res.status(200).json({
         headerData : {

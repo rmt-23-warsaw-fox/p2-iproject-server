@@ -48,7 +48,10 @@ const errorHandler = (err, req, res, next)=>{
     code = 400
     message = err.message
   }
-
+  if(err.message === 'match 404'){
+    code =404
+    message = 'Your match is not recorded'
+  }
   if(err.message === "user_not_found"){
     code = 401
     message = "Invalid Token"
