@@ -1,9 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const xendit = express.Router();
 const axios = require("axios");
-require("dotenv").config();
-const username = process.env.USERNAME;
-const password = process.env.PASSWORD;
+const username_xen = process.env.USERNAME_XEN;
+const password_xen = process.env.PASSWORD_XEN;
 const { Order, Bookmark } = require("../models");
 xendit.post("/create", async function (req, res, next) {
   try {
@@ -13,12 +13,10 @@ xendit.post("/create", async function (req, res, next) {
       method: "post",
       url: "https://api.xendit.co/callback_virtual_accounts",
       auth: {
-        username:
-          "xnd_development_m7B4Ljt4NfM75gfefg9rkgMoPg9ERQTurFWogGlhgaDJPEs44CcFNlyphBxfT",
-        password: "Mario.fredo2",
+        username: username_xen,
+        password: password_xen,
       },
       data: {
-        is_closed: true,
         external_id: `VA-fixed-${Date.now()}`,
         bank_code,
         name: UserName,
@@ -27,7 +25,6 @@ xendit.post("/create", async function (req, res, next) {
         is_single_use: true,
       },
     });
-
     res.status(200).json(response.data);
   } catch (err) {
     next(err);
@@ -41,9 +38,8 @@ xendit.post("/pay", async function (req, res, next) {
       method: "post",
       url: `https://api.xendit.co/callback_virtual_accounts/external_id=${external_id}/simulate_payment`,
       auth: {
-        username:
-          "xnd_development_m7B4Ljt4NfM75gfefg9rkgMoPg9ERQTurFWogGlhgaDJPEs44CcFNlyphBxfT",
-        password: "Mario.fredo2",
+        username: username_xen,
+        password: password_xen,
       },
       data: {
         amount: totalPrice,

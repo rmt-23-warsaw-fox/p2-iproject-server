@@ -3,6 +3,7 @@ const { createToken } = require("../helper/jwt");
 const { User, Bookmark, Food, Chef, Order } = require("../models/index");
 const axios = require("axios");
 const { OAuth2Client } = require("google-auth-library");
+const registerSuccess = require("../helper/nodemailer");
 class PublicController {
   static async registerCustomer(req, res, next) {
     try {
@@ -14,6 +15,7 @@ class PublicController {
         address,
         phoneNumber,
       });
+      await registerSuccess(user.email);
       res.status(200).json({
         id: user.id,
         email: user.email,
@@ -73,8 +75,8 @@ class PublicController {
       });
 
       const access_token = createToken({
-        id: user.id,
-        email: user.email,
+        UserId: user.id,
+        UserEmail: user.email,
       });
       res.status(200).json({
         access_token,
