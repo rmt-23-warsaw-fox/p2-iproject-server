@@ -26,7 +26,6 @@ class UserController {
         id: createdUser.id,
         displayName: createdUser.displayName,
         email: createdUser.email,
-        Profile_Picture: createdPicture,
       });
       res.status(201).json({
         message: "Registration successful!",
@@ -51,7 +50,8 @@ class UserController {
       if (!foundUser) {
         throw new Error("user not found");
       }
-      if (!comparePassword(password, foundUser.password)) {
+      console.log(!comparePassword(password, foundUser.password));
+      if (comparePassword(password, foundUser.password) === false) {
         throw new Error("user not found");
       }
 
@@ -59,7 +59,6 @@ class UserController {
         id: foundUser.id,
         displayName: foundUser.displayName,
         email: foundUser.email,
-        Profile_Picture: foundUser.Profile_Picture,
       });
 
       res.status(200).json({
@@ -67,6 +66,7 @@ class UserController {
         access_token: token,
       });
     } catch (err) {
+      // console.log(err);
       next(err);
     }
   }
