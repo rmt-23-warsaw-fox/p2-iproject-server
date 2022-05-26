@@ -32,7 +32,7 @@ class UserController {
         access_token: token,
       });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       next(err);
     }
   }
@@ -50,7 +50,8 @@ class UserController {
       if (!foundUser) {
         throw new Error("user not found");
       }
-      console.log(!comparePassword(password, foundUser.password));
+
+      console.log(comparePassword(password, foundUser.password));
       if (comparePassword(password, foundUser.password) === false) {
         throw new Error("user not found");
       }
