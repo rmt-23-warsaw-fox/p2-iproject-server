@@ -4,6 +4,7 @@ const app = express()
 const { User } = require('./models/index')
 const { compareHash } = require('./helpers/bcrypt')
 const { createToken, decodeToken } = require('./helpers/jwt')
+const {auth} = require('./middlewares/authentication.js')
 const axios = require("axios");
 const { Op } = require("sequelize");
 
@@ -95,6 +96,8 @@ app.get('/users/:id', async (request, response, next) => {
     next(err)
   }
 })
+
+app.use(auth)
 
 app.get('/memes', (request, response) => {
   const options = {
