@@ -14,6 +14,9 @@ const errorHandler = async (err, req, res, next) => {
   } else if (err.message === 'USER_NOT_FOUND' || err.message === 'INCORRECT_PASSWORD') {
     code = 401;
     msg = 'Invalid username/password';
+  } else if (err.message === 'DUPLICATE') {
+    code = 401
+    msg = `You can't add the same movie twice`
   }
 
   res.status(code).json({
