@@ -17,13 +17,13 @@ class DestinationController {
         }
     }
 
-    static async DestinationDetails(req, res, next) {
+    static async DestinationDetail(req, res, next) {
         try {
             const id = +req.params.id
             const destinationDetail = await Destination.findByPk(id)
 
             if (destinationDetail === null) {
-                throw new Error(`Data food not found`)
+                throw new Error(`Destination not found`)
             }
 
             res.status(200).json({
@@ -31,6 +31,7 @@ class DestinationController {
                 data: destinationDetail
             })
         } catch (err) {
+            console.log(err)
             next(err)
         }
     }
