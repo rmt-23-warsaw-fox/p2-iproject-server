@@ -1,13 +1,19 @@
 const midtransClient = require('midtrans-client');
 const { Order, Destination } = require('../models')
-
+const { sendEmail } = require('../helpers/nodemailer')
 class OrderController {
     static async order(req, res, next) {
         try {
             const id = +req.params.id
             const { fullName, email, phone, date, amountOfPeople } = req.body
-
             const findDestination = await Destination.findByPk(id)
+
+            const objMail = {
+                fullName,
+                email,
+                date,
+                destinasi: findDestination.name
+            }
 
             const newOrder = await Order.create({
                 fullName,
@@ -38,12 +44,15 @@ class OrderController {
                 }
             };
 
-            const order = await snap.createTransaction(parameter)
+            let order = await snap.createTransaction(parameter)
 
             if (!order) {
                 throw new Error("Order failed")
             }
 
+            order.orderIDBE = newOrder.id
+
+            sendEmail(objMail)
             res.status(200).json(order)
         } catch (err) {
             console.log(err)
@@ -53,7 +62,6 @@ class OrderController {
     static async UpdateOrder(req, res, next) {
         try {
             const orderId = +req.params.id
-
             const updatedOrder = await Order.update({
                 status: "paid",
             }, {
