@@ -17,17 +17,19 @@ module.exports = (sequelize, DataTypes) => {
   Post.init({
     imgUrl: {
       type: DataTypes.STRING,
-      allowNull: {args: false, msg: 'Image URL cannot be null.'},
+      allowNull: false,
       validate: {
-        notEmpty: {args: true, msg: 'Image URL is required.'}
+        notEmpty: {args: true, msg: 'Image URL is required.'},
+        notNull: {args: true, msg: 'Image URL cannot be null.'}
       }
     },
     description: DataTypes.STRING,
     UserId: {
       type: DataTypes.INTEGER,
-      allowNull: {args: false, msg: 'UserId cannot be null.'},
+      allowNull: false,
       validate: {
-        notEmpty: {args: true, msg: 'UserId is required.'}
+        notEmpty: {args: true, msg: 'UserId is required.'},
+        notNull: {args: true, msg: 'UserId cannot be null.'}
       }
     }
   }, {
