@@ -1,4 +1,5 @@
 function errorHandler(err, req, res, next) {
+  console.log(err.message)
   let code = 500;
   let message = "Internal Server Error";
 
@@ -25,6 +26,9 @@ function errorHandler(err, req, res, next) {
   ) {
     code = 401;
     message = "Invalid token";
+  } else if (err.message === "Email must be unique") {
+    code = 400;
+    message = "Email must be unique"
   }
 
   res.status(code).json({
