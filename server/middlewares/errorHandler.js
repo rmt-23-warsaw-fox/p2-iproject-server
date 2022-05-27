@@ -11,7 +11,7 @@ const errorHandling = (err, request, response, next) => {
   } else if (err.name === 'JsonWebTokenError') {
     status = 401
     message = "You're not login."
-  } else if(err.name === 'SequelizeValidationError') {
+  } else if(err.name === 'SequelizeValidationError' || err.name === 'SequelizeUniqueConstraintError') {
     status = 400
     message = err.errors[0].message
   } else if (err.message === 'post_not_found') {

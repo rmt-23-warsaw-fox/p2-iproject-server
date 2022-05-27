@@ -12,7 +12,7 @@ router.post('/register', async (request, response, next) => {
     const {username, email, password, genre, bio} = request.body
 
     let hashPassword = ""
-    if (password !== null || password !== "") {
+    if (password) {
       hashPassword = createHash(password)
     }
 
