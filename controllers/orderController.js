@@ -1,6 +1,5 @@
-const { Order } = require("../models");
+const { Order, Product } = require("../models");
 const { coreApi } = require("../helpers/midtrans");
-const order = require("../models/order");
 
 class orderController {
   static async getOrder(req, res, next) {
@@ -14,35 +13,53 @@ class orderController {
 
   static async userOrder(req, res, next) {
     try {
-      const UserId = req.pass.id;
-      const userOrder = Order.findAll(
-        {
-          where: {
-            UserId,
-            status: "unpaid",
-          },
+      const UserId = +req.pass.id;
+      const userOrder = await Order.findOne({
+        where: {
+          UserId,
+          status: "unpaid",
         },
-        {
-          include: Product,
-        }
-      );
+        include: Product,
+      });
       res.status(200).json(userOrder);
+      // console.log(userOrder);
     } catch (err) {
+      console.log(err);
       next(err);
     }
   }
 
   static async createOrder(req, res, next) {
     try {
-      const UserId = req.pass.id;
-      const ProductId = req.params.id;
+      const UserId = +req.pass.id;
+      // console.log(req.pass, "<<<<<<");
+      const ProductId = +req.params.ProductId;
+      // console.log(req.params, "<<<<<<");
       const newOrder = await Order.create({
         UserId,
         ProductId,
       });
       res.status(201).json(newOrder);
     } catch (err) {
-      // console.log(err);
+      console.log(err);
+      next(err);
+    }
+  }
+  static async getVa(req, res, next) {
+    try {
+      // console.log(req.params, "???");
+      const orderCode = req.params.orderCode;
+
+      const va = await Order.findOne({
+        where: {
+          orderCode,
+        },
+      });
+      // console.log(orderCode);
+      // console.log(va, "<<<<<<<<<");
+      res.status(200).json(va);
+    } catch (err) {
+      console.log(err);
       next(err);
     }
   }
@@ -50,6 +67,7 @@ class orderController {
   static async charge(req, res, next) {
     try {
       const orderCode = req.params.orderCode;
+      console.log(orderCode);
       const { bank, amount, payment_type } = req.body;
       const parameter = {
         payment_type: `${payment_type}`,
@@ -73,9 +91,7 @@ class orderController {
           },
         }
       );
-      res.status(201).json({
-        message: "transaction charged",
-      });
+      res.status(201).json(response);
     } catch (err) {
       // console.log(err);
       next(err);

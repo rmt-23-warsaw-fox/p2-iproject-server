@@ -11,8 +11,9 @@ router.use(isLoggedIn);
 router.get("/", isAdmin, orderController.getOrder);
 
 // user
-router.post("/add/:id", orderController.createOrder);
+router.post("/add/:ProductId", orderController.createOrder);
 router.get("/myorder", orderController.userOrder);
+router.get("/va/:orderCode", orderController.getVa);
 
 router.post("/charge/:orderCode", orderController.charge);
 

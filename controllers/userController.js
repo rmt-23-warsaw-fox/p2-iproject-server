@@ -56,15 +56,15 @@ class userController {
           email,
         },
       });
-      if (!foundUser.verified) {
-        throw new Error("A verification link has sent to your email");
-      }
       if (!foundUser) {
         throw new Error("Invalid email");
       }
       const validPassword = checkPassword(password, foundUser.password);
       if (!validPassword) {
         throw new Error("Invalid password");
+      }
+      if (!foundUser.verified) {
+        throw new Error("A verification link has sent to your email");
       }
       const payload = {
         id: foundUser.id,
@@ -75,7 +75,7 @@ class userController {
         access_token,
       });
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       next(err);
     }
   }
