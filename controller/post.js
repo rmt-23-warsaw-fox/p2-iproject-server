@@ -207,7 +207,7 @@ class PostController {
     }
 
     static async listOwn(req, res, next) {
-        
+        console.log("Entering own list")
         console.log(req.query);
         console.log(req.body);
         let name=req.query.name;
@@ -268,6 +268,7 @@ class PostController {
     static async add(req, res, next) {
         try {
             const authorId = req.user.id;
+            console.log(req.body);
             const { name, description, imgUrl, location, tag, typeId } = req.body;
             console.log(`${name}, ${description}, ${imgUrl}, ${location}, ${tag}, ${typeId}`)
             const post = Post.create({
@@ -337,7 +338,9 @@ class PostController {
             
             const id = req.params.id;
             const authorId = req.user.id;
-            let { name, description, imgUrl, location, tag, typeId,statusArchieve } = req.body;
+            console.log("This is request");
+            console.log(req.body);
+            let { name, description, imgUrl, location, tag, typeId,statusArchieve,coin } = req.body;
             if(path=="/hide"||path=="/follower"){
                 if(path=="/hide"){
                     statusArchieve="hidden"
@@ -350,11 +353,12 @@ class PostController {
             if (!post) {
                 throw { statusCode: 404 };
             } else {
+                console.log(post)
                 if (!name) {
                     name = post.name;
                 }
                 if (!description) {
-                    description = post.facility;
+                    description = post.description;
                 }
                 if (!imgUrl) {
                     imgUrl = post.imgUrl;
@@ -371,9 +375,10 @@ class PostController {
                 if(!statusArchieve){
                     statusArchieve=post.statusArchieve;
                 }
-
-                post = post.update({ name, description, imgUrl, location, tag, typeId }).then((response)=>{
+                console.log("This is the updated data:"+name+" "+description)
+                post = post.update({ name, description, imgUrl, location, tag, typeId,coin }).then((response)=>{
                     if(response){
+                        let name = response.name
                         let history = History.create({
                             action: 'updated ',
                             TargetId: response.id,

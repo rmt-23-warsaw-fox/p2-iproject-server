@@ -1,4 +1,4 @@
-const { Post } = require("../models");
+const { User,Post } = require("../models");
 const { payloadToToken, tokenToPayload } = require('../helper/jwt')
 const postAuthorization = async (req, res, next) => {
   try {
@@ -8,22 +8,26 @@ const postAuthorization = async (req, res, next) => {
       throw (401);
     } else {
       const payload = tokenToPayload(accessToken);
-      // console.log(payload);
+       //console.log(payload);
       const userFound = await User.findByPk(payload.id);
       if (userFound) {
         req.user.role = userFound.role;
         req.user.id = userFound.id;
-        // console.log(req.user);
+         //console.log(req.params.id);
         const id = req.params.id;
-        let post = await Post.findByPk(id);
-        // console.log(userId + "  dan  " + post.AuthorId)
-        if (!post) {
-          throw { statusCode: 404 };
-        } else if (userId !== post.AuthorId && role !== "Admin") {
-          throw { statusCode: 403 };
-        } else {
-          next();
-        }
+        let post = Post.findByPk(id).then((result)=>{
+          if (!result) {
+            console.log("Post is here")
+            throw { statusCode: 404 };
+          } else if (userFound.id !== result.AuthorId && userFound.role !== "Admin") {
+            console.log("Post is here")
+            throw { statusCode: 403 };
+          } else {
+            console.log("Post is here")
+            next();
+          }
+        });
+         
       }else{
         throw (401);
       }
