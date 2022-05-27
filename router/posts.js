@@ -6,10 +6,10 @@ const Controller = require("../controller/post");
 const authentication = require("../middleware/authentication");
 const {postAuthorization} = require("../middleware/postAuthorization");
 
-
+router.use(authentication);
 router.get("/", Controller.list);
 router.get("/:id", Controller.detail);
-router.use(authentication);
+
 router.post("/", Controller.add);
 router.post("/type", Controller.addType);
 router.get("/type", Controller.listType);
