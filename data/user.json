@@ -1,0 +1,10 @@
+[
+    {
+        "username": "user1",
+        "email": "user1@gmail.com",
+        "password": "123456",
+        "address": "kunigan",
+        "phone": "90748378973",
+        "isActive": true
+    }
+]
