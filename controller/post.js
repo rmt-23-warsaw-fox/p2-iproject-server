@@ -337,7 +337,7 @@ class PostController {
             
             const id = req.params.id;
             const authorId = req.user.id;
-            let { name, description, imgUrl, location, tag, typeId,statusArchieve } = req.body;
+            let { name, description, imgUrl, location, tag, typeId,statusArchieve,coin } = req.body;
             if(path=="/hide"||path=="/follower"){
                 if(path=="/hide"){
                     statusArchieve="hidden"
@@ -350,6 +350,7 @@ class PostController {
             if (!post) {
                 throw { statusCode: 404 };
             } else {
+                console.log(post)
                 if (!name) {
                     name = post.name;
                 }
@@ -372,7 +373,7 @@ class PostController {
                     statusArchieve=post.statusArchieve;
                 }
 
-                post = post.update({ name, description, imgUrl, location, tag, typeId }).then((response)=>{
+                post = post.update({ name, description, imgUrl, location, tag, typeId,coin }).then((response)=>{
                     if(response){
                         let history = History.create({
                             action: 'updated ',
