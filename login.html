@@ -1,0 +1,48 @@
+<html lang="en">
+  <head>
+        
+    <meta name="google-signin-scope" content="profile email">
+    <link rel="stylesheet" href="./assets/bootstrap.min.css" />
+    <meta name="google-signin-client_id" content="879839274202-2gfd21q2jl5475ucqbsotj2215mb7le5.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    <script>
+        function onSignIn () {
+        
+        var instance = gapi.auth2.getAuthInstance();
+        
+              instance.signIn().then((response) => {
+        
+                      var user = response.getBasicProfile();
+        
+                      var data = {
+                       id: user.getId(),
+                       email: user.getEmail(),
+                       name: user.getName(),
+                       // etc
+                      }
+        
+                      console.log(data);
+        
+                    },
+                    err => {
+                    // error handling 
+                    console.log(error);
+                    });
+        
+           }
+            </script>
+  </head>
+  <body>
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+
+    <button id="signinButton">Sign in with Google</button>
+    <script>
+      $('#signinButton').click(function() {
+        // signInCallback defined in step 6.
+        auth2.grantOfflineAccess().then(signInCallback);
+      });
+    </script>
+    
+  </body>
+</html>

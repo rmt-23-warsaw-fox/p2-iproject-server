@@ -1,0 +1,41 @@
+{
+  "scripts": {
+    "start": "node app.js",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --coverage"
+  },
+  "name": "p2-cms-integration-server",
+  "version": "1.0.0",
+  "description": "CMS Integration - Server",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmt-23-warsaw-fox/p2-cms-integration-server.git"
+  },
+  "keywords": [],
+  "engines": {
+    "npm": "8.1.2",
+    "node": "16.13.1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmt-23-warsaw-fox/p2-cms-integration-server/issues"
+  },
+  "homepage": "https://github.com/rmt-23-warsaw-fox/p2-cms-integration-server#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "google-auth-library": "^8.0.2",
+    "googleapis": "^100.0.0",
+    "jest": "^28.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.7.5",
+    "pg": "^8.7.3",
+    "sequelize": "^6.19.0",
+    "sequelize-cli": "^6.4.1",
+    "supertest": "^6.2.3"
+  }
+}
