@@ -15,7 +15,7 @@ class userController {
         address,
       });
       const token = encode(newUser.id);
-      const url = `https://a40f-111-94-12-118.ap.ngrok.io/users/verify/${token}`;
+      const url = ` https://kedairiqa.herokuapp.com/users/verify/${token}`;
       verification(newUser.email, url);
       res.status(201).json({
         id: newUser.id,
