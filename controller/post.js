@@ -6,16 +6,16 @@ class PostController {
         const { access_token,load_only } = req.headers;
         let userId=-1;
         let total=0;
-        // if(access_token){
+        if(access_token){
 
-        //     let payload = tokenToPayload(access_token);
-        //     let userFound = await User.findByPk(payload.id);
+            let payload = tokenToPayload(access_token);
+            let userFound = await User.findByPk(payload.id);
     
-        //     if (!userFound) {
-        //     } else {
-        //         userId=userFound.id;
-        //     }
-        // }
+            if (!userFound) {
+            } else {
+                userId=userFound.id;
+            }
+        }
         let followerPost=[];
         let paidPost=[];
         console.log(req.query);
