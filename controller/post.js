@@ -207,7 +207,7 @@ class PostController {
     }
 
     static async listOwn(req, res, next) {
-        
+        console.log("Entering own list")
         console.log(req.query);
         console.log(req.body);
         let name=req.query.name;
@@ -337,6 +337,7 @@ class PostController {
             
             const id = req.params.id;
             const authorId = req.user.id;
+            console.log(authorId+" this is  the author")
             let { name, description, imgUrl, location, tag, typeId,statusArchieve,coin } = req.body;
             if(path=="/hide"||path=="/follower"){
                 if(path=="/hide"){
