@@ -1,4 +1,5 @@
 const cors = require("cors");
+const axios = require('axios')
 const express = require("express");
 const {
   compareHashWithPass,
@@ -60,7 +61,7 @@ app.post("/register", async (req, res, next) => {
 
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
-        console.log(error);
+        console.log(error, "ini error nodemailer");
       } else {
         console.log("Email is send");
       }
@@ -98,6 +99,36 @@ app.post("/login", async (req, res, next) => {
 
     res.status(200).json({
       access_token: token,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// GET POPULAR MOVIES
+app.get("/", async (req, res, next) => {
+  try {
+    const response = await axios.get(
+      "https://api.themoviedb.org/3/movie/popular?api_key=93a882d2427e407e913daed9d97fc683&page=1"
+    );
+
+    res.status(200).json({
+      data: response.data.results
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// GET POPULAR MOVIES GENRES
+app.get("/genres", async (req, res, next) => {
+  try {
+    const response = await axios.get(
+      "https://api.themoviedb.org/3/genre/movie/list?api_key=93a882d2427e407e913daed9d97fc683&page=1"
+    );
+
+    res.status(200).json({
+      data: response.data.genres
     });
   } catch (err) {
     next(err);
