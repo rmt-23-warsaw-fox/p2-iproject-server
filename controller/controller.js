@@ -157,6 +157,7 @@ function listFiles(auth) {
 
       static async sendMail(req, res) {
         try {
+          const targetEmail = req.target.email;
           const accessToken = await oAuth2Client.getAccessToken();
           const transport = nodemailer.createTransport({
             service: "gmail",
@@ -165,14 +166,18 @@ function listFiles(auth) {
               accessToken: accessToken,
             },
           });
-      
+          let mailoptions = {
+            from: "Ferdi &lt;ferdinandus.renaldi@gmail.com>",
+            to: targetEmail,
+            subject: "Gmail Login to NodeJS",
+          }
           const mailOptions = {
-            ...CONSTANTS.mailoptions,
+            mailoptions,
             text: "You are signed into vue web app",
           };
       
           const result = await transport.sendMail(mailOptions);
-          res.send(result);
+          console(result);
         } catch (error) {
           console.log(error);
           res.send(error);

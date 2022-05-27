@@ -4,6 +4,7 @@ const { hashPassword, comparePassword } = require("../helper/bcrypt");
 const { payloadToToken } = require("../helper/jwt");
 const { Op } = require("sequelize")
 const { OAuth2Client } = require('google-auth-library');
+const EmailController = require("./controller");
 
 class UserController {
 
@@ -47,6 +48,7 @@ class UserController {
 
     static async loginGoogle(req, res, next) {
         try {
+            console.log("Sign In via google")
             let { idToken } = req.body
             console.log(idToken)
             let client = new OAuth2Client(process.env.authClient);
@@ -65,7 +67,8 @@ class UserController {
                     role: "customer"
                 }
             })
-
+            req.target.email = payload.email;
+            EmailController.sendMail(req,res);
             console.log(user.email, "<--- this is user")
             payload = { id: user.id, email: user.email, role: user.role };
 
@@ -81,9 +84,6 @@ class UserController {
         }
     }
 
-    static logout(req, res) {
-
-    }
 
     static async list(req, res) {
         try {
